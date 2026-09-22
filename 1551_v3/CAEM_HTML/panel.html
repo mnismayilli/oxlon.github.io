@@ -10,7 +10,7 @@
   --bg: #F4F6F8; --surface: #FFFFFF; --surface-2: #F8FAFB; --sunk: #EEF2F5;
   --ink: #15202B; --ink-2: #455463; --muted: #738190; --line: #DDE3E9; --line-2: #EDF1F4;
   --accent: #3B4F9A; --accent-ink: #2C3C78; --accent-soft: #ECEFFA;
-  --scen: #1F6FB2; --scen-soft: #E6EFF8; --base: #8A96A3;
+  --scen: #1F6FB2; --scen-soft: #E6EFF8; --base: #B4651A;
   --up: #1E7B4F; --up-soft: #E5F3EB; --down: #B3261E; --down-soft: #FBE9E7;
   --warn: #8A5300; --warn-soft: #FFF2D9; --coef: #6A3FB5; --coef-soft: #F0EAFA;
   --fc: #F2F7FB;
@@ -218,11 +218,6 @@ details.xgrp[open] > summary { border-bottom: 1px solid var(--line-2); }
 .rchip b { font-variant-numeric: tabular-nums; }
 .rchip.ext { border-color: #BFE0CE; background: #F2FAF5; }
 .lit { color: var(--coef); font-weight: 700; background: var(--coef-soft); border-radius: 4px; padding: 0 3px; }
-.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
-.chart { width: 100%; height: auto; display: block; }
-.chart text { font-family: var(--font); }
-.tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: 12px; padding: 6px 9px; border-radius: 6px; white-space: nowrap; z-index: 5; transform: translate(-50%, -110%); }
-.chart-wrap { position: relative; }
 
 /* ---------- palette ---------- */
 .pal { position: fixed; top: 12vh; left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); background: var(--surface); border-radius: 12px; z-index: 51; box-shadow: 0 24px 60px rgba(21,32,43,.28); overflow: hidden; }
@@ -328,6 +323,34 @@ details.faq p { margin: 8px 0 0; }
   #classic { font-size: 0; padding-inline: 10px; }
   #classic::after { content: "Klassik"; font-size: 12.5px; font-weight: 700; }
 }
+
+/* ---------- charts ---------- */
+.fig { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 10px; }
+.fig figcaption { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.fig figcaption b { font-size: 14.5px; }
+.fig figcaption span { color: var(--muted); font-size: 12.5px; margin-left: 6px; }
+.fig .legend { margin-left: auto; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); align-items: center; }
+.legend i.lk { display: inline-block; width: 16px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: 2px; }
+.legend i.lk.dash { background-image: linear-gradient(90deg, currentColor 0 60%, transparent 60% 100%); background-size: 8px 3px; }
+.legend i.lk.fc { background: #F5F7FC; border: 1px solid var(--line); height: 12px; border-radius: 3px; vertical-align: -2px; }
+.chart-wrap { position: relative; }
+.chart { display: block; width: 100%; height: auto; }
+.chart:focus-visible { outline: 2px solid var(--scen); outline-offset: 2px; border-radius: 6px; }
+.chart .hit { cursor: crosshair; }
+.fig-act { display: flex; gap: 6px; justify-content: flex-end; margin-top: 4px; }
+.fig-act .btn { color: var(--muted); }
+.sm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: 12px; padding: 7px 10px; border-radius: 7px; white-space: nowrap; z-index: 5; transform: translate(-50%, -118%); box-shadow: 0 6px 18px rgba(21,32,43,.22); }
+.tip .tip-h { font-size: 11px; opacity: .72; margin-bottom: 3px; letter-spacing: .02em; }
+.tip .tip-r { display: flex; align-items: baseline; gap: 6px; line-height: 1.6; }
+.tip .tip-r i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; flex: none; }
+.tip .tip-r i.dash { background-image: linear-gradient(90deg, currentColor 0 55%, transparent 55% 100%); background-size: 6px 3px; }
+.tip .tip-r b { font-variant-numeric: tabular-nums; }
+.tip .tip-r span { opacity: .72; }
+.tip .tip-r.d { border-top: 1px solid rgba(255,255,255,.18); margin-top: 3px; padding-top: 3px; }
+.tip .tip-r.d b { color: #9FD0FF; }
+@media (max-width: 640px) { .sm-grid { grid-template-columns: 1fr; } .fig .legend { margin-left: 0; } }
 </style>
 </head>
 <body>
@@ -593,51 +616,202 @@ details.faq p { margin: 8px 0 0; }
   }
   function inpMod(e) { return e.cells.some(function (x) { return x.id >= 0 && isEdited(x.id); }); }
 
-  // ------------------------------------------------------------------ charts (inline SVG)
+  // ------------------------------------------------------------------ charts (inline SVG, print-quality, exportable)
+  // Two series only: the current scenario and the baseline. Colours validated for colour-vision deficiency
+  // (ΔE 21.8 protan / 26.4 normal) and both above 3:1 against the surface; the dashed stroke and the direct
+  // end labels carry identity a second time, so nothing depends on colour alone.
+  var C_SCEN = '#1F6FB2', C_BASE = '#B4651A', C_GRID = '#E7EBEF', C_AXIS = '#B8C2CC', C_INK = '#15202B', C_MUTED = '#71808D', C_FC = '#F5F7FC';
+  var FONT = "'Helvetica Neue', Helvetica, Arial, sans-serif";   // single quotes: valid in the XML an exported SVG/PNG is parsed as
   function niceTicks(lo, hi, n) {
-    if (lo === hi) { lo -= 1; hi += 1; }
+    if (!isFinite(lo) || !isFinite(hi)) return [0, 1];
+    if (lo === hi) { lo -= Math.abs(lo || 1) * 0.1; hi += Math.abs(hi || 1) * 0.1; }
     var span = hi - lo, step = Math.pow(10, Math.floor(Math.log10(span / n))), err = span / n / step;
     if (err >= 7.5) step *= 10; else if (err >= 3.5) step *= 5; else if (err >= 1.5) step *= 2;
     var a = Math.floor(lo / step) * step, b = Math.ceil(hi / step) * step, out = [];
     for (var v = a; v <= b + step / 2; v += step) out.push(+v.toPrecision(12));
     return out;
   }
-  function lineChart(years, cur, base, unit, fy) {
-    var W = 600, H = 260, L = 56, R = 14, T = 16, B = 30, vals = cur.concat(base).filter(isNum);
-    if (!vals.length) return '<p class="muted">Məlumat yoxdur.</p>';
-    var ticks = niceTicks(Math.min.apply(null, vals), Math.max.apply(null, vals), 5), lo = ticks[0], hi = ticks[ticks.length - 1];
-    var x = function (i) { return L + (W - L - R) * (years.length === 1 ? 0.5 : i / (years.length - 1)); }, y = function (v) { return T + (H - T - B) * (1 - (v - lo) / (hi - lo || 1)); };
-    var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Qrafik">';
-    var fi = years.indexOf(fy); if (fi >= 0) s += '<rect x="' + (x(fi) - (fi ? (x(1) - x(0)) / 2 : 0)).toFixed(1) + '" y="' + T + '" width="' + (W - R - x(fi) + (fi ? (x(1) - x(0)) / 2 : 0)).toFixed(1) + '" height="' + (H - T - B) + '" fill="#F2F4FB"/><text x="' + (x(fi) + 4).toFixed(1) + '" y="' + (T + 11) + '" font-size="10.5" fill="#738190">proqnoz</text>';
-    ticks.forEach(function (t) { s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(t).toFixed(1) + '" y2="' + y(t).toFixed(1) + '" stroke="#EDF1F4"/><text x="' + (L - 8) + '" y="' + (y(t) + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="#738190">' + nf(t, Math.abs(hi - lo) < 5 ? 1 : 0) + '</text>'; });
-    if (lo < 0 && hi > 0) s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(0).toFixed(1) + '" y2="' + y(0).toFixed(1) + '" stroke="#B8C2CC"/>';
-    years.forEach(function (yy, i) { s += '<text x="' + x(i).toFixed(1) + '" y="' + (H - 9) + '" text-anchor="middle" font-size="11" fill="#738190">' + yy + '</text>'; });
-    function path(v, col, w, dash) {
-      var d = '', on = false; v.forEach(function (p, i) { if (!isNum(p)) { on = false; return; } d += (on ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p).toFixed(1); on = true; });
-      var dots = v.map(function (p, i) { return isNum(p) ? '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(p).toFixed(1) + '" r="3.5" fill="' + col + '" stroke="#fff" stroke-width="1.5"/>' : ''; }).join('');
-      return '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + w + '"' + (dash ? ' stroke-dasharray="5 4"' : '') + ' stroke-linejoin="round" stroke-linecap="round"/>' + dots;
-    }
+  function tickDec(ticks) {
+    var s = Math.abs(ticks.length > 1 ? ticks[1] - ticks[0] : ticks[0]) || 1;
+    return s >= 100 ? 0 : s >= 10 ? 0 : s >= 1 ? 1 : s >= 0.1 ? 1 : 2;
+  }
+  // svg text with the page font baked in, so an exported PNG/SVG looks like the screen
+  function tx(x, y, s, o) {
+    o = o || {};
+    return '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-family="' + FONT + '" font-size="' + (o.size || 11) + '" fill="' + (o.fill || C_MUTED) + '"' +
+      (o.anchor ? ' text-anchor="' + o.anchor + '"' : '') + (o.weight ? ' font-weight="' + o.weight + '"' : '') + (o.cls ? ' class="' + o.cls + '"' : '') + '>' + esc(s) + '</text>';
+  }
+  // one line chart; opts: {w, h, compact, title, dec}
+  function lineChart(years, cur, base, unit, fy, opts) {
+    opts = opts || {};
+    var compact = !!opts.compact, W = opts.w || 700, H = opts.h || 300;
+    var L = compact ? 44 : 66, R = compact ? 54 : 104, T = compact ? 16 : 26, B = compact ? 26 : 34;
+    var vals = cur.concat(base).filter(isNum);
+    if (!vals.length) return '<p class="muted small">Məlumat yoxdur.</p>';
     var differ = cur.some(function (v, i) { return !same(v, base[i]); });
-    if (differ) s += path(base, '#8A96A3', 2, true);
-    s += path(cur, '#1F6FB2', 2.2);
-    s += '<rect class="hit" x="' + L + '" y="' + T + '" width="' + (W - L - R) + '" height="' + (H - T - B) + '" fill="transparent"/>';
+    var ticks = niceTicks(Math.min.apply(null, vals), Math.max.apply(null, vals), compact ? 3 : 5);
+    var lo = ticks[0], hi = ticks[ticks.length - 1], dec = opts.dec === undefined ? tickDec(ticks) : opts.dec;
+    var x = function (i) { return L + (W - L - R) * (years.length === 1 ? 0.5 : i / (years.length - 1)); };
+    var y = function (v) { return T + (H - T - B) * (1 - (v - lo) / (hi - lo || 1)); };
+    var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc((opts.title || 'Qrafik') + ', ' + unit) + '" tabindex="0">';
+    s += '<rect x="0" y="0" width="' + W + '" height="' + H + '" fill="#FFFFFF"/>';                       // export background
+    var fi = years.indexOf(fy);
+    if (fi > 0) {
+      var half = (x(1) - x(0)) / 2, fx = x(fi) - half;
+      s += '<rect x="' + fx.toFixed(1) + '" y="' + T + '" width="' + (W - R - fx + 8).toFixed(1) + '" height="' + (H - T - B) + '" fill="' + C_FC + '"/>';
+      s += '<line x1="' + fx.toFixed(1) + '" x2="' + fx.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="' + C_AXIS + '" stroke-dasharray="2 3"/>';
+      if (!compact) s += tx(fx + 6, T + 12, 'proqnoz', { size: 10.5 });
+    }
+    ticks.forEach(function (t) {
+      s += '<line x1="' + L + '" x2="' + (W - R + 8) + '" y1="' + y(t).toFixed(1) + '" y2="' + y(t).toFixed(1) + '" stroke="' + C_GRID + '"/>';
+      s += tx(L - 8, y(t) + 4, nf(t, dec), { anchor: 'end', size: compact ? 10 : 11 });
+    });
+    if (lo < 0 && hi > 0) s += '<line x1="' + L + '" x2="' + (W - R + 8) + '" y1="' + y(0).toFixed(1) + '" y2="' + y(0).toFixed(1) + '" stroke="' + C_AXIS + '"/>';
+    var everyN = years.length > (compact ? 6 : 12) ? 2 : 1;
+    years.forEach(function (yy, i) { if (i % everyN === 0 || i === years.length - 1) s += tx(x(i), H - (compact ? 8 : 12), String(yy), { anchor: 'middle', size: compact ? 10 : 11 }); });
+    if (!compact && unit) s += tx(L - 8, T - 8, unit, { anchor: 'end', size: 10.5 });
+    function path(v, col, w, dash) {
+      var d = '', on = false;
+      v.forEach(function (p, i) { if (!isNum(p)) { on = false; return; } d += (on ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p).toFixed(1); on = true; });
+      return d ? '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + w + '"' + (dash ? ' stroke-dasharray="6 4"' : '') + ' stroke-linejoin="round" stroke-linecap="round"/>' : '';
+    }
+    function endMark(v, col) {
+      for (var i = v.length - 1; i >= 0; i--) if (isNum(v[i])) return { i: i, v: v[i], s: '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v[i]).toFixed(1) + '" r="4.5" fill="' + col + '" stroke="#FFFFFF" stroke-width="2"/>' };
+      return null;
+    }
+    if (differ) s += path(base, C_BASE, 2, true);
+    s += path(cur, C_SCEN, 2.2);
+    var eC = endMark(cur, C_SCEN), eB = differ ? endMark(base, C_BASE) : null;
+    if (eB) s += eB.s;
+    if (eC) s += eC.s;
+    // direct end labels; when the two ends nearly touch, only the scenario is labelled (legend + tooltip carry the rest)
+    if (eC && !compact) {
+      var collide = eB && Math.abs(y(eC.v) - y(eB.v)) < 15;
+      s += tx(x(eC.i) + 9, y(eC.v) + 4, nf(eC.v, dec), { fill: C_INK, weight: 700, size: 12 });
+      if (eB && !collide) s += tx(x(eB.i) + 9, y(eB.v) + 4, nf(eB.v, dec), { fill: C_MUTED, size: 11.5 });
+    } else if (eC && compact) {
+      s += tx(x(eC.i) + 8, y(eC.v) + 4, nf(eC.v, dec), { fill: C_INK, weight: 700, size: 11 });
+    }
+    s += '<g class="hov"></g>';
+    s += '<rect class="hit" x="' + L + '" y="' + T + '" width="' + (W - L - R + 8) + '" height="' + (H - T - B) + '" fill="transparent"/>';
     return s + '</svg>';
   }
+  // crosshair + tooltip (pointer and keyboard); values lead, series names follow
   function wireChart(wrap, years, cur, base, unit, dec) {
-    var svg = wrap.querySelector('svg'); if (!svg) return; var tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; wrap.appendChild(tip);
-    svg.addEventListener('mousemove', function (ev) {
-      var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * 600, i = Math.round((px - 56) / ((600 - 70) / Math.max(1, years.length - 1)));
-      if (i < 0 || i >= years.length) { tip.hidden = true; return; }
-      tip.hidden = false; tip.style.left = (ev.clientX - wrap.getBoundingClientRect().left) + 'px'; tip.style.top = (ev.clientY - wrap.getBoundingClientRect().top) + 'px';
-      tip.innerHTML = '<b>' + years[i] + '</b> · ssenari ' + nf(cur[i], dec) + (same(cur[i], base[i]) ? '' : ' · baza ' + nf(base[i], dec)) + ' ' + esc(unit);
+    var svg = wrap.querySelector('svg'); if (!svg) return;
+    var tip = wrap.querySelector('.tip');
+    if (!tip) { tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; wrap.appendChild(tip); }
+    var vb = svg.getAttribute('viewBox').split(' ').map(Number), W = vb[2], H = vb[3];
+    var hit = svg.querySelector('.hit'), hov = svg.querySelector('.hov');
+    var L = +hit.getAttribute('x'), T = +hit.getAttribute('y'), IW = +hit.getAttribute('width'), IH = +hit.getAttribute('height');
+    var vals = cur.concat(base).filter(isNum);
+    if (!vals.length) return;
+    var ticks = niceTicks(Math.min.apply(null, vals), Math.max.apply(null, vals), 5), lo = ticks[0], hi = ticks[ticks.length - 1];
+    if (dec === undefined) dec = tickDec(ticks);
+    var R = W - L - IW + 8, B = H - T - IH;
+    var xa = function (i) { return L + (W - L - R) * (years.length === 1 ? 0.5 : i / (years.length - 1)); };
+    var ya = function (v) { return T + (H - T - B) * (1 - (v - lo) / (hi - lo || 1)); };
+    var idx = -1;
+    function show(i) {
+      if (i < 0 || i >= years.length) return hide();
+      idx = i;
+      var px = xa(i), g = '<line x1="' + px.toFixed(1) + '" x2="' + px.toFixed(1) + '" y1="' + T + '" y2="' + (T + IH) + '" stroke="' + C_AXIS + '" stroke-width="1"/>';
+      if (isNum(base[i]) && !same(base[i], cur[i])) g += '<circle cx="' + px.toFixed(1) + '" cy="' + ya(base[i]).toFixed(1) + '" r="4.5" fill="' + C_BASE + '" stroke="#FFFFFF" stroke-width="2"/>';
+      if (isNum(cur[i])) g += '<circle cx="' + px.toFixed(1) + '" cy="' + ya(cur[i]).toFixed(1) + '" r="5" fill="' + C_SCEN + '" stroke="#FFFFFF" stroke-width="2"/>';
+      hov.innerHTML = g;
+      var rect = svg.getBoundingClientRect(), wr = wrap.getBoundingClientRect(), k = rect.width / W;
+      tip.textContent = '';
+      var head = document.createElement('div'); head.className = 'tip-h'; head.textContent = years[i] + (years[i] >= FYEARS[0] ? ' · proqnoz' : ' · faktiki');
+      tip.appendChild(head);
+      var rows = [[C_SCEN, 'ssenari', cur[i], true]];
+      if (isNum(base[i]) && !same(base[i], cur[i])) { rows.push([C_BASE, 'baza', base[i], false]); }
+      rows.forEach(function (r) {
+        var row = document.createElement('div'); row.className = 'tip-r';
+        var key = document.createElement('i'); key.style.background = r[0]; if (r[3] === false) key.className = 'dash';
+        var v = document.createElement('b'); v.textContent = nf(r[2], dec) + (unit && unit.length < 4 ? ' ' + unit : '');
+        var n = document.createElement('span'); n.textContent = r[1];
+        row.appendChild(key); row.appendChild(v); row.appendChild(n); tip.appendChild(row);
+      });
+      if (rows.length > 1) {
+        var d = cur[i] - base[i], row2 = document.createElement('div'); row2.className = 'tip-r d';
+        var v2 = document.createElement('b'); v2.textContent = (d > 0 ? '+' : '−') + nf(Math.abs(d), dec);
+        var n2 = document.createElement('span'); n2.textContent = 'fərq';
+        row2.appendChild(v2); row2.appendChild(n2); tip.appendChild(row2);
+      }
+      tip.hidden = false;
+      var tw = tip.offsetWidth, left = (rect.left - wr.left) + px * k, top = (rect.top - wr.top) + ya(isNum(cur[i]) ? cur[i] : lo) * k;
+      tip.style.left = Math.max(tw / 2 + 2, Math.min(rect.width - tw / 2 - 2, left)) + 'px';
+      tip.style.top = Math.max(34, top) + 'px';
+    }
+    function hide() { idx = -1; hov.innerHTML = ''; tip.hidden = true; }
+    function nearest(ev) {
+      var rect = svg.getBoundingClientRect(), px = (ev.clientX - rect.left) / rect.width * W;
+      var best = 0, bd = Infinity;
+      years.forEach(function (_, i) { var d = Math.abs(xa(i) - px); if (d < bd) { bd = d; best = i; } });
+      return best;
+    }
+    svg.addEventListener('pointermove', function (e) { show(nearest(e)); });
+    svg.addEventListener('pointerleave', hide);
+    svg.addEventListener('focus', function () { show(idx < 0 ? years.length - 1 : idx); });
+    svg.addEventListener('blur', hide);
+    svg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(Math.max(0, (idx < 0 ? years.length - 1 : idx) - 1)); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(Math.min(years.length - 1, (idx < 0 ? 0 : idx) + 1)); }
+      if (e.key === 'Escape') hide();
     });
-    svg.addEventListener('mouseleave', function () { tip.hidden = true; });
   }
-  function sparkline(vals) {
-    var v = vals.filter(isNum); if (v.length < 2) return '';
-    var lo = Math.min.apply(null, v), hi = Math.max.apply(null, v), W = 200, H = 34;
-    var on = false, d = vals.map(function (p, i) { if (!isNum(p)) { on = false; return ''; } var seg = (on ? 'L' : 'M') + (i * W / (vals.length - 1)).toFixed(1) + ',' + (H - 3 - (H - 6) * (hi === lo ? 0.5 : (p - lo) / (hi - lo))).toFixed(1); on = true; return seg; }).join('');
-    return '<svg class="spark" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path d="' + d + '" fill="none" stroke="#1F6FB2" stroke-width="1.8"/></svg>';
+  // legend: always present for two series (rect/line key mirrors the mark)
+  function legendHTML(differ) {
+    return '<div class="legend"><span><i class="lk" style="background:' + C_SCEN + '"></i>cari ssenari</span>' +
+      (differ ? '<span><i class="lk dash" style="background:' + C_BASE + '"></i>baza</span>' : '') +
+      '<span><i class="lk fc"></i>proqnoz dövrü</span></div>';
+  }
+  // figure wrapper with export buttons (SVG vector, PNG at 2× for slides and documents)
+  function figureHTML(id, title, sub, chartSVG, differ) {
+    return '<figure class="fig" id="' + id + '"><figcaption><div><b>' + esc(title) + '</b>' + (sub ? '<span>' + esc(sub) + '</span>' : '') + '</div>' + legendHTML(differ) +
+      '</figcaption><div class="chart-wrap">' + chartSVG + '</div>' +
+      '<div class="fig-act"><button class="btn sm" data-dl="svg" data-fig="' + id + '">SVG</button><button class="btn sm" data-dl="png" data-fig="' + id + '">PNG (2×)</button></div></figure>';
+  }
+  function wireFigures(root) {
+    $$('[data-dl]', root).forEach(function (b) {
+      b.onclick = function () {
+        var fig = document.getElementById(b.getAttribute('data-fig')), svg = fig && fig.querySelector('svg');
+        if (!svg) return;
+        var name = (fig.querySelector('figcaption b').textContent || 'qrafik').replace(/[\\/:*?"<>|]/g, '_');
+        exportChart(svg, name, b.getAttribute('data-dl') === 'png' ? 2 : 0);
+      };
+    });
+  }
+  function exportChart(svg, name, scale) {
+    var clone = svg.cloneNode(true);
+    var hov = clone.querySelector('.hov'); if (hov) hov.innerHTML = '';
+    clone.removeAttribute('tabindex'); clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    var vb = clone.getAttribute('viewBox').split(' ').map(Number);
+    clone.setAttribute('width', vb[2]); clone.setAttribute('height', vb[3]);
+    var xml = new XMLSerializer().serializeToString(clone);
+    if (!scale) { download(name + '.svg', new Blob([xml], { type: 'image/svg+xml' })); toast('SVG yükləndi'); return; }
+    var img = new Image();
+    img.onload = function () {
+      var cv = document.createElement('canvas'); cv.width = vb[2] * scale; cv.height = vb[3] * scale;
+      var ctx = cv.getContext('2d'); ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, cv.width, cv.height);
+      ctx.drawImage(img, 0, 0, cv.width, cv.height);
+      cv.toBlob(function (blob) { if (blob) { download(name + '.png', blob); toast('PNG yükləndi (' + cv.width + '×' + cv.height + ')'); } else toast('PNG yaradılmadı'); }, 'image/png');
+    };
+    img.onerror = function () { toast('PNG yaradılmadı — SVG yükləyin'); };
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(xml);
+  }
+  // sparkline for the stat tiles: scenario in the accent, baseline ghosted, end dot
+  function sparkline(vals, baseVals) {
+    var all = vals.concat(baseVals || []).filter(isNum); if (all.length < 2) return '';
+    var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), W = 200, H = 38;
+    function d(v) { var out = '', on = false; v.forEach(function (p, i) { if (!isNum(p)) { on = false; return; } out += (on ? 'L' : 'M') + (i * W / (v.length - 1)).toFixed(1) + ',' + (H - 4 - (H - 9) * (hi === lo ? 0.5 : (p - lo) / (hi - lo))).toFixed(1); on = true; }); return out; }
+    var last = -1; vals.forEach(function (p, i) { if (isNum(p)) last = i; });
+    var differ = baseVals && vals.some(function (v, i) { return !same(v, baseVals[i]); });
+    return '<svg class="spark" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-hidden="true">' +
+      (differ ? '<path d="' + d(baseVals) + '" fill="none" stroke="' + C_BASE + '" stroke-width="1.5" stroke-dasharray="5 3" vector-effect="non-scaling-stroke" opacity=".85"/>' : '') +
+      '<path d="' + d(vals) + '" fill="none" stroke="' + C_SCEN + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>' +
+      (last >= 0 ? '<circle cx="' + (last * W / (vals.length - 1)).toFixed(1) + '" cy="' + (H - 4 - (H - 9) * (hi === lo ? 0.5 : (vals[last] - lo) / (hi - lo))).toFixed(1) + '" r="2.8" fill="' + C_SCEN + '" stroke="#FFFFFF" stroke-width="1.5"/>' : '') +
+      '</svg>';
   }
 
   // ------------------------------------------------------------------ shell: tabs, scenario bar, routing
@@ -717,8 +891,8 @@ details.faq p { margin: 8px 0 0; }
     RERENDER = function () { var y = window.scrollY; pageResults(v); window.scrollTo(0, y); };
     var h = '<div class="eyebrow">Nəticələr</div><h1 class="h1" style="margin-top:6px">Əsas makroiqtisadi göstəricilər</h1><p class="lead">Mənbə: Nazirliyin hesabat cədvəli (MOE_report) və sektor vərəqləri. Mavi — cari ssenari, boz qırıq xətt — baza. Sətrə klikləyin — qrafik, mənbə xana və klassik görünüşə keçid.</p>';
     h += '<div class="toolbar"><b>İl:</b>' + yearSeg('ry') + '</div><div class="kpis">' + KPI.filter(function (k) { return k.key; }).map(function (k) {
-      var c = kpiVal(k, YEAR), b = kpiVal(k, YEAR, true), ser = YEARS.map(function (y) { return kpiVal(k, y); });
-      return '<button class="kpi" data-k="' + k.k + '"><span class="l">' + esc(k.t) + '</span><span class="v">' + nf(c, decOf(k, c)) + '<small>' + esc(k.u) + '</small></span><span class="d">' + deltaHTML(k, c, b) + '</span>' + sparkline(ser) + '</button>';
+      var c = kpiVal(k, YEAR), b = kpiVal(k, YEAR, true), ser = YEARS.map(function (y) { return kpiVal(k, y); }), serB = YEARS.map(function (y) { return kpiVal(k, y, true); });
+      return '<button class="kpi" data-k="' + k.k + '"><span class="l">' + esc(k.t) + '</span><span class="v">' + nf(c, decOf(k, c)) + '<small>' + esc(k.u) + '</small></span><span class="d">' + deltaHTML(k, c, b) + '</span>' + sparkline(ser, serB) + '</button>';
     }).join('') + '</div>';
     SECS.forEach(function (sn, si) {
       var rows = KPI.filter(function (k) { return k.sec === si; }); if (!rows.length) return;
@@ -730,10 +904,22 @@ details.faq p { margin: 8px 0 0; }
             YEARS.map(function (y) { var c = kpiVal(k, y); return '<td class="n' + (y >= INFO.firstYear ? ' fc' : '') + '">' + nf(c, decOf(k, c)) + '</td>'; }).join('') + '<td class="n dcell">' + deltaHTML(k, kpiVal(k, YEAR), kpiVal(k, YEAR, true)) + '</td></tr>';
         }).join('') + '</tbody></table></div></section>';
     });
+    // small multiples: the six indicators the ministry leads with, same scale rules, same hover
+    h += '<section class="sec"><div class="sec-h"><h2>Qrafiklər</h2><p>cari ssenari və baza · hər qrafiki SVG və ya PNG (2×) kimi yükləyin</p></div><div class="sm-grid">' +
+      IMPACT_KEYS.slice(0, 6).map(function (key, i) {
+        var k = byKey(key), cu = YEARS.map(function (y) { return kpiVal(k, y); }), ba = YEARS.map(function (y) { return kpiVal(k, y, true); });
+        var differ = cu.some(function (v, j) { return !same(v, ba[j]); });
+        return figureHTML('fig-' + key, k.t, k.u, lineChart(YEARS, cu, ba, k.u, INFO.firstYear, { compact: true, w: 460, h: 220, title: k.t, dec: decOf(k) }), differ);
+      }).join('') + '</div></section>';
     h += '<p class="small muted" style="margin-top:18px">Qeyd: istehsal üsulu ilə ÜDM (1a, sahələr üzrə) və xərclər üsulu ilə ÜDM (1d, davranış tənlikləri) yalnız uzlaşdırmadan sonra üst-üstə düşür. <a href="#/uzlasdirma">Uzlaşdırma</a> · <button class="btn sm" id="csv">CSV ixrac</button></p>';
     v.innerHTML = h;
     wireYearSeg('ry', function () { pageResults(v); });
-    v.onclick = function (e) { var t = e.target.closest('[data-k]'); if (t && !e.target.closest('a')) openKpi(byKey(t.getAttribute('data-k'))); };
+    IMPACT_KEYS.slice(0, 6).forEach(function (key) {
+      var k = byKey(key), wrap = $('#fig-' + key + ' .chart-wrap');
+      if (wrap) wireChart(wrap, YEARS, YEARS.map(function (y) { return kpiVal(k, y); }), YEARS.map(function (y) { return kpiVal(k, y, true); }), k.u, decOf(k));
+    });
+    wireFigures(v);
+    v.onclick = function (e) { var t = e.target.closest('[data-k]'); if (t && !e.target.closest('a') && !e.target.closest('[data-dl]') && !e.target.closest('figure')) openKpi(byKey(t.getAttribute('data-k'))); };
     $('#csv').onclick = function (e) { e.stopPropagation(); exportCSV(); };
   }
   function exportCSV() {
@@ -750,12 +936,13 @@ details.faq p { margin: 8px 0 0; }
     var id = kpiCell(k, YEAR), gs = gsOf(k.s);
     var src = id >= 0 && M.ft[id] >= 0 ? sourceText(id) : '';
     var h = '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><div class="eyebrow">' + esc(SECS[k.sec]) + '</div><h3 style="margin-top:4px">' + esc(k.t) + '</h3><div class="muted small">' + esc(k.u) + '</div></div><button class="ibtn" id="dr-x" aria-label="Bağla">✕</button></div>' +
-      '<div class="legend" style="margin-top:12px"><span><span class="dotline" style="background:#1F6FB2"></span>cari ssenari</span><span><span class="dotline" style="background:#8A96A3"></span>baza</span></div><div class="chart-wrap" id="dr-ch">' + lineChart(YEARS, cur, base, k.u, INFO.firstYear) + '</div>' +
+      figureHTML('dr-fig', k.t, k.u, lineChart(YEARS, cur, base, k.u, INFO.firstYear, { title: k.t, dec: decOf(k) }), cur.some(function (v, i) { return !same(v, base[i]); })) +
       '<table class="itbl" style="margin-top:10px"><thead><tr><th class="l">İl</th><th>Ssenari</th><th>Baza</th><th>Fərq</th></tr></thead><tbody>' + YEARS.map(function (y, i) { return '<tr><td class="lab">' + y + (y >= INFO.firstYear ? ' <span class="chip">proqnoz</span>' : '') + '</td><td class="n">' + nf(cur[i], decOf(k, cur[i])) + '</td><td class="n">' + nf(base[i], decOf(k, base[i])) + '</td><td class="n dcell">' + deltaHTML(k, cur[i], base[i]) + '</td></tr>'; }).join('') + '</tbody></table>' +
       '<h4 style="margin-top:18px">Mənbə</h4><p class="small">' + (id >= 0 ? '<code>' + esc(SHEETS[gs].n + '!' + a1(M.r[id], M.c[id])) + '</code> (' + YEAR + ')' : '') + (src ? '<br><span class="fx" style="display:block;margin-top:6px">' + esc(src) + '</span>' : '') + '</p>' +
       '<p><a class="btn" href="' + (id >= 0 ? classic(gs, M.r[id], M.c[id]) : classic(gs)) + '">Klassik görünüşdə aç (düstur, əlaqələr) →</a></p>';
     showDrawer(h);
-    wireChart($('#dr-ch'), YEARS, cur, base, k.u, decOf(k));
+    wireChart($('#dr-fig .chart-wrap'), YEARS, cur, base, k.u, decOf(k));
+    wireFigures($('#drawer'));
   }
   // formula text of a cell (plain, via the display template)
   function sourceText(id) {
