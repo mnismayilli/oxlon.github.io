@@ -1,0 +1,22 @@
+CAEM proqnoz modeli — HTML versiyası
+====================================
+
+Açmaq: index.html (klassik görünüş — bütün vərəqlər, düsturlar, əlaqələr, admin) və ya
+panel.html (iş paneli — əsas nəticələr, fərziyyələr, uzlaşdırma, ssenarilər). Chrome, Edge,
+Safari və ya Firefox-un son versiyası tövsiyə olunur. İnternet bağlantısı lazım deyil.
+
+Mənbə: ../../Ministry_CAEM/CAEM.xlsx (dəyişdirilmir; eyni məzmunlu CAEM.xlsb də həmin qovluqdadır). Bütün 57 170 düstur Excel-in saxladığı nəticələrlə
+yoxlanılıb və 100% üst-üstə düşür.
+
+Qovluq:
+  index.html, panel.html, app.js, app.css   — interfeys
+  engine.js, engine2.js, model.js           — hesablama mühərriki (Excel funksiyaları, massivlər, HP filtrləri)
+  modelstore.js, caem-update.js             — faktiki məlumat, ilin irəli çəkilməsi, yeni fayl yükləmə
+  builder.js, xlsbreader.js                 — Excel (.xlsb/.xlsm/.xlsx) faylını brauzerdə oxuyan və yoxlayan modul
+  caem-macros.js                            — VBA makroslarının (ResidualYP/CP, CaliManual) JavaScript versiyası
+  data/                                     — CAEM.xlsx-dən hazırlanmış model məlumatı
+
+Dəyişikliklər (ssenarilər, faktiki məlumat) yalnız istifadəçinin brauzerində saxlanılır.
+Paylaşmaq üçün «Ssenarilər» → JSON ixrac. Yeni CAEM faylını hamı üçün daimi etmək:
+«Model yeniləmə» → faylı yüklə → «data qovluğunu ZIP kimi yüklə» → ZIP-dəki data qovluğunu buradakı
+data qovluğunun yerinə köçürün.

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CAEM proqnoz modeli</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="boot" class="boot">
+  <div class="boot-card">
+    <div class="boot-title">CAEM proqnoz modeli</div>
+    <div class="boot-sub" id="boot-msg">Model yüklənir: 54 vərəq, 57 170 düstur…</div>
+    <div class="boot-bar"><div id="boot-fill"></div></div>
+  </div>
+</div>
+
+<header class="topbar">
+  <button class="icon-btn only-narrow" id="nav-toggle" aria-label="Menyunu aç">☰</button>
+  <a class="brand" href="#/">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text"><b>CAEM proqnoz modeli</b><small id="brand-sub">İqtisadiyyat Nazirliyi · FPP 2.0</small></span>
+  </a>
+  <div class="search">
+    <input id="search" type="search" placeholder="Göstərici, vərəq, ad və ya xana axtar (məs. inflyasiya, CPI_coeff)" autocomplete="off">
+    <div id="search-results" class="search-results" hidden></div>
+  </div>
+  <div class="top-actions">
+    <span id="change-count" class="chip chip-warn" hidden></span>
+    <a class="btn top-link" id="to-panel" href="panel.html" title="Sadələşdirilmiş iş paneli: əsas göstəricilər, fərziyyələr, ssenarilər">İş paneli ↗</a>
+    <label class="admin-switch" for="admin-toggle" title="Giriş məlumatlarını, açarları və əmsalları dəyişmək üçün">
+      <input type="checkbox" id="admin-toggle">
+      <span class="sw"></span><span class="sw-label">Admin rejimi</span>
+    </label>
+  </div>
+</header>
+
+<div class="layout">
+  <nav id="sidebar" class="sidebar" aria-label="Səhifələr"></nav>
+  <main id="main" class="main" tabindex="-1"></main>
+  <aside id="inspector" class="inspector" hidden></aside>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="engine.js"></script>
+<script src="engine2.js"></script>
+<script src="model.js"></script>
+<script src="data/core.js"></script>
+<script src="data/b00.js"></script>
+<script src="data/b01.js"></script>
+<script src="data/b02.js"></script>
+<script src="data/b03.js"></script>
+<script src="data/b04.js"></script>
+<script src="data/b05.js"></script>
+<script src="data/b06.js"></script>
+<script src="data/b07.js"></script>
+<script src="data/meta.js"></script>
+<script src="modelstore.js"></script>
+<script src="builder.js"></script>
+<script src="xlsbreader.js"></script>
+<script src="caem-macros.js"></script>
+<script src="caem-update.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

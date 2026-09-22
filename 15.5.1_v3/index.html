@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Makroiqtisadi modellər — HTML versiyaları</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #F4F6F8; --surface: #FFFFFF; --surface-2: #F8FAFB;
+  --ink: #15202B; --ink-2: #44525F; --muted: #71808D;
+  --line: #DCE3E9; --line-2: #EDF1F4;
+  --moe: #0E6F7C; --moe-ink: #0A5560; --moe-soft: #E1F0F2;
+  --caem: #3B4F9A; --caem-ink: #2C3C78; --caem-soft: #ECEFFA;
+  --gold: #C8A13A;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 72px; }
+
+header.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+header.top .wrap { padding-block: 34px 30px; }
+.eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; margin: 8px 0 0; text-wrap: balance; }
+.lead { color: var(--ink-2); font-size: 16.5px; max-width: 78ch; margin: 12px 0 0; }
+.facts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.fact { background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 13px; font-size: 13px; color: var(--ink-2); }
+.fact b { color: var(--ink); }
+
+h2 { font-size: 21px; letter-spacing: -0.01em; margin: 0; }
+h2 .dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 9px; vertical-align: 1px; }
+section { margin-top: 44px; }
+.sec-note { color: var(--ink-2); margin: 8px 0 0; max-width: 80ch; }
+.sub { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.card { display: flex; flex-direction: column; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px 18px; text-decoration: none; color: inherit; }
+.card:hover { border-color: var(--k); box-shadow: 0 6px 22px rgba(20,32,44,.07); }
+.card .kind { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--k); }
+.card h3 { font-size: 18px; margin: 0; }
+.card p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.card ul { margin: 2px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 13.5px; }
+.card li { margin: 3px 0; }
+.card .go { margin-top: auto; padding-top: 10px; font-weight: 700; color: var(--k); font-size: 14px; }
+.card .file { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+
+table.cmp { border-collapse: collapse; width: 100%; margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+table.cmp th, table.cmp td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line-2); vertical-align: top; font-size: 14px; }
+table.cmp thead th { background: var(--surface-2); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+table.cmp tbody th { font-weight: 600; color: var(--ink); width: 22%; }
+table.cmp tr:last-child th, table.cmp tr:last-child td { border-bottom: 0; }
+table.cmp td { color: var(--ink-2); }
+
+.note { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin-top: 18px; }
+.note h3 { font-size: 16px; margin: 0 0 6px; }
+.note p, .note li { color: var(--ink-2); font-size: 14px; }
+.note ul { margin: 6px 0 0; padding-left: 20px; }
+.note code { font-family: var(--mono); font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 4px; padding: 1px 5px; }
+footer { margin-top: 44px; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 820px) {
+  .pair { grid-template-columns: 1fr; }
+  h1 { font-size: 25px; }
+  table.cmp tbody th { width: auto; }
+  table.cmp th, table.cmp td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Azərbaycan Respublikası İqtisadiyyat Nazirliyi</div>
+    <h1>Makroiqtisadi proqnoz modelləri — işlək HTML versiyaları</h1>
+    <p class="lead">Bu qovluqda Nazirliyin iki makroiqtisadi modeli brauzerdə işləyən sayt şəklindədir. Excel faylları olduğu kimi saxlanılıb: bütün düsturlar, vərəqlər arası əlaqələr və makroslar çevrilib, hesablama brauzerin öz daxilində aparılır və Excel-in saxladığı nəticələrlə yoxlanılıb. Proqram quraşdırmaq, internet bağlantısı və ya server lazım deyil — faylı açmaq kifayətdir.</p>
+    <div class="facts">
+      <span class="fact"><b>2</b> model</span>
+      <span class="fact"><b>182 000-dən çox</b> düstur</span>
+      <span class="fact">nəticələr Excel ilə <b>100%</b> eynidir</span>
+      <span class="fact">məlumat kompüterdən <b>çıxmır</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2><span class="dot" style="background:var(--moe)"></span>1. Aşağıdan-yuxarı (bottom-up) proqnoz modeli</h2>
+    <p class="sec-note">Nazirliyin 11 Excel faylından ibarət ənənəvi proqnoz modeli: real sektor (milli hesablar, kənd təsərrüfatı, sənaye, neft-qaz, nəqliyyat və rabitə), fiskal, sosial, monetar və xarici sektor, həmçinin yekun hesabat cədvəlləri. 125 253 düstur, fayllar arasında 20 522 istinad, dövr 1995–2030.</p>
+    <div class="pair" style="--k: var(--moe)">
+      <a class="card" style="--k: var(--moe)" href="Ministry_Bottom_up_Model_HTML/index.html">
+        <span class="kind">Klassik görünüş</span>
+        <h3>Bütün vərəqlər və düsturlar</h3>
+        <p>Excel-in tam surəti: hər fayl bir səhifə, hər vərəq alt səhifədir.</p>
+        <ul>
+          <li>Xananı seçin — düstur, mənbə xanalar və asılı xanalar açılır</li>
+          <li>Giriş məlumatları və əmsallar (Admin rejimi)</li>
+          <li>Metodologiya sənədi ilə tutuşdurma və aşkar edilmiş məsələlər</li>
+          <li>Faktiki məlumat, yeni il, yeni Excel faylları; Excel (.xlsx) ixracı</li>
+        </ul>
+        <span class="go">Klassik görünüşü aç →</span>
+        <span class="file">Ministry_Bottom_up_Model_HTML/index.html</span>
+      </a>
+      <a class="card" style="--k: var(--moe)" href="Ministry_Bottom_up_Model_HTML/panel.html">
+        <span class="kind">İş paneli</span>
+        <h3>Gündəlik iş üçün sadə görünüş</h3>
+        <p>Nəticələr, fərziyyələr və ssenarilər — cədvəl və qrafiklərlə.</p>
+        <ul>
+          <li>Əsas göstəricilər, illər üzrə qrafiklər, baza ilə müqayisə</li>
+          <li>Bütün ekzogen fərziyyələr bir yerdə, sektorlar üzrə</li>
+          <li>Ssenarilərin saxlanması, müqayisəsi və paylaşılması</li>
+          <li>Bələdçi: terminlər, tipik tapşırıqlar, suallar</li>
+        </ul>
+        <span class="go">İş panelini aç →</span>
+        <span class="file">Ministry_Bottom_up_Model_HTML/panel.html</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="dot" style="background:var(--caem)"></span>2. CAEM proqnoz aləti (FPP 2.0)</h2>
+    <p class="sec-note">BVF-nin Maliyyə Proqramlaşdırması və Siyasətləri çərçivəsinin Azərbaycana kalibrə edilmiş versiyası (CAEM.xlsx): uçot eynilikləri və davranış tənlikləri — Phillips əyrisi, Taylor qaydası, UİP/PPP məzənnə tənliyi, xərc komponentlərinin xəta-korreksiya tənlikləri. 54 vərəq, 57 150 düstur, proqnoz üfüqü 2025–2029.</p>
+    <div class="pair">
+      <a class="card" style="--k: var(--caem)" href="CAEM_HTML/index.html">
+        <span class="kind">Klassik görünüş</span>
+        <h3>Bütün vərəqlər və düsturlar</h3>
+        <p>54 vərəq sənəddəki rəng bölgüsünə uyğun 16 bölmədə.</p>
+        <ul>
+          <li>Düstur müfəttişi: adlandırılmış əmsallar, massiv düsturları, HP filtrləri</li>
+          <li>Açarlar (model/manual, sabit/üzən məzənnə) və əmsallar</li>
+          <li>Makroslar: uzlaşdırma (ResidualYP/CP) və kalibrləmə (CaliManual)</li>
+          <li>Sənədlə yoxlama: 116 tənlik, aşkar edilmiş 85 məsələ</li>
+        </ul>
+        <span class="go">Klassik görünüşü aç →</span>
+        <span class="file">CAEM_HTML/index.html</span>
+      </a>
+      <a class="card" style="--k: var(--caem)" href="CAEM_HTML/panel.html">
+        <span class="kind">İş paneli</span>
+        <h3>Gündəlik iş üçün sadə görünüş</h3>
+        <p>Nəticələr, 459 fərziyyə və ssenarilər bir yerdə.</p>
+        <ul>
+          <li>Əsas göstəricilər: ÜDM, inflyasiya, faiz, cari hesab, büdcə, borc</li>
+          <li>Fərziyyələr mövzular üzrə: xarici mühit, neft-qaz, fiskal, əmsallar</li>
+          <li>Uzlaşdırma və kalibrləmə düymələri, ssenarilər</li>
+          <li>Faktiki məlumat və proqnozun ilk ilinin irəli çəkilməsi</li>
+        </ul>
+        <span class="go">İş panelini aç →</span>
+        <span class="file">CAEM_HTML/panel.html</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Klassik görünüş və iş paneli — fərq nədir?</h2>
+    <p class="sec-note">Hər iki model üçün eyni məntiq: iki görünüş <b>eyni modeli</b> və <b>eyni dəyişiklikləri</b> istifadə edir. Panel-də etdiyiniz dəyişiklik klassik görünüşdə də görünür və əksinə; yuxarı sağdakı düymə ilə istənilən vaxt keçid edə bilərsiniz.</p>
+    <table class="cmp">
+      <thead><tr><th></th><th>Klassik görünüş</th><th>İş paneli</th></tr></thead>
+      <tbody>
+        <tr><th>Nə göstərir</th><td>Excel faylının özünü: bütün vərəqlər, sətir və sütunlar, hər xananın düsturu.</td><td>Yalnız işə lazım olanı: əsas göstəricilər, fərziyyələr, qrafiklər, ssenarilər.</td></tr>
+        <tr><th>Kimin üçün</th><td>Modelin quruluşunu yoxlayan, düsturu izləyən, əmsal dəyişən mütəxəssis.</td><td>Proqnoz hazırlayan, ssenari quran və nəticəni təqdim edən iqtisadçı və rəhbərlik.</td></tr>
+        <tr><th>Əsas imkanlar</th><td>Düstur müfəttişi (mənbələr və asılı xanalar), əmsal redaktoru, vərəqlər arası əlaqələr, sənədlə tutuşdurma, məsələlər siyahısı, CSV/Excel ixracı.</td><td>Göstərici kartları və qrafiklər, fərziyyələrin sektorlar üzrə redaktəsi, ssenarilərin saxlanması və müqayisəsi, bələdçi və axtarış.</td></tr>
+        <tr><th>Hər ikisində var</th><td colspan="2">Model yeniləmə (faktiki məlumatın daxil edilməsi, proqnoz ilinin irəli çəkilməsi, yeni Excel faylının yüklənməsi), dəyişikliklərin JSON kimi ixracı və ssenarilər.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>İstifadə qaydaları</h2>
+    <div class="note">
+      <h3>Nələri bilmək lazımdır</h3>
+      <ul>
+        <li><b>Brauzer:</b> Chrome, Edge, Safari 16.4+ və ya Firefox 113+ son versiyaları. İlk açılış 2–3 saniyə çəkir (model brauzerə yüklənir).</li>
+        <li><b>Məlumatın təhlükəsizliyi:</b> bütün hesablamalar kompüterdə aparılır, heç bir məlumat internetə göndərilmir. Etdiyiniz dəyişikliklər həmin brauzerin yaddaşında saxlanılır; başqa kompüterə ötürmək üçün ssenarini JSON kimi ixrac edin.</li>
+        <li><b>Orijinal Excel faylları dəyişdirilmir.</b> Onlar əvvəlki yerlərindədir: <code>../Ministry_Bottom_up_Model</code> (11 fayl) və <code>../Ministry_CAEM/CAEM.xlsx</code>.</li>
+        <li><b>Excel faylı yaratmaq:</b> bottom-up modelində «İdarəetmə» bölməsindən hesablanmış nəticələri .xlsx kimi yükləmək olar (məsələn «8 vərəq.xlsx»); fayl dəyərlərlə yazılır — düsturlar, diaqramlar və şəkillər orijinal faylda qalır.</li>
+        <li><b>Paylaşmaq:</b> qovluğu bütövlükdə (alt qovluqlarla birlikdə) köçürün — saytlar hər hansı serverə ehtiyac duymur.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>İqtisadiyyat Nazirliyi · makroiqtisadi proqnoz modellərinin HTML versiyaları · 15.5.1_v3</footer>
+</div>
+
+</body>
+</html>

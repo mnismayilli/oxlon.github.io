@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CAEM iş paneli</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #F4F6F8; --surface: #FFFFFF; --surface-2: #F8FAFB; --sunk: #EEF2F5;
+  --ink: #15202B; --ink-2: #455463; --muted: #738190; --line: #DDE3E9; --line-2: #EDF1F4;
+  --accent: #3B4F9A; --accent-ink: #2C3C78; --accent-soft: #ECEFFA;
+  --scen: #1F6FB2; --scen-soft: #E6EFF8; --base: #8A96A3;
+  --up: #1E7B4F; --up-soft: #E5F3EB; --down: #B3261E; --down-soft: #FBE9E7;
+  --warn: #8A5300; --warn-soft: #FFF2D9; --coef: #6A3FB5; --coef-soft: #F0EAFA;
+  --fc: #F2F7FB;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "SF Mono", Menlo, Consolas, monospace;
+  --r: 8px; --top: 60px;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14.5px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+.tnum { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); } .small { font-size: 12.5px; }
+
+/* ---------- top bar ---------- */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; height: var(--top); background: var(--surface); border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 14px; padding-inline: 20px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); white-space: nowrap; }
+.brand:hover { text-decoration: none; }
+.mark { width: 28px; height: 28px; border-radius: 6px; background: linear-gradient(135deg, #3B4F9A 0 50%, #C8A13A 50% 100%); flex: none; }
+.brand b { font-size: 15px; display: block; line-height: 1.1; } .brand small { color: var(--muted); font-size: 11.5px; }
+.tabs { display: flex; gap: 2px; margin-left: 12px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 7px; color: var(--ink-2); font-weight: 600; font-size: 14px; white-space: nowrap; border: 0; background: none; cursor: pointer; }
+.tab:hover { background: var(--sunk); text-decoration: none; color: var(--ink); }
+.tab.on { background: var(--accent-soft); color: var(--accent-ink); }
+.tab svg { width: 16px; height: 16px; flex: none; }
+.bar-r { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.kbtn { display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); color: var(--muted); cursor: pointer; min-width: 220px; }
+.kbtn:hover { border-color: var(--accent); }
+.kbtn kbd { margin-left: auto; font: 11px var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; color: var(--ink-2); }
+.ibtn { display: inline-flex; align-items: center; justify-content: center; height: 36px; min-width: 36px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); cursor: pointer; font-weight: 700; color: var(--ink-2); white-space: nowrap; font-size: 13px; }
+.ibtn:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+/* ---------- scenario status bar ---------- */
+.scenbar { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--top)); z-index: 25; background: var(--scen-soft); border-bottom: 1px solid #C9DBEE; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 8px 20px; font-size: 13.5px; }
+.scenbar b { color: var(--scen); }
+.dotline { display: inline-block; width: 16px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
+
+/* ---------- layout ---------- */
+.view { max-width: 1320px; margin: 0 auto; padding-inline: 24px; padding-block: 26px 80px; }
+.eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.h1 { font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; }
+.lead { color: var(--ink-2); font-size: 16px; max-width: 70ch; margin: 8px 0 0; }
+.sec { margin-top: 34px; }
+.sec-h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.sec-h h2 { font-size: 19px; }
+.sec-h p { margin: 0; color: var(--muted); font-size: 13.5px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.pad { padding: 16px 18px; }
+.grid { display: grid; gap: 14px; }
+.g4 { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.btn { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; cursor: pointer; font-size: 13.5px; color: var(--ink); white-space: nowrap; }
+.btn:hover { border-color: var(--accent); color: var(--accent-ink); text-decoration: none; }
+.btn.pri { background: var(--accent); border-color: var(--accent); color: #fff; } .btn.pri:hover { background: var(--accent-ink); color: #fff; }
+.btn.sm { height: 28px; padding: 0 10px; font-size: 12.5px; }
+.btn.ghost { border-color: transparent; background: none; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 700; background: var(--sunk); color: var(--ink-2); white-space: nowrap; line-height: 1.7; }
+.chip.acc { background: var(--accent-soft); color: var(--accent-ink); }
+.chip.scen { background: var(--scen-soft); color: var(--scen); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.coef { background: var(--coef-soft); color: var(--coef); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: none; padding: 5px 11px; font-weight: 600; font-size: 13px; color: var(--ink-2); cursor: pointer; border-right: 1px solid var(--line-2); font-variant-numeric: tabular-nums; }
+.seg button:last-child { border-right: 0; }
+.seg button.on { background: var(--accent); color: #fff; }
+.help { display: inline-grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; background: var(--sunk); color: var(--ink-2); font-size: 11px; font-weight: 700; cursor: help; vertical-align: 1px; }
+
+/* ---------- home ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+.hero-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.hk { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 2px; }
+.hk b { font-size: 26px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.hk span { color: var(--muted); font-size: 12.5px; line-height: 1.3; }
+.action { display: flex; flex-direction: column; gap: 8px; padding: 18px; color: var(--ink); min-height: 150px; }
+a.action:hover { text-decoration: none; border-color: var(--accent); box-shadow: 0 4px 16px rgba(59,79,154,.10); }
+.action .ic { width: 38px; height: 38px; border-radius: 9px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-ink); }
+.action .ic svg { width: 20px; height: 20px; }
+.action h3 { font-size: 16px; } .action p { margin: 0; color: var(--ink-2); font-size: 13.5px; }
+.action .go { margin-top: auto; font-weight: 700; color: var(--accent); font-size: 13px; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.step { padding: 16px 18px; position: relative; border-right: 1px solid var(--line-2); }
+.step:last-child { border-right: 0; }
+.step .n { font: 700 12px var(--mono); color: var(--accent); }
+.step h4 { font-size: 15px; margin: 4px 0; } .step p { margin: 0; font-size: 13px; color: var(--ink-2); }
+.step .cnt { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+/* ---------- results ---------- */
+.kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px 10px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; text-align: left; }
+.kpi:hover { border-color: var(--accent); }
+.kpi .l { font-size: 12.5px; color: var(--ink-2); font-weight: 600; line-height: 1.3; min-height: 2.6em; }
+.kpi .v { font-size: 25px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .v small { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 3px; letter-spacing: 0; }
+.kpi .d { font-size: 12px; font-weight: 700; min-height: 1.5em; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--muted); } .dl { color: var(--scen); font-weight: 700; }
+.spark { display: block; width: 100%; height: auto; }
+.itbl-wrap { overflow-x: auto; }
+table.itbl { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+.itbl th, .itbl td { padding: 6px 10px; border-bottom: 1px solid var(--line-2); white-space: nowrap; }
+.itbl thead th { font-size: 12px; color: var(--muted); font-weight: 700; text-align: right; background: var(--surface-2); position: sticky; top: 0; }
+.itbl thead th.l { text-align: left; }
+.itbl thead th .st { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+.itbl td.n { text-align: right; font-variant-numeric: tabular-nums; }
+.itbl td.fc, .itbl th.fc { background: var(--fc); }
+.itbl tbody tr { cursor: pointer; }
+.itbl tbody tr:hover td { background: #EEF1FA; }
+.itbl td.lab { white-space: normal; min-width: 240px; }
+.itbl td.lab .u { color: var(--muted); font-size: 12px; margin-left: 6px; }
+.itbl tr.sub td.lab { padding-left: 26px; color: var(--ink-2); }
+.itbl tr.chg td.n.fc { color: var(--scen); font-weight: 700; }
+.itbl .dcell { font-size: 12px; font-weight: 700; }
+.toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+.toolbar input[type=search] { height: 34px; border: 1px solid var(--line); border-radius: 8px; padding: 0 12px; min-width: 240px; background: var(--surface); }
+.toolbar label { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
+.jump { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------- scenario ---------- */
+.scen-layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 20px; align-items: start; }
+.impact { position: sticky; top: calc(var(--top) + 60px); }
+.presets { display: flex; gap: 8px; flex-wrap: wrap; }
+.assump { padding: 14px 16px; display: grid; grid-template-columns: minmax(200px, 1fr) auto; gap: 10px 16px; align-items: center; border-bottom: 1px solid var(--line-2); }
+.assump:last-child { border-bottom: 0; }
+.assump h4 { font-size: 14.5px; } .assump .src { font-size: 12px; color: var(--muted); }
+.assump .why { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.yrs { display: grid; grid-template-columns: repeat(var(--ny, 6), 78px); gap: 6px; }
+.yr { display: flex; flex-direction: column; gap: 2px; }
+.yr label { font-size: 11px; color: var(--muted); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.yr input { height: 32px; width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; text-align: right; font-variant-numeric: tabular-nums; background: var(--surface); }
+.yr input:focus { border-color: var(--scen); outline: none; box-shadow: 0 0 0 3px var(--scen-soft); }
+.yr input.follow { background: var(--surface-2); color: var(--ink-2); }
+.yr input.mod { background: #FFF3BF; border-color: #E5C24F; color: #5A3C00; font-weight: 700; }
+.a-tools { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12.5px; }
+.a-tools input { width: 70px; height: 28px; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; text-align: right; }
+.grp-h { padding: 12px 16px; background: var(--surface-2); border-bottom: 1px solid var(--line); font-weight: 700; font-size: 13px; letter-spacing: .02em; display: flex; align-items: center; gap: 8px; border-radius: 10px 10px 0 0; }
+.imp-row { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; align-items: baseline; }
+.imp-row:last-child { border-bottom: 0; }
+.imp-row .b { color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+.imp-row .d { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; min-width: 78px; }
+
+/* exogenous catalogue */
+.sectabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.stab { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-weight: 700; font-size: 13px; color: var(--ink-2); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+.stab:hover { border-color: var(--accent); color: var(--accent-ink); }
+.stab.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.stab .cnt { font-weight: 600; opacity: .75; font-variant-numeric: tabular-nums; }
+.xlegend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin-top: 10px; }
+.xlegend .sw { display: inline-block; width: 18px; height: 12px; border-radius: 3px; border: 1px solid var(--line); background: var(--surface); vertical-align: -1px; margin-right: 5px; }
+.xlegend .sw.follow { background: var(--surface-2); } .xlegend .sw.calc { background: var(--sunk); } .xlegend .sw.mod { background: #FFF3BF; border-color: #E5C24F; }
+.xbook { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14.5px; margin: 18px 0 8px; }
+.xbook:first-child { margin-top: 0; }
+details.xgrp { margin-bottom: 8px; }
+details.xgrp > summary { list-style: none; cursor: pointer; padding: 10px 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+details.xgrp > summary::-webkit-details-marker { display: none; }
+details.xgrp > summary::before { content: "▸"; color: var(--muted); transition: transform .15s; }
+details.xgrp[open] > summary::before { transform: rotate(90deg); }
+details.xgrp[open] > summary { border-bottom: 1px solid var(--line-2); }
+.xs-t { font-weight: 700; }
+.xhead, .xrow { display: grid; grid-template-columns: minmax(200px, 1fr) auto 122px; gap: 6px 14px; align-items: center; padding: 8px 14px; }
+.xhead { padding-block: 6px; font-size: 11px; font-weight: 700; color: var(--muted); }
+.xhead .yrs span { text-align: center; }
+.xrow { border-top: 1px solid var(--line-2); }
+.xrow.xmod { background: #FFFCEB; }
+.xrow.flash { background: #FFF3BF; transition: background .3s; }
+.xrow .yr label { display: none; }
+.xl { font-size: 13px; line-height: 1.35; }
+.xl .rn { font: 11px var(--mono); color: var(--muted); margin-right: 6px; }
+.xl .blk { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.xt { display: flex; gap: 4px; align-items: center; }
+.xt input { width: 58px; height: 28px; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; text-align: right; }
+.yr input.calc { background: var(--sunk); color: var(--muted); font-style: italic; border-color: var(--line-2); }
+
+/* ---------- explorer ---------- */
+.exp-layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 20px; align-items: start; }
+.tree { position: sticky; top: calc(var(--top) + 16px); max-height: calc(100vh - var(--top) - 32px); overflow-y: auto; padding: 8px 0; }
+.tree input { margin: 4px 12px 8px; width: calc(100% - 24px); height: 32px; border: 1px solid var(--line); border-radius: 7px; padding: 0 10px; }
+.tsec { padding: 10px 14px 4px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tbook { display: flex; align-items: center; gap: 8px; padding: 6px 14px; font-weight: 700; font-size: 13.5px; cursor: pointer; color: var(--ink); }
+.tbook:hover { background: var(--surface-2); }
+.tsheet { display: block; padding: 4px 14px 4px 34px; font-size: 13px; color: var(--ink-2); border-left: 3px solid transparent; }
+.tsheet:hover { background: var(--surface-2); text-decoration: none; color: var(--ink); }
+.tsheet.on { background: var(--accent-soft); color: var(--accent-ink); border-left-color: var(--accent); font-weight: 700; }
+.tsheet small { font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-left: 4px; }
+.dot { width: 10px; height: 10px; border-radius: 3px; flex: none; display: inline-block; }
+.map { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.map .col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 8px; }
+.wb { display: block; padding: 12px 14px; margin-bottom: 10px; color: var(--ink); border-left: 4px solid var(--line); }
+.wb:hover { text-decoration: none; border-color: var(--accent); }
+.wb b { display: block; } .wb span { font-size: 12.5px; color: var(--ink-2); display: block; margin-top: 3px; }
+.wb small { font-size: 11.5px; color: var(--muted); }
+
+/* ---------- drawer ---------- */
+.scrim { position: fixed; inset: 0; background: rgba(21,32,43,.28); z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(640px, 100%); background: var(--surface); z-index: 41; box-shadow: -16px 0 40px rgba(21,32,43,.18); overflow-y: auto; padding: 22px 24px 60px; }
+.drawer h3 { font-size: 20px; }
+.path { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; }
+.path .p { background: var(--sunk); border-radius: 6px; padding: 2px 8px; font-family: var(--mono); font-size: 11.5px; }
+.fx { font-family: var(--mono); font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 10px 12px; line-height: 2; word-break: break-word; }
+.rchip { display: inline-flex; align-items: baseline; gap: 5px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 0 7px; font-family: var(--font); font-size: 12.5px; line-height: 1.7; cursor: pointer; color: var(--ink); }
+.rchip:hover { border-color: var(--accent); }
+.rchip b { font-variant-numeric: tabular-nums; }
+.rchip.ext { border-color: #BFE0CE; background: #F2FAF5; }
+.lit { color: var(--coef); font-weight: 700; background: var(--coef-soft); border-radius: 4px; padding: 0 3px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
+.chart { width: 100%; height: auto; display: block; }
+.chart text { font-family: var(--font); }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: 12px; padding: 6px 9px; border-radius: 6px; white-space: nowrap; z-index: 5; transform: translate(-50%, -110%); }
+.chart-wrap { position: relative; }
+
+/* ---------- palette ---------- */
+.pal { position: fixed; top: 12vh; left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); background: var(--surface); border-radius: 12px; z-index: 51; box-shadow: 0 24px 60px rgba(21,32,43,.28); overflow: hidden; }
+.pal input { width: 100%; height: 52px; border: 0; border-bottom: 1px solid var(--line); padding: 0 18px; font-size: 16px; outline: none; }
+.pal-list { max-height: 52vh; overflow-y: auto; }
+.pal-item { display: flex; gap: 10px; align-items: baseline; padding: 9px 18px; cursor: pointer; }
+.pal-item.on, .pal-item:hover { background: var(--accent-soft); }
+.pal-item .k { font-size: 11px; font-weight: 700; color: var(--muted); width: 88px; flex: none; text-transform: uppercase; letter-spacing: .05em; }
+.pal-item small { color: var(--muted); display: block; font-size: 12px; }
+.pal-foot { padding: 8px 18px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); background: var(--surface-2); }
+
+/* ---------- tour ---------- */
+.tour-hole { position: fixed; z-index: 61; border-radius: 10px; box-shadow: 0 0 0 9999px rgba(21,32,43,.5); pointer-events: none; transition: all .2s ease; }
+.tour-card { position: fixed; z-index: 62; width: min(360px, calc(100% - 32px)); background: var(--surface); border-radius: 12px; padding: 16px 18px; box-shadow: 0 16px 40px rgba(0,0,0,.25); }
+.tour-card h4 { font-size: 16px; margin-bottom: 6px; } .tour-card p { margin: 0 0 12px; color: var(--ink-2); font-size: 13.5px; }
+.tour-card .row { display: flex; align-items: center; gap: 8px; }
+.tour-card .row .muted { margin-right: auto; font-size: 12px; }
+@media (prefers-reduced-motion: reduce) { .tour-hole { transition: none; } }
+
+/* ---------- guide ---------- */
+.guide { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 28px; align-items: start; }
+.toc { position: sticky; top: calc(var(--top) + 20px); display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.toc a { padding: 5px 10px; border-radius: 6px; color: var(--ink-2); }
+.toc a:hover { background: var(--sunk); text-decoration: none; }
+.gsec { margin-bottom: 36px; scroll-margin-top: calc(var(--top) + 16px); }
+.gsec h2 { font-size: 20px; margin-bottom: 10px; }
+.gsec p, .gsec li { max-width: 74ch; color: var(--ink-2); }
+.recipe { padding: 14px 16px; }
+.recipe h4 { font-size: 15px; margin-bottom: 6px; }
+.recipe ol { margin: 0; padding-left: 20px; } .recipe li { margin: 3px 0; font-size: 13.5px; }
+dl.gloss { display: grid; grid-template-columns: 180px 1fr; gap: 8px 18px; margin: 0; }
+dl.gloss dt { font-weight: 700; } dl.gloss dd { margin: 0; color: var(--ink-2); }
+details.faq { border-bottom: 1px solid var(--line-2); padding: 10px 0; }
+details.faq summary { font-weight: 700; cursor: pointer; }
+details.faq p { margin: 8px 0 0; }
+.kbd { font: 11px var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+
+.toast { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 9px 16px; border-radius: 8px; z-index: 70; font-size: 13.5px; max-width: calc(100% - 32px); }
+.boot { position: fixed; inset: 0; background: var(--bg); z-index: 90; display: grid; place-items: center; padding-inline: 16px; }
+.boot div { color: var(--muted); }
+
+@media (max-width: 1080px) {
+  .scen-layout { grid-template-columns: 1fr; } .impact { position: static; }
+  .hero { grid-template-columns: 1fr; }
+  .kbtn { min-width: 0; } .kbtn span { display: none; }
+}
+@media (max-width: 860px) {
+  .exp-layout, .guide { grid-template-columns: 1fr; }
+  .tree, .toc { position: static; max-height: none; }
+  .steps { grid-template-columns: 1fr 1fr; } .step:nth-child(2) { border-right: 0; }
+  .assump { grid-template-columns: 1fr; }
+  .xhead { display: none; } .xrow { grid-template-columns: 1fr; } .xrow .yr label { display: block; }
+  .yrs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  dl.gloss { grid-template-columns: 1fr; } dl.gloss dd { margin-bottom: 8px; }
+}
+@media (max-width: 640px) {
+  .bar { padding-inline: 12px; gap: 8px; } .brand > span:not(.mark) { display: none; }
+  .tab span { display: none; } .tab { padding: 8px; }
+  .view { padding-inline: 16px; } .h1 { font-size: 22px; }
+  .hero-kpis { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr; } .step { border-right: 0; border-bottom: 1px solid var(--line-2); }
+}
+
+/* ---------- CAEM additions ---------- */
+.health { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.hc { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; }
+.hc .st { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex: none; }
+.hc .st.ok { background: var(--up); } .hc .st.warn { background: #D08A00; } .hc .st.bad { background: var(--down); }
+.hc h4 { font-size: 14px; } .hc p { margin: 2px 0 0; font-size: 12.5px; color: var(--ink-2); }
+.opt { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); flex-wrap: wrap; }
+.opt button { border: 0; background: none; padding: 6px 12px; font-weight: 600; font-size: 13px; color: var(--ink-2); cursor: pointer; border-right: 1px solid var(--line-2); }
+.opt button:last-child { border-right: 0; }
+.opt button.on { background: var(--accent); color: #fff; }
+.opt button.mod.on { background: #B07A00; }
+.it { padding: 12px 16px; border-top: 1px solid var(--line-2); display: grid; grid-template-columns: minmax(220px, 1fr) auto; gap: 8px 18px; align-items: center; }
+.it:first-child { border-top: 0; }
+.it.xmod { background: #FFFCEB; }
+.it h4 { font-size: 14px; line-height: 1.3; } .it .u { color: var(--muted); font-weight: 400; font-size: 12.5px; margin-left: 4px; }
+.it .why { font-size: 12.5px; color: var(--ink-2); margin-top: 3px; max-width: 70ch; }
+.it .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.it .tools { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12.5px; }
+.it .tools input { width: 64px; height: 28px; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; text-align: right; }
+.one input { height: 32px; width: 110px; border: 1px solid var(--line); border-radius: 6px; padding: 0 8px; text-align: right; font-variant-numeric: tabular-nums; }
+.one input.mod { background: #FFF3BF; border-color: #E5C24F; color: #5A3C00; font-weight: 700; }
+.one input:focus, .yr input:focus { border-color: var(--scen); outline: none; box-shadow: 0 0 0 3px var(--scen-soft); }
+.gcard { margin-bottom: 12px; overflow: hidden; }
+.gcard > summary { list-style: none; cursor: pointer; padding: 12px 16px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.gcard > summary::-webkit-details-marker { display: none; }
+.gcard > summary::before { content: "▸"; color: var(--muted); }
+.gcard[open] > summary::before { content: "▾"; }
+.gcard[open] > summary { border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.gcard > summary b { font-size: 15px; } .gcard > summary .d { flex-basis: 100%; font-size: 12.5px; color: var(--ink-2); margin-left: 18px; }
+.wedge td.bad { color: var(--down); font-weight: 700; } .wedge td.ok { color: var(--up); font-weight: 700; }
+.note { border-radius: 8px; padding: 10px 12px; font-size: 13.5px; background: var(--surface-2); border: 1px solid var(--line-2); color: var(--ink-2); }
+.note.warn { background: var(--warn-soft); border-color: #F1D9A6; color: #5A3C00; }
+.note.ok { background: var(--up-soft); border-color: #BFE3C4; color: #1D5B3B; }
+.flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; }
+.flow .step:nth-child(6) { border-right: 0; }
+@media (max-width: 1080px) { .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); } .flow .step:nth-child(3) { border-right: 0; } }
+@media (max-width: 640px) { .flow { grid-template-columns: 1fr; } .flow .step { border-right: 0; border-bottom: 1px solid var(--line-2); } .it { grid-template-columns: 1fr; } }
+.kbtn { min-width: 190px; white-space: nowrap; overflow: hidden; } .kbtn span { overflow: hidden; text-overflow: ellipsis; }
+.yrs { grid-template-columns: repeat(var(--ny, 6), 86px); }
+@media (max-width: 640px) {
+  #classic { font-size: 0; padding-inline: 10px; }
+  #classic::after { content: "Klassik"; font-size: 12.5px; font-weight: 700; }
+}
+</style>
+</head>
+<body>
+<div class="boot" id="boot"><div>CAEM modeli yüklənir…</div></div>
+
+<header class="bar">
+  <a class="brand" href="#/"><span class="mark" aria-hidden="true"></span><span><b>CAEM</b><small id="brand-sub">İş paneli</small></span></a>
+  <nav class="tabs" id="tabs" aria-label="Bölmələr"></nav>
+  <div class="bar-r">
+    <button class="kbtn" id="open-pal" aria-label="Axtarış"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Göstərici, fərziyyə axtar…</span><kbd>Ctrl K</kbd></button>
+    <a class="ibtn" id="classic" href="index.html" title="Bütün vərəqlər Excel görünüşündə, düstur müfəttişi, əmsal redaktoru, sənədlə yoxlama">Klassik görünüş</a>
+  </div>
+</header>
+<div class="scenbar" id="scenbar" hidden></div>
+<main class="view" id="view" tabindex="-1"></main>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Göstərici təfsilatı"></aside>
+<div class="scrim" id="pal-scrim" hidden style="z-index:50"></div>
+<div class="pal" id="pal" hidden role="dialog" aria-label="Axtarış"><input id="pal-in" placeholder="Göstərici, fərziyyə və ya vərəq yazın…" autocomplete="off"><div class="pal-list" id="pal-list"></div><div class="pal-foot">↑ ↓ seçmək · Enter açmaq · Esc bağlamaq</div></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="engine.js"></script>
+<script src="engine2.js"></script>
+<script src="model.js"></script>
+<script src="data/core.js"></script>
+<script src="data/b00.js"></script><script src="data/b01.js"></script><script src="data/b02.js"></script><script src="data/b03.js"></script>
+<script src="data/b04.js"></script><script src="data/b05.js"></script><script src="data/b06.js"></script><script src="data/b07.js"></script>
+<script src="data/meta.js"></script>
+<script src="modelstore.js"></script>
+<script src="builder.js"></script>
+<script src="xlsbreader.js"></script>
+<script src="caem-macros.js"></script>
+<script src="caem-update.js"></script>
+<script>
+(function () {
+  'use strict';
+  var CORE = window.MODEL_CORE, META = window.MODEL_META || { books: {} }, X = window.X, Store = window.MakroStore;
+  var M, INFO, SHEETS = CORE.sheets;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var KEYS = Store.keys, LS_EDITS = KEYS.edits, LS_SCEN = KEYS.scen, LS_PANEL = KEYS.panel;
+  var YEARS = [], FYEARS = [], YEAR = 2025;
+
+  // ------------------------------------------------------------------ icons
+  var IC = {
+    home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>', chart: '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',
+    sliders: '<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>', scale: '<path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0z"/>',
+    layers: '<path d="M12 2l10 6-10 6L2 8z"/><path d="M2 16l10 6 10-6"/>', refresh: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5V21h16"/>', grid: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>'
+  };
+  function icon(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + IC[n] + '</svg>'; }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function colName(n) { var s = ''; while (n > 0) { var r = (n - 1) % 26; s = String.fromCharCode(65 + r) + s; n = Math.floor((n - 1) / 26); } return s; }
+  function colNum(s) { var n = 0; for (var i = 0; i < s.length; i++) n = n * 26 + s.charCodeAt(i) - 64; return n; }
+  function a1(r, c) { return colName(c) + r; }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } }
+  function toast(m) { var t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, 2800); }
+  function isNum(v) { return typeof v === 'number' && isFinite(v); }
+  function same(a, b) {
+    if (isNum(a) && isNum(b)) { var d = Math.abs(a - b); return d <= 1e-9 || d <= 1e-9 * Math.max(Math.abs(a), Math.abs(b)); }
+    if (a instanceof X.XErr && b instanceof X.XErr) return a.e === b.e;
+    if ((a === null || a === '') && (b === null || b === '')) return true;
+    return a === b;
+  }
+  function nf(v, dec) {
+    if (v instanceof X.XErr) return v.e; if (!isNum(v)) return v == null ? '—' : String(v);
+    if (dec === undefined) { var a = Math.abs(v); dec = a >= 10000 ? 0 : a >= 100 ? 1 : a >= 1 ? 2 : a === 0 ? 1 : 3; }
+    var s = Math.abs(v).toFixed(dec), p = s.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return (v < 0 && Number(s) !== 0 ? '−' : '') + p[0] + (p[1] ? ',' + p[1] : '');
+  }
+  function raw(v) { return isNum(v) ? String(+v.toPrecision(12)).replace('.', ',') : (v == null ? '' : String(v)); }
+  // editable field text: short but unambiguous (untouched fields are never written back)
+  function rawIn(v) { if (!isNum(v)) return v == null ? '' : String(v); var a = Math.abs(v), d = a >= 1000 ? 1 : a >= 1 ? 4 : 6; return String(Number(v.toFixed(d))).replace('.', ','); }
+  function parseNum(s) {
+    s = String(s).trim().replace(/[\s ]/g, '').replace('−', '-');
+    if (s === '') return null;
+    if (/^[+-]?\d*,\d+$/.test(s)) s = s.replace(',', '.');
+    if (!/^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(s)) return undefined;
+    return parseFloat(s);
+  }
+  function fold(s) { return String(s).toLocaleLowerCase('az').replace(/i̇/g, 'i').replace(/[ıİ]/g, 'i').replace(/ə/g, 'e').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ğ/g, 'g').replace(/ş/g, 's').replace(/ç/g, 'c'); }
+  var SIDX = {};
+  function gsOf(n) { return SIDX[n] === undefined ? -1 : SIDX[n]; }
+  function cellId(gs, r, c) { var x = M.smap[gs].get(r * 20000 + c); return x === undefined ? -1 : x; }
+  function classic(gs, r, c) { return 'index.html#/s/' + gs + '/cedvel' + (r ? '/' + a1(r, c) : ''); }
+  function sheetTitle(gs) { var m = META.books && META.books.CAEM && META.books.CAEM.sheets[SHEETS[gs].n]; return (m && m.title_az) || SHEETS[gs].n.trim(); }
+
+  // year headers of the current baseline (after a roll the positional sheets show later years than the Excel file)
+  var YR = {};
+  function yearRows(gs) {
+    if (YR[gs]) return YR[gs];
+    var ids = []; M.smap[gs].forEach(function (id) { ids.push(id); });
+    return (YR[gs] = Store.yearRowsOf(ids, M.r, M.c, M.V0));
+  }
+  // column of year y for row r: nearest year header above the row first, leftmost column whose cell exists
+  function colForYear(gs, r, y) {
+    var yr = yearRows(gs), cand = [];
+    for (var i = yr.length - 1; i >= 0; i--) if (yr[i].r <= r) cand.push(yr[i]);
+    for (i = 0; i < yr.length; i++) if (yr[i].r > r) cand.push(yr[i]);
+    var first = null;
+    for (i = 0; i < cand.length; i++) for (var c in cand[i].d) if (cand[i].d[c] === y) { if (first === null) first = +c; if (M.smap[gs].has(r * 20000 + +c)) return +c; }
+    return first;
+  }
+  function yearOf(gs, r, c) { return Store.colYearIn(yearRows(gs), r, c); }
+  function rowLabel(gs, r) {
+    var out = []; for (var c = 1; c <= 6; c++) { var x = cellId(gs, r, c); if (x >= 0 && typeof M.V0[x] === 'string' && M.V0[x].trim() && !/^[\d.,\s%-]+$/.test(M.V0[x])) out.push(M.V0[x].trim()); }
+    return out.join(' · ');
+  }
+
+  // ------------------------------------------------------------------ edits (same storage as the classic view)
+  var EDITS = { inputs: new Map(), ov: new Map() }, K_KEEP = {};
+  function cellKey(id) { return 'CAEM|' + SHEETS[M.sh[id]].n + '|' + a1(M.r[id], M.c[id]); }
+  function idFromKey(k) { var p = k.split('|'); if (p.length < 3) return -1; var gs = gsOf(p[1]); if (gs < 0) return -1; var m = /^([A-Z]+)(\d+)$/.exec(p[2]); return m ? cellId(gs, +m[2], colNum(m[1])) : -1; }
+  function persist() {
+    var o = { inputs: {}, K: K_KEEP, ov: {} };
+    EDITS.inputs.forEach(function (v, id) { o.inputs[cellKey(id)] = v; });
+    EDITS.ov.forEach(function (v, id) { o.ov[cellKey(id)] = v; });
+    lsSet(LS_EDITS, JSON.stringify(o));
+  }
+  function serialize() {
+    var o = { format: 'caem-model-edits', version: 1, saved: new Date().toISOString(), firstYear: INFO.firstYear, inputs: {}, coefficients: K_KEEP, overrides: {} };
+    EDITS.inputs.forEach(function (v, id) { o.inputs[cellKey(id)] = v; });
+    EDITS.ov.forEach(function (v, id) { o.overrides[cellKey(id)] = v; });
+    return o;
+  }
+  function loadEdits(o) {
+    var changed = [], bad = 0;
+    EDITS.inputs.forEach(function (v, id) { M.V[id] = M.V0[id]; changed.push(id); });
+    EDITS.ov.forEach(function (v, id) { changed.push(id); });
+    Object.keys(K_KEEP).forEach(function (k) { var p = k.lastIndexOf('#'), id = idFromKey(k.slice(0, p)); if (id >= 0) { var ki = M.fk[id] + (+k.slice(p + 1)); M.K[ki] = M.K0[ki]; changed.push(id); } });
+    EDITS.inputs.clear(); EDITS.ov.clear(); K_KEEP = {};
+    o = o || {};
+    var inputs = o.inputs || {}, coefs = o.K || o.coefficients || {}, ovs = o.ov || o.overrides || {};
+    Object.keys(inputs).forEach(function (k) { var id = idFromKey(k); if (id < 0 || M.ft[id] >= 0 || id === LOCK) { bad++; return; } EDITS.inputs.set(id, inputs[k]); M.V[id] = inputs[k]; changed.push(id); });
+    Object.keys(coefs).forEach(function (k) { var p = k.lastIndexOf('#'), id = idFromKey(k.slice(0, p)); if (id < 0 || M.ft[id] < 0) { bad++; return; } var ki = M.fk[id] + (+k.slice(p + 1)); M.K[ki] = coefs[k]; K_KEEP[k] = coefs[k]; changed.push(id); });
+    Object.keys(ovs).forEach(function (k) { var id = idFromKey(k); if (id < 0 || M.ft[id] < 0) { bad++; return; } EDITS.ov.set(id, ovs[k]); changed.push(id); });
+    if (changed.length) M.recalcFrom(changed, EDITS.ov);
+    return bad;
+  }
+  function editCount() { return EDITS.inputs.size + EDITS.ov.size + Object.keys(K_KEEP).length; }
+  function isEdited(id) { return EDITS.inputs.has(id) || EDITS.ov.has(id); }
+  var LOCK = -1;
+  // set an input: constants become input edits, formula cells (yellow defaults computed by a formula) become overrides
+  function setCell(id, v, quiet) {
+    if (id === LOCK) { toast('Proqnozun ilk ili «Yeniləmə» bölməsində dəyişdirilir'); return 0; }
+    if (M.ft[id] >= 0) { if (v === null) EDITS.ov.delete(id); else EDITS.ov.set(id, v); }
+    else { if (same(v, M.V0[id])) EDITS.inputs.delete(id); else EDITS.inputs.set(id, v); M.V[id] = v; }
+    var n = M.recalcFrom([id], EDITS.ov);
+    if (!quiet) { persist(); changed(); }
+    return n;
+  }
+  function resetCell(id, quiet) { return M.ft[id] >= 0 ? setCell(id, null, quiet) : setCell(id, M.V0[id], quiet); }
+  function currentVal(id) { return M.ft[id] >= 0 && EDITS.ov.has(id) ? EDITS.ov.get(id) : M.V[id]; }
+
+  // ------------------------------------------------------------------ key indicators (Ministry report + sector sheets)
+  var SECS = ['Real sektor', 'Qiymətlər, faiz və pul', 'Xarici sektor', 'Fiskal sektor', 'Sosial sektor'];
+  var KPI = [
+    { k: 'gdp', t: 'Real ÜDM artımı (istehsal üsulu)', u: '%', s: 'MOE_report', r: 31, sec: 0, key: 1 },
+    { k: 'gdpx', t: 'Real ÜDM artımı (xərclər üsulu)', u: '%', s: 'MOE_report', r: 4, sec: 0 },
+    { k: 'nonoil', t: 'Qeyri-neft-qaz ÜDM real artımı', u: '%', s: 'MOE_report', r: 38, sec: 0, key: 1 },
+    { k: 'oil', t: 'Neft-qaz ÜDM real artımı', u: '%', s: 'MOE_report', r: 34, sec: 0 },
+    { k: 'ngdp', t: 'Nominal ÜDM', u: 'mln manat', s: 'MOE_report', r: 29, sec: 0, dec: 0 },
+    { k: 'defl', t: 'ÜDM deflyatoru', u: '%', s: 'MOE_report', r: 32, sec: 0 },
+    { k: 'pc', t: 'Özəl istehlak, real artım', u: '%', s: 'MOE_report', r: 6, sec: 0, sub: 1 },
+    { k: 'gc', t: 'Dövlət istehlakı, real artım', u: '%', s: 'MOE_report', r: 7, sec: 0, sub: 1 },
+    { k: 'inv', t: 'Qeyri-neft investisiyası, real artım', u: '%', s: 'MOE_report', r: 9, sec: 0, sub: 1 },
+    { k: 'x', t: 'İxrac, real artım', u: '%', s: 'MOE_report', r: 12, sec: 0, sub: 1 },
+    { k: 'm', t: 'İdxal, real artım', u: '%', s: 'MOE_report', r: 13, sec: 0, sub: 1 },
+    { k: 'cpi', t: 'İnflyasiya (İQİ, orta illik)', u: '%', s: 'MOE_report', r: 103, sec: 1, key: 1, good: -1 },
+    { k: 'rate', t: 'Uçot (siyasət) faiz dərəcəsi', u: '%', s: '1c. Interest rates', r: 8, sec: 1 },
+    { k: 'fx', t: 'Məzənnə', u: 'manat/ABŞ dolları', s: 'MOE_report', r: 122, sec: 1, dec: 3 },
+    { k: 'm2', t: 'Geniş pulun artımı', u: '%', s: '4.  Monetary-Financial', r: 19, sec: 1 },
+    { k: 'brent', t: 'Neftin qiyməti (fərziyyə)', u: 'ABŞ dolları/barel', s: 'MOE_report', r: 123, sec: 2 },
+    { k: 'ca', t: 'Cari hesab balansı', u: 'mln ABŞ dolları', s: 'MOE_report', r: 105, sec: 2, dec: 0 },
+    { k: 'cagdp', t: 'Cari hesab balansı, ÜDM-ə nisbətən', u: '%', s: 'MOE_report', r: 124, sec: 2, key: 1 },
+    { k: 'tb', t: 'Ticarət balansı', u: 'mln ABŞ dolları', s: 'MOE_report', r: 106, sec: 2, dec: 0, sub: 1 },
+    { k: 'nox', t: 'Qeyri-neft ixracı', u: 'mln ABŞ dolları', s: 'MOE_report', r: 108, sec: 2, dec: 0, sub: 1 },
+    { k: 'rev', t: 'Dövlət büdcəsinin gəlirləri', u: 'mln manat', s: 'MOE_report', r: 95, sec: 3, dec: 0 },
+    { k: 'exp', t: 'Dövlət büdcəsinin xərcləri', u: 'mln manat', s: 'MOE_report', r: 96, sec: 3, dec: 0 },
+    { k: 'bal', t: 'Dövlət büdcəsinin balansı', u: 'mln manat', s: 'MOE_report', r: 97, sec: 3, dec: 0 },
+    { k: 'ggb', t: 'Konsolidə balans (ümumi hökumət), ÜDM-ə nisbətən', u: '%', s: '3a. Fiscal ', r: 93, sec: 3, key: 1 },
+    { k: 'pb', t: 'İlkin balans, ÜDM-ə nisbətən', u: '%', s: '3a. Fiscal ', r: 92, sec: 3, sub: 1 },
+    { k: 'debt', t: 'Dövlət borcu, ÜDM-ə nisbətən', u: '%', s: '3a. Fiscal ', r: 196, sec: 3, key: 1, good: -1 },
+    { k: 'sofaz', t: 'ARDNF-nin aktivləri', u: 'mln ABŞ dolları', s: 'MOE_report', r: 101, sec: 3, dec: 0 },
+    { k: 'ur', t: 'İşsizlik səviyyəsi', u: '%', s: '1e. Social sector', r: 11, sec: 4, good: -1 },
+    { k: 'wage', t: 'Nominal əmək haqqının artımı', u: '%', s: '1e. Social sector', r: 35, sec: 4 }
+  ];
+  function kpiVal(k, y, base) {
+    var gs = gsOf(k.s); if (gs < 0) return null;
+    var c = colForYear(gs, k.r, y); if (c === null) return null;
+    var id = cellId(gs, k.r, c); if (id < 0) return null;
+    return base ? M.V0[id] : M.V[id];
+  }
+  function kpiCell(k, y) { var gs = gsOf(k.s), c = gs < 0 ? null : colForYear(gs, k.r, y); return c === null ? -1 : cellId(gs, k.r, c); }
+  function byKey(key) { for (var i = 0; i < KPI.length; i++) if (KPI[i].k === key) return KPI[i]; return null; }
+  function decOf(k, v) { if (k.dec !== undefined) return k.dec; return k.u === '%' ? 1 : undefined; }
+  function deltaHTML(k, cur, base) {
+    if (!isNum(cur) || !isNum(base) || same(cur, base)) return '<span class="flat">baza ilə eyni</span>';
+    var d = cur - base, pp = k.u === '%', txt = (d > 0 ? '▲ +' : '▼ −') + nf(Math.abs(d), pp ? 2 : decOf(k, d)) + (pp ? ' f.b.' : '') + (!pp && base !== 0 ? ' (' + (d > 0 ? '+' : '−') + nf(Math.abs(d / base * 100), 1) + '%)' : '');
+    if (Math.abs(d) < (pp ? 0.005 : Math.abs(base) * 5e-5)) return '<span class="flat">≈ 0</span>';
+    return '<span class="dl">' + txt + '</span>';
+  }
+
+  // ------------------------------------------------------------------ reconciliation status
+  function wedges() {
+    try {
+      var C = window.CaemMacros, g = C.nameCell(M, 'GDP_diff'), d = C.nameCell(M, 'deflator_diff'), out = [];
+      for (var j = 0; j <= 4; j++) out.push({ y: INFO.firstYear + j, g: M.V[C.at(M, g, j)], d: M.V[C.at(M, d, j)] });
+      return out;
+    } catch (e) { return null; }
+  }
+  function wedgeMax() { var w = wedges(); if (!w) return null; var m = 0; w.forEach(function (x) { if (isNum(x.g)) m = Math.max(m, Math.abs(x.g)); if (isNum(x.d)) m = Math.max(m, Math.abs(x.d)); }); return m; }
+
+  // ------------------------------------------------------------------ assumptions catalogue (analysis of the workbook)
+  var CATS = [
+    { k: 'c_switch', t: 'Açarlar', d: 'Ümumi parametrlər və hər davranış tənliyi üçün proqnoz metodu (model və ya manual).' },
+    { k: 'a_exogenous', t: 'Ekzogen fərziyyələr', d: 'Xarici mühit, neft-qaz, real sektor, qiymətlər, fiskal, tədiyə balansı və pul-kredit fərziyyələri.' },
+    { k: 'b_manual', t: 'Manual proqnozlar', d: 'Açar «Manual» olduqda istifadə olunan proqnoz sətirləri.' },
+    { k: 'd_coef', t: 'Tənlik əmsalları', d: 'Phillips əyrisi, Taylor qaydası, UİP və xərc komponentlərinin xəta-korreksiya tənlikləri; struktur modelin parametrləri.' },
+    { k: 'e_addfactor', t: 'Əlavə amillər', d: 'Davranış tənliklərinin proqnozuna edilən mühakimə düzəlişləri (add-factor).' },
+    { k: 'f_trend', t: 'Trend və HP', d: 'Hodrik–Preskott filtrinin hamarlama parametri, prior-lar və istehsal funksiyası parametrləri.' },
+    { k: 'f_scenario', t: 'Şoklar', d: '«7. Scenario» və «8a. Simulation» vərəqlərinin «nə olarsa» şokları.' },
+    { k: 'g_risk', t: 'Risk qiymətləndirməsi', d: 'Yelpik qrafikləri və risk balansı üçün mühakimə parametrləri.' }
+  ];
+  var INP = [], INP_BY = {};
+  // each item is mapped to live cells. With the first forecast year rolled forward k times: scalars never move; series that
+  // cover the forecast horizon keep their positions on sheets whose years follow INPUT!B9 (the horizon moves with them) and
+  // move k columns right on calendar-year sheets; other year series follow their year (k columns left, or k rows up next to
+  // a vertical year column)
+  function buildInputs() {
+    INP = []; INP_BY = {};
+    var k = INFO.rolls || 0;
+    ((META.inputs && META.inputs.groups) || []).forEach(function (g) {
+      g.items.forEach(function (it) {
+        var gs = gsOf(it.sheet); if (gs < 0) return;
+        var pos = Store.isPositional(gs), yrs = it.years && it.years.length === it.cells.length ? it.years : null;
+        var horizon = !!yrs && yrs[0] === INFO.baseFirst;
+        var cells = it.cells.map(function (a, i) {
+          var m = /^([A-Z]+)(\d+)$/.exec(a); if (!m) return { y: null, id: -1 };
+          var r = +m[2], c = colNum(m[1]), y = yrs ? yrs[i] + (horizon ? k : 0) : null;
+          if (yrs && k) {
+            // candidates in order of likelihood; the one whose current year equals the displayed year wins
+            var vert = Store.verticalYear(gs, r, c) !== null, cand = vert ? (horizon ? [[r, c], [r + k, c]] : [[r - k, c], [r, c]])
+              : pos ? (horizon ? [[r, c], [r, c + k]] : [[r, c - k], [r, c]]) : (horizon ? [[r, c + k], [r, c]] : [[r, c], [r, c - k]]);
+            var pick = null, anyYear = false;
+            for (var q = 0; q < cand.length; q++) { var id0 = cand[q][0] >= 1 && cand[q][1] >= 1 ? cellId(gs, cand[q][0], cand[q][1]) : -1; if (id0 >= 0 && cellYear(id0) !== null) anyYear = true; if (id0 >= 0 && cellYear(id0) === y) { pick = cand[q]; break; } }
+            // year-labelled block without a column for this year after the roll: no field rather than a wrong year
+            if (!pick) { if (anyYear) return { y: y, id: -1 }; pick = cand[0]; }
+            r = pick[0]; c = pick[1];
+          }
+          return { y: y, id: r >= 1 && c >= 1 ? cellId(gs, r, c) : -1 };
+        });
+        var e = { it: it, g: g, gs: gs, cells: cells, cat: g.category };
+        INP.push(e); INP_BY[it.id] = e;
+      });
+    });
+  }
+  function cellYear(id) {
+    var gs = M.sh[id], v = Store.layout.sheets[gs].vertical;
+    if (v) for (var i = 0; i < v.length; i++) if (v[i].c !== M.c[id] && v[i].rows[M.r[id]] !== undefined) { var h = cellId(gs, M.r[id], v[i].c); return h >= 0 ? M.V0[h] : null; }
+    return yearOf(gs, M.r[id], M.c[id]);
+  }
+  function inpMod(e) { return e.cells.some(function (x) { return x.id >= 0 && isEdited(x.id); }); }
+
+  // ------------------------------------------------------------------ charts (inline SVG)
+  function niceTicks(lo, hi, n) {
+    if (lo === hi) { lo -= 1; hi += 1; }
+    var span = hi - lo, step = Math.pow(10, Math.floor(Math.log10(span / n))), err = span / n / step;
+    if (err >= 7.5) step *= 10; else if (err >= 3.5) step *= 5; else if (err >= 1.5) step *= 2;
+    var a = Math.floor(lo / step) * step, b = Math.ceil(hi / step) * step, out = [];
+    for (var v = a; v <= b + step / 2; v += step) out.push(+v.toPrecision(12));
+    return out;
+  }
+  function lineChart(years, cur, base, unit, fy) {
+    var W = 600, H = 260, L = 56, R = 14, T = 16, B = 30, vals = cur.concat(base).filter(isNum);
+    if (!vals.length) return '<p class="muted">Məlumat yoxdur.</p>';
+    var ticks = niceTicks(Math.min.apply(null, vals), Math.max.apply(null, vals), 5), lo = ticks[0], hi = ticks[ticks.length - 1];
+    var x = function (i) { return L + (W - L - R) * (years.length === 1 ? 0.5 : i / (years.length - 1)); }, y = function (v) { return T + (H - T - B) * (1 - (v - lo) / (hi - lo || 1)); };
+    var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Qrafik">';
+    var fi = years.indexOf(fy); if (fi >= 0) s += '<rect x="' + (x(fi) - (fi ? (x(1) - x(0)) / 2 : 0)).toFixed(1) + '" y="' + T + '" width="' + (W - R - x(fi) + (fi ? (x(1) - x(0)) / 2 : 0)).toFixed(1) + '" height="' + (H - T - B) + '" fill="#F2F4FB"/><text x="' + (x(fi) + 4).toFixed(1) + '" y="' + (T + 11) + '" font-size="10.5" fill="#738190">proqnoz</text>';
+    ticks.forEach(function (t) { s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(t).toFixed(1) + '" y2="' + y(t).toFixed(1) + '" stroke="#EDF1F4"/><text x="' + (L - 8) + '" y="' + (y(t) + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="#738190">' + nf(t, Math.abs(hi - lo) < 5 ? 1 : 0) + '</text>'; });
+    if (lo < 0 && hi > 0) s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(0).toFixed(1) + '" y2="' + y(0).toFixed(1) + '" stroke="#B8C2CC"/>';
+    years.forEach(function (yy, i) { s += '<text x="' + x(i).toFixed(1) + '" y="' + (H - 9) + '" text-anchor="middle" font-size="11" fill="#738190">' + yy + '</text>'; });
+    function path(v, col, w, dash) {
+      var d = '', on = false; v.forEach(function (p, i) { if (!isNum(p)) { on = false; return; } d += (on ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p).toFixed(1); on = true; });
+      var dots = v.map(function (p, i) { return isNum(p) ? '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(p).toFixed(1) + '" r="3.5" fill="' + col + '" stroke="#fff" stroke-width="1.5"/>' : ''; }).join('');
+      return '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + w + '"' + (dash ? ' stroke-dasharray="5 4"' : '') + ' stroke-linejoin="round" stroke-linecap="round"/>' + dots;
+    }
+    var differ = cur.some(function (v, i) { return !same(v, base[i]); });
+    if (differ) s += path(base, '#8A96A3', 2, true);
+    s += path(cur, '#1F6FB2', 2.2);
+    s += '<rect class="hit" x="' + L + '" y="' + T + '" width="' + (W - L - R) + '" height="' + (H - T - B) + '" fill="transparent"/>';
+    return s + '</svg>';
+  }
+  function wireChart(wrap, years, cur, base, unit, dec) {
+    var svg = wrap.querySelector('svg'); if (!svg) return; var tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; wrap.appendChild(tip);
+    svg.addEventListener('mousemove', function (ev) {
+      var r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * 600, i = Math.round((px - 56) / ((600 - 70) / Math.max(1, years.length - 1)));
+      if (i < 0 || i >= years.length) { tip.hidden = true; return; }
+      tip.hidden = false; tip.style.left = (ev.clientX - wrap.getBoundingClientRect().left) + 'px'; tip.style.top = (ev.clientY - wrap.getBoundingClientRect().top) + 'px';
+      tip.innerHTML = '<b>' + years[i] + '</b> · ssenari ' + nf(cur[i], dec) + (same(cur[i], base[i]) ? '' : ' · baza ' + nf(base[i], dec)) + ' ' + esc(unit);
+    });
+    svg.addEventListener('mouseleave', function () { tip.hidden = true; });
+  }
+  function sparkline(vals) {
+    var v = vals.filter(isNum); if (v.length < 2) return '';
+    var lo = Math.min.apply(null, v), hi = Math.max.apply(null, v), W = 200, H = 34;
+    var on = false, d = vals.map(function (p, i) { if (!isNum(p)) { on = false; return ''; } var seg = (on ? 'L' : 'M') + (i * W / (vals.length - 1)).toFixed(1) + ',' + (H - 3 - (H - 6) * (hi === lo ? 0.5 : (p - lo) / (hi - lo))).toFixed(1); on = true; return seg; }).join('');
+    return '<svg class="spark" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path d="' + d + '" fill="none" stroke="#1F6FB2" stroke-width="1.8"/></svg>';
+  }
+
+  // ------------------------------------------------------------------ shell: tabs, scenario bar, routing
+  var TABS = [['', 'home', 'Başlanğıc'], ['neticeler', 'chart', 'Nəticələr'], ['ferziyyeler', 'sliders', 'Fərziyyələr'], ['uzlasdirma', 'scale', 'Uzlaşdırma'], ['ssenariler', 'layers', 'Ssenarilər'], ['yenileme', 'refresh', 'Yeniləmə'], ['beledci', 'book', 'Bələdçi']];
+  var ROUTE = '';
+  function renderTabs() { $('#tabs').innerHTML = TABS.map(function (t) { return '<a class="tab' + (ROUTE === t[0] ? ' on' : '') + '" href="#/' + t[0] + '">' + icon(t[1]) + '<span>' + t[2] + '</span></a>'; }).join(''); }
+  function renderScenBar() {
+    var n = editCount(), el = $('#scenbar');
+    if (!n) { el.hidden = true; return; }
+    var wm = wedgeMax();
+    el.hidden = false;
+    el.innerHTML = '<span><span class="dotline" style="background:#1F6FB2"></span><b>Ssenari</b>: ' + n + ' dəyişiklik bazaya əlavə olunub</span><span><span class="dotline" style="background:#8A96A3"></span>baza: ' + esc(INFO.baseLabel) + ' (proqnoz ' + INFO.firstYear + '–' + INFO.endYear + ')</span>' +
+      (wm !== null && wm > 0.001 ? '<span class="chip warn" title="Təklif–tələb və ya deflyator fərqi 0,001-dən böyükdür">uzlaşdırılmayıb</span>' : '') +
+      '<span style="margin-left:auto;display:flex;gap:8px"><a class="btn sm" href="#/ssenariler">Saxla / müqayisə et</a><button class="btn sm" id="sb-reset">Bazaya qaytar</button></span>';
+    $('#sb-reset').onclick = function () { if (!confirm('Bütün ' + n + ' dəyişiklik silinsin?')) return; loadEdits(null); persist(); changed(); toast('Baza modelə qaytarıldı'); };
+  }
+  function route() {
+    var h = decodeURIComponent(location.hash.replace(/^#\/?/, '')), p = h.split('/');
+    ROUTE = p[0] || '';
+    closeDrawer();
+    renderTabs(); renderScenBar();
+    var v = $('#view'); v.scrollTop = 0; window.scrollTo(0, 0);
+    if (ROUTE === 'neticeler') pageResults(v);
+    else if (ROUTE === 'ferziyyeler') pageAssump(v, p[1]);
+    else if (ROUTE === 'uzlasdirma') pageReconcile(v);
+    else if (ROUTE === 'ssenariler') pageScen(v);
+    else if (ROUTE === 'yenileme') pageUpdate(v);
+    else if (ROUTE === 'beledci') pageGuide(v);
+    else pageHome(v);
+  }
+  function changed() { renderScenBar(); rerender(); }
+  var RERENDER = null;
+  function rerender() { if (RERENDER) RERENDER(); }
+  function yearSeg(id) { return '<div class="seg" id="' + id + '" role="group" aria-label="İl">' + FYEARS.map(function (y) { return '<button data-y="' + y + '" class="' + (y === YEAR ? 'on' : '') + '">' + y + '</button>'; }).join('') + '</div>'; }
+  function wireYearSeg(id, cb) { $('#' + id).addEventListener('click', function (e) { var b = e.target.closest('[data-y]'); if (!b) return; YEAR = +b.getAttribute('data-y'); lsSet(LS_PANEL, JSON.stringify({ year: YEAR })); cb(); }); }
+
+  // ------------------------------------------------------------------ HOME
+  function pageHome(v) {
+    RERENDER = function () { pageHome(v); };
+    var keys = ['gdp', 'nonoil', 'cpi', 'cagdp', 'ggb', 'debt'];
+    var wm = wedgeMax(), w = wedges();
+    var h = '<div class="hero"><div><div class="eyebrow">CAEM · İqtisadiyyat Nazirliyi · FPP 2.0</div><h1 class="h1" style="margin-top:6px">Orta müddətli makroiqtisadi proqnoz: ' + INFO.firstYear + '–' + INFO.endYear + '</h1>' +
+      '<p class="lead">Bu panel CAEM proqnoz alətinin sadələşdirilmiş iş görünüşüdür. Burada əsas nəticələrə baxa, fərziyyələri və proqnoz metodlarını dəyişə, proqnozu uzlaşdıra və ssenariləri müqayisə edə bilərsiniz. Bütün hesablamalar Excel modelinin eyni düsturları ilə aparılır; hər dəyişiklik ' + (M.order.length).toLocaleString('az') + ' düsturdan asılı olanları dərhal yeniləyir.</p>' +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><a class="btn pri" href="#/neticeler">Nəticələrə bax</a><a class="btn" href="#/ferziyyeler">Fərziyyələri dəyiş</a><a class="btn" href="#/beledci">Necə istifadə etməli?</a></div></div>' +
+      '<div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>Əsas göstəricilər</b>' + yearSeg('hy') + '</div><div class="hero-kpis">' +
+      keys.map(function (k) { var K = byKey(k), c = kpiVal(K, YEAR), b = kpiVal(K, YEAR, true); return '<a class="hk" href="#/neticeler" style="color:inherit;text-decoration:none"><b>' + nf(c, decOf(K, c)) + (K.u === '%' ? '<small class="muted" style="font-size:14px">%</small>' : '') + '</b><span>' + esc(K.t) + '</span><span style="font-size:11.5px">' + deltaHTML(K, c, b) + '</span></a>'; }).join('') + '</div></div></div>';
+    // health checks
+    var sw = INP.filter(function (e) { return e.it.kind === 'switch'; });
+    var exr = sw.filter(function (e) { return e.it.excel_name === 'EXR'; })[0], manual = sw.filter(function (e) { return e.it.excel_name !== 'EXR' && e.cells[0] && e.cells[0].id >= 0 && M.V[e.cells[0].id] === 'Manual'; });
+    h += '<section class="sec"><div class="sec-h"><h2>Modelin vəziyyəti</h2><p>proqnoza başlamazdan əvvəl yoxlayın</p></div><div class="health">';
+    h += health(wm !== null && wm <= 0.001 ? 'ok' : 'warn', 'Təklif–tələb uzlaşdırması', wm === null ? 'Hesablanmadı.' : wm <= 0.001 ? 'Bütün 5 il üzrə fərqlər bağlıdır.' : 'İstehsal və xərclər üsulu ilə ÜDM arasında fərq var (maks. ' + nf(wm, 0) + '). <a href="#/uzlasdirma">Uzlaşdırın</a>.');
+    h += health('ok', 'Məzənnə rejimi', exr && exr.cells[0].id >= 0 ? '«' + esc(M.V[exr.cells[0].id]) + '» — ' + (M.V[exr.cells[0].id] === 'Fixed' ? 'siyasət faizi ABŞ faizinə spred ilə bağlıdır.' : 'məzənnə UİP/PPP, faiz Taylor qaydası ilə müəyyən olunur.') : '—');
+    h += health(manual.length ? 'warn' : 'ok', 'Proqnoz metodları', manual.length ? manual.length + ' tənlik «Manual» rejimdədir: ' + manual.map(function (e) { return esc(e.it.label_az.split(':')[0]); }).join(', ') + '.' : 'Bütün davranış tənlikləri «Model determined» rejimdədir.');
+    h += health(INFO.rolls || INFO.actuals ? 'ok' : 'ok', 'Baza', (INFO.custom ? 'Yüklənmiş fayl · ' : esc((META.verify && META.verify.source) || 'CAEM.xlsx') + ' · ') + 'ilk proqnoz ili ' + INFO.firstYear + (INFO.actuals ? ' · ' + INFO.actuals + ' faktiki dəyər' : '') + '. <a href="#/yenileme">Yeniləmə</a>');
+    h += '</div></section>';
+    h += '<section class="sec"><div class="sec-h"><h2>Proqnoz necə hazırlanır</h2><p>sənədə («AZE MOE CAEM — Documentation») uyğun iş axını</p></div><div class="card flow">' +
+      step('1', 'Giriş və məlumatlar', 'INPUT: ilk proqnoz ili, məzənnə rejimi; ilkin məlumat vərəqləri → «Data».', 'narıncı / sarı vərəqlər') +
+      step('2', 'Xarici mühit', 'Tərəfdaşların artımı və inflyasiyası, neft qiyməti, ABŞ faizi — ekzogen fərziyyələr.', '<a href="#/ferziyyeler/a_exogenous">fərziyyələr</a>') +
+      step('3', 'Trend və kəsirlər', 'HP filtri və istehsal funksiyası ilə potensial ÜDM, buraxılış kəsiri, neytral faiz.', 'yaşıl vərəqlər') +
+      step('4', 'Proqnozlar', 'Davranış tənlikləri (model) və ya manual: istehlak, investisiya, ixrac, idxal, inflyasiya, faiz, məzənnə; fiskal, xarici, monetar sektorlar.', '<a href="#/ferziyyeler/c_switch">açarlar</a>') +
+      step('5', 'Uzlaşdırma', 'İstehsal və xərclər üsulu ilə ÜDM və deflyator uzlaşdırılır (makroslar).', '<a href="#/uzlasdirma">uzlaşdırma</a>') +
+      step('6', 'Təhlil və ssenarilər', 'Orta müddətli perspektiv, risklər, «nə olarsa» ssenariləri.', '<a href="#/ssenariler">ssenarilər</a>') + '</div></section>';
+    h += '<section class="sec"><div class="sec-h"><h2>Nə etmək istəyirsiniz?</h2></div><div class="grid g4">' +
+      action('#/neticeler', 'chart', 'Nəticələri öyrənmək', 'Real sektor, qiymətlər, xarici, fiskal və sosial göstəricilər — baza və ssenari müqayisəsi, qrafiklər.', 'Nəticələr') +
+      action('#/ferziyyeler', 'sliders', 'Fərziyyəni dəyişmək', 'Neft qiyməti, tərəfdaşların artımı, fiskal parametrlər, proqnoz metodu və əmsallar — ' + INP.length + ' giriş.', 'Fərziyyələr') +
+      action('#/uzlasdirma', 'scale', 'Proqnozu uzlaşdırmaq', 'ResidualYP/CP və CaliManual makroslarını işə salmaq.', 'Uzlaşdırma') +
+      action('#/yenileme', 'refresh', 'Yeni il və ya fayl', 'Faktiki məlumatı daxil etmək, proqnozun ilk ilini irəli çəkmək, yeni CAEM faylı yükləmək.', 'Yeniləmə') + '</div></section>';
+    v.innerHTML = h;
+    wireYearSeg('hy', function () { pageHome(v); });
+  }
+  function health(st, t, p) { return '<div class="card hc"><span class="st ' + st + '"></span><div><h4>' + esc(t) + '</h4><p>' + p + '</p></div></div>'; }
+  function step(n, t, p, c) { return '<div class="step"><div class="n">' + n + '</div><h4>' + t + '</h4><p>' + p + '</p><div class="cnt">' + c + '</div></div>'; }
+  function action(href, ic, t, p, go) { return '<a class="card action" href="' + href + '"><span class="ic">' + icon(ic) + '</span><h3>' + t + '</h3><p>' + p + '</p><span class="go">' + go + ' →</span></a>'; }
+
+  // ------------------------------------------------------------------ RESULTS
+  function pageResults(v) {
+    RERENDER = function () { var y = window.scrollY; pageResults(v); window.scrollTo(0, y); };
+    var h = '<div class="eyebrow">Nəticələr</div><h1 class="h1" style="margin-top:6px">Əsas makroiqtisadi göstəricilər</h1><p class="lead">Mənbə: Nazirliyin hesabat cədvəli (MOE_report) və sektor vərəqləri. Mavi — cari ssenari, boz qırıq xətt — baza. Sətrə klikləyin — qrafik, mənbə xana və klassik görünüşə keçid.</p>';
+    h += '<div class="toolbar"><b>İl:</b>' + yearSeg('ry') + '</div><div class="kpis">' + KPI.filter(function (k) { return k.key; }).map(function (k) {
+      var c = kpiVal(k, YEAR), b = kpiVal(k, YEAR, true), ser = YEARS.map(function (y) { return kpiVal(k, y); });
+      return '<button class="kpi" data-k="' + k.k + '"><span class="l">' + esc(k.t) + '</span><span class="v">' + nf(c, decOf(k, c)) + '<small>' + esc(k.u) + '</small></span><span class="d">' + deltaHTML(k, c, b) + '</span>' + sparkline(ser) + '</button>';
+    }).join('') + '</div>';
+    SECS.forEach(function (sn, si) {
+      var rows = KPI.filter(function (k) { return k.sec === si; }); if (!rows.length) return;
+      h += '<section class="sec"><div class="sec-h"><h2>' + esc(sn) + '</h2><p>' + rows.length + ' göstərici</p></div><div class="card itbl-wrap"><table class="itbl"><thead><tr><th class="l">Göstərici</th>' +
+        YEARS.map(function (y) { return '<th class="' + (y >= INFO.firstYear ? 'fc' : '') + '">' + y + '<span class="st">' + (y >= INFO.firstYear ? 'proqnoz' : 'faktiki') + '</span></th>'; }).join('') + '<th>' + YEAR + ' fərq</th></tr></thead><tbody>' +
+        rows.map(function (k) {
+          var chg = YEARS.some(function (y) { return !same(kpiVal(k, y), kpiVal(k, y, true)); });
+          return '<tr class="' + (k.sub ? 'sub ' : '') + (chg ? 'chg' : '') + '" data-k="' + k.k + '"><td class="lab">' + esc(k.t) + '<span class="u">' + esc(k.u) + '</span></td>' +
+            YEARS.map(function (y) { var c = kpiVal(k, y); return '<td class="n' + (y >= INFO.firstYear ? ' fc' : '') + '">' + nf(c, decOf(k, c)) + '</td>'; }).join('') + '<td class="n dcell">' + deltaHTML(k, kpiVal(k, YEAR), kpiVal(k, YEAR, true)) + '</td></tr>';
+        }).join('') + '</tbody></table></div></section>';
+    });
+    h += '<p class="small muted" style="margin-top:18px">Qeyd: istehsal üsulu ilə ÜDM (1a, sahələr üzrə) və xərclər üsulu ilə ÜDM (1d, davranış tənlikləri) yalnız uzlaşdırmadan sonra üst-üstə düşür. <a href="#/uzlasdirma">Uzlaşdırma</a> · <button class="btn sm" id="csv">CSV ixrac</button></p>';
+    v.innerHTML = h;
+    wireYearSeg('ry', function () { pageResults(v); });
+    v.onclick = function (e) { var t = e.target.closest('[data-k]'); if (t && !e.target.closest('a')) openKpi(byKey(t.getAttribute('data-k'))); };
+    $('#csv').onclick = function (e) { e.stopPropagation(); exportCSV(); };
+  }
+  function exportCSV() {
+    var lines = [['Göstərici', 'Vahid'].concat(YEARS.map(function (y) { return y + ' ssenari'; })).concat(YEARS.map(function (y) { return y + ' baza'; })).join(';')];
+    KPI.forEach(function (k) { lines.push([k.t, k.u].concat(YEARS.map(function (y) { return raw(kpiVal(k, y)); })).concat(YEARS.map(function (y) { return raw(kpiVal(k, y, true)); })).join(';')); });
+    download('caem-esas-gostericiler.csv', '﻿' + lines.join('\r\n'), 'text/csv');
+  }
+  function download(name, text, type) {
+    try { var blob = new Blob([text], { type: type || 'text/plain' }), a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1200); } catch (e) { toast('Yükləmə bu mühitdə mümkün olmadı'); }
+  }
+  function openKpi(k) {
+    if (!k) return;
+    var cur = YEARS.map(function (y) { return kpiVal(k, y); }), base = YEARS.map(function (y) { return kpiVal(k, y, true); });
+    var id = kpiCell(k, YEAR), gs = gsOf(k.s);
+    var src = id >= 0 && M.ft[id] >= 0 ? sourceText(id) : '';
+    var h = '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><div class="eyebrow">' + esc(SECS[k.sec]) + '</div><h3 style="margin-top:4px">' + esc(k.t) + '</h3><div class="muted small">' + esc(k.u) + '</div></div><button class="ibtn" id="dr-x" aria-label="Bağla">✕</button></div>' +
+      '<div class="legend" style="margin-top:12px"><span><span class="dotline" style="background:#1F6FB2"></span>cari ssenari</span><span><span class="dotline" style="background:#8A96A3"></span>baza</span></div><div class="chart-wrap" id="dr-ch">' + lineChart(YEARS, cur, base, k.u, INFO.firstYear) + '</div>' +
+      '<table class="itbl" style="margin-top:10px"><thead><tr><th class="l">İl</th><th>Ssenari</th><th>Baza</th><th>Fərq</th></tr></thead><tbody>' + YEARS.map(function (y, i) { return '<tr><td class="lab">' + y + (y >= INFO.firstYear ? ' <span class="chip">proqnoz</span>' : '') + '</td><td class="n">' + nf(cur[i], decOf(k, cur[i])) + '</td><td class="n">' + nf(base[i], decOf(k, base[i])) + '</td><td class="n dcell">' + deltaHTML(k, cur[i], base[i]) + '</td></tr>'; }).join('') + '</tbody></table>' +
+      '<h4 style="margin-top:18px">Mənbə</h4><p class="small">' + (id >= 0 ? '<code>' + esc(SHEETS[gs].n + '!' + a1(M.r[id], M.c[id])) + '</code> (' + YEAR + ')' : '') + (src ? '<br><span class="fx" style="display:block;margin-top:6px">' + esc(src) + '</span>' : '') + '</p>' +
+      '<p><a class="btn" href="' + (id >= 0 ? classic(gs, M.r[id], M.c[id]) : classic(gs)) + '">Klassik görünüşdə aç (düstur, əlaqələr) →</a></p>';
+    showDrawer(h);
+    wireChart($('#dr-ch'), YEARS, cur, base, k.u, decOf(k));
+  }
+  // formula text of a cell (plain, via the display template)
+  function sourceText(id) {
+    var d = CORE.disp[M.ft[id]], refs = M.fr[id], kb = M.fk[id], out = '', li = 0, ri = 0, i = 0;
+    while (i < d.length) {
+      var ch = d.charAt(i);
+      if (ch === '\x01') { out += String(M.K[kb + li++]); i++; continue; }
+      if (ch === '\x02') {
+        var j = d.indexOf('\x03', i), fl = d.slice(i + 1, j), ref = refs[ri++], ex = fl.charAt(0) === 'P'; if (ex) fl = fl.slice(1);
+        if (ref >= 0) out += (ex || M.sh[ref] !== M.sh[id] ? "'" + SHEETS[M.sh[ref]].n + "'!" : '') + a1(M.r[ref], M.c[ref]);
+        else { var R = CORE.ranges[-ref - 1]; out += (ex ? "'" + SHEETS[R[0]].n + "'!" : '') + a1(R[1], R[2]) + ':' + a1(R[3], R[4]); }
+        i = j + 1; continue;
+      }
+      var k2 = i; while (k2 < d.length && d.charAt(k2) !== '\x01' && d.charAt(k2) !== '\x02') k2++;
+      out += d.slice(i, k2); i = k2;
+    }
+    return '=' + out;
+  }
+  function showDrawer(h) { var d = $('#drawer'); d.innerHTML = h; d.hidden = false; $('#scrim').hidden = false; $('#dr-x').onclick = closeDrawer; }
+  function closeDrawer() { $('#drawer').hidden = true; $('#scrim').hidden = true; }
+
+  // ------------------------------------------------------------------ ASSUMPTIONS
+  var ASTATE = { cat: 'a_exogenous', all: false, q: '', open: {} };
+  var IMPACT_KEYS = ['gdp', 'nonoil', 'cpi', 'rate', 'fx', 'cagdp', 'ggb', 'debt', 'ur'];
+  function pageAssump(v, cat) {
+    if (cat) ASTATE.cat = cat;
+    RERENDER = function () { refreshAssump(); };
+    var counts = {}; INP.forEach(function (e) { counts[e.cat] = (counts[e.cat] || 0) + 1; });
+    var h = '<div class="eyebrow">Fərziyyələr</div><h1 class="h1" style="margin-top:6px">Ssenari fərziyyələri və proqnoz parametrləri</h1><p class="lead">Excel-də əl ilə daxil edilən (sarı / qırmızı) bütün xanalar mövzular üzrə qruplaşdırılıb. Dəyəri dəyişin və Enter basın — model dərhal yenidən hesablanır, sağdakı panel əsas göstəricilərə təsiri göstərir. Dəyişikliklər klassik görünüşlə ortaqdır.</p>';
+    h += '<div class="toolbar"><div class="sectabs">' + CATS.map(function (c) { return counts[c.k] ? '<button class="stab' + (ASTATE.cat === c.k ? ' on' : '') + '" data-cat="' + c.k + '">' + esc(c.t) + ' <span class="cnt">' + counts[c.k] + '</span></button>' : ''; }).join('') + '</div></div>';
+    h += '<div class="toolbar"><input type="search" id="as-q" placeholder="Axtar: neft, inflyasiya, CPI_coeff, borc…" value="' + esc(ASTATE.q) + '"><label><input type="checkbox" id="as-all"' + (ASTATE.all ? ' checked' : '') + '> ətraflı parametrləri də göstər</label><span class="muted small" id="as-cnt"></span></div>';
+    h += '<div class="scen-layout"><div id="as-list"></div><aside class="impact"><div class="card pad" id="as-imp"></div></aside></div>';
+    v.innerHTML = h;
+    $$('[data-cat]', v).forEach(function (b) { b.onclick = function () { ASTATE.cat = b.getAttribute('data-cat'); location.hash = '#/ferziyyeler/' + ASTATE.cat; }; });
+    $('#as-q').oninput = function () { ASTATE.q = this.value; clearTimeout(pageAssump.t); pageAssump.t = setTimeout(drawAssumpList, 200); };
+    $('#as-all').onchange = function () { ASTATE.all = this.checked; drawAssumpList(); };
+    drawAssumpList(); drawImpact();
+    var list = $('#as-list');
+    list.addEventListener('keydown', function (e) { var t = e.target; if (t.tagName === 'INPUT' && t.hasAttribute('data-id') && e.key === 'Enter') { e.preventDefault(); commit(t); } });
+    list.addEventListener('focusout', function (e) { var t = e.target; if (t.tagName === 'INPUT' && t.hasAttribute('data-id') && t.value !== t.getAttribute('data-prev')) commit(t); });
+    list.addEventListener('focusin', function (e) { var t = e.target; if (t.tagName === 'INPUT' && t.hasAttribute('data-id')) t.setAttribute('data-prev', t.value); });
+    list.addEventListener('click', function (e) {
+      var o = e.target.closest('[data-opt]'); if (o) { setCell(+o.getAttribute('data-sid'), o.getAttribute('data-opt')); toast('Açar: ' + o.getAttribute('data-opt')); return; }
+      var rs = e.target.closest('[data-reset]'); if (rs) { var en = INP_BY[rs.getAttribute('data-reset')]; en.cells.forEach(function (x) { if (x.id >= 0 && isEdited(x.id)) resetCell(x.id, true); }); persist(); changed(); toast('Baza dəyərlərinə qaytarıldı'); return; }
+      var sc = e.target.closest('[data-scale]'); if (sc) { var e2 = INP_BY[sc.getAttribute('data-scale')], p = parseNum($('#sc-' + e2.it.id).value); if (!isNum(p)) { toast('Faiz yazın, məs. 10 və ya -5'); return; } e2.cells.forEach(function (x) { var b = baseVal(x.id); if (x.id >= 0 && isNum(b)) setCell(x.id, b * (1 + p / 100), true); }); persist(); changed(); toast('Bütün illər bazaya nisbətən ' + (p > 0 ? '+' : '') + p + '%'); return; }
+      var ad = e.target.closest('[data-add]'); if (ad) { var e3 = INP_BY[ad.getAttribute('data-add')], q = parseNum($('#sc-' + e3.it.id).value); if (!isNum(q)) { toast('Rəqəm yazın'); return; } e3.cells.forEach(function (x) { var b = baseVal(x.id); if (x.id >= 0 && isNum(b)) setCell(x.id, b + q, true); }); persist(); changed(); toast('Bütün illərə ' + (q > 0 ? '+' : '') + q + ' əlavə edildi'); return; }
+      var op = e.target.closest('[data-open]'); if (op) { var e4 = INP_BY[op.getAttribute('data-open')], x0 = e4.cells.filter(function (x) { return x.id >= 0; })[0]; if (x0) location.href = classic(M.sh[x0.id], M.r[x0.id], M.c[x0.id]); }
+    });
+  }
+  function baseVal(id) { return id < 0 ? null : M.V0[id]; }
+  function commit(inp) {
+    var id = +inp.getAttribute('data-id'), v = parseNum(inp.value);
+    if (v === undefined) { toast('Rəqəm daxil edin (məs. 3,5)'); inp.value = inp.getAttribute('data-prev'); return; }
+    if (v === null) { resetCell(id); toast('Baza dəyəri bərpa edildi'); return; }
+    inp.setAttribute('data-prev', inp.value);
+    var n = setCell(id, v); toast('Yenidən hesablandı: ' + n.toLocaleString('az') + ' düstur');
+  }
+  function itemVisible(e) {
+    if (e.cat !== ASTATE.cat && !ASTATE.q) return false;
+    if (!ASTATE.all && e.it.level !== 'core' && !inpMod(e) && !ASTATE.q) return false;
+    if (ASTATE.q) { var q = fold(ASTATE.q); if (fold(e.it.label_az + ' ' + (e.it.label_en || '') + ' ' + (e.it.excel_name || '') + ' ' + e.it.sheet + ' ' + e.g.title_az).indexOf(q) < 0) return false; }
+    return true;
+  }
+  function drawAssumpList() {
+    var list = $('#as-list'); if (!list) return;
+    var shown = INP.filter(itemVisible), groups = [], gi = {};
+    shown.forEach(function (e) { if (gi[e.g.id] === undefined) { gi[e.g.id] = groups.length; groups.push({ g: e.g, items: [] }); } groups[gi[e.g.id]].items.push(e); });
+    var cat = CATS.filter(function (c) { return c.k === ASTATE.cat; })[0];
+    var h = ASTATE.q ? '' : '<p class="muted small" style="margin:0 0 10px">' + esc(cat ? cat.d : '') + '</p>';
+    h += groups.map(function (G) {
+      var open = ASTATE.open[G.g.id] !== false;
+      return '<details class="card gcard" data-g="' + G.g.id + '"' + (open ? ' open' : '') + '><summary><b>' + esc(G.g.title_az) + '</b><span class="chip">' + G.items.length + '</span><span class="d">' + esc(G.g.desc_az || '') + '</span></summary>' + G.items.map(itemHTML).join('') + '</details>';
+    }).join('') || '<div class="note">Bu seçimə uyğun fərziyyə yoxdur' + (ASTATE.all ? '' : ' — «ətraflı parametrləri də göstər» seçin') + '.</div>';
+    list.innerHTML = h;
+    $('#as-cnt').textContent = shown.length + ' fərziyyə göstərilir';
+    $$('details.gcard', list).forEach(function (d) { d.addEventListener('toggle', function () { ASTATE.open[d.getAttribute('data-g')] = d.open; }); });
+  }
+  function itemHTML(e) {
+    var it = e.it, mod = inpMod(e), cells = e.cells.filter(function (x) { return x.id >= 0; });
+    var meta = '<div class="meta">' + (it.excel_name ? '<span class="chip coef">' + esc(it.excel_name) + '</span>' : '') + '<span class="chip">' + esc(it.sheet.trim()) + '</span>' + (it.affects_projection === false ? '<span class="chip" title="Formul qrafına görə bu giriş əsas proqnoz nəticələrinə təsir etmir (məs. yalnız struktur model, risk və ya köməkçi vərəqlər)">əsas proqnoza təsir etmir</span>' : '') + (mod ? '<span class="chip scen">dəyişdirilib</span>' : '') + '</div>';
+    var left = '<div><h4>' + esc(it.label_az) + (it.unit_az ? '<span class="u">' + esc(it.unit_az) + '</span>' : '') + '</h4><div class="why">' + esc(it.desc_az || '') + '</div>' + meta + '</div>';
+    var right = '';
+    if (!cells.length) right = '<span class="muted small">xana tapılmadı</span>';
+    else if (it.kind === 'switch') {
+      var id = cells[0].id, opts = (it.options || []).slice(); if (opts.indexOf(M.V[id]) < 0) opts.unshift(M.V[id]);
+      right = '<div class="opt" role="group">' + opts.map(function (o) { return '<button data-opt="' + esc(o) + '" data-sid="' + id + '" class="' + (M.V[id] === o ? 'on' : '') + (isEdited(id) && M.V[id] === o ? ' mod' : '') + '">' + esc(optLabel(o)) + '</button>'; }).join('') + '</div>';
+    } else if (cells.length === 1 && cells[0].y === null) {
+      var i1 = cells[0].id;
+      right = '<div class="one">' + (i1 === LOCK ? '<input value="' + esc(raw(M.V[i1])) + '" disabled title="«Yeniləmə» bölməsində dəyişdirilir">' : '<input data-id="' + i1 + '" class="' + (isEdited(i1) ? 'mod' : '') + '" value="' + esc(rawIn(currentVal(i1))) + '" inputmode="decimal" title="Baza: ' + esc(raw(M.V0[i1])) + '">') + '</div>';
+    } else {
+      right = '<div class="yrs" style="--ny:' + cells.length + '">' + cells.map(function (x, i) {
+        var calc = M.ft[x.id] >= 0 && !EDITS.ov.has(x.id), lab = x.y !== null ? x.y : (it.periods && it.periods[i] !== undefined ? it.periods[i] : a1(M.r[x.id], M.c[x.id]));
+        return '<div class="yr"><label>' + esc(lab) + '</label><input data-id="' + x.id + '" class="' + (isEdited(x.id) ? 'mod' : calc ? 'calc' : '') + '" value="' + esc(rawIn(currentVal(x.id))) + '" inputmode="decimal" title="' + esc((calc ? 'Düsturla hesablanır (dəyər yazsanız düsturun üzərinə yazılır). ' : '') + 'Baza: ' + raw(M.V0[x.id])) + '"></div>';
+      }).join('') + '</div>';
+    }
+    var tools = '';
+    if (cells.length > 1 && it.kind !== 'switch') tools = '<div class="tools"><span class="muted">Bütün illər:</span><input id="sc-' + it.id + '" placeholder="10" inputmode="decimal" aria-label="Dəyər"><button class="btn sm" data-scale="' + it.id + '">+% bazaya</button><button class="btn sm" data-add="' + it.id + '">+ əlavə et</button>' + (mod ? '<button class="btn sm" data-reset="' + it.id + '">Bazaya qaytar</button>' : '') + '<button class="btn sm ghost" data-open="' + it.id + '">Excel xanası →</button></div>';
+    else tools = '<div class="tools">' + (mod ? '<button class="btn sm" data-reset="' + it.id + '">Bazaya qaytar</button>' : '') + '<button class="btn sm ghost" data-open="' + it.id + '">Excel xanası →</button></div>';
+    return '<div class="it' + (mod ? ' xmod' : '') + '">' + left + right + tools + '</div>';
+  }
+  function optLabel(o) { return { 'Model determined': 'Model', 'Manual': 'Manual', 'Fixed': 'Sabit məzənnə', 'Floating': 'Üzən məzənnə' }[o] || o; }
+  function refreshAssump() { drawAssumpList(); drawImpact(); }
+  function drawImpact() {
+    var el = $('#as-imp'); if (!el) return;
+    var wm = wedgeMax();
+    var h = '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><b>Təsir</b>' + yearSeg('iy') + '</div><div class="small muted" style="margin:4px 0 8px">baza → ssenari</div>';
+    h += IMPACT_KEYS.map(function (key) { var k = byKey(key), c = kpiVal(k, YEAR), b = kpiVal(k, YEAR, true); return '<div class="imp-row"><span>' + esc(k.t) + '</span><span class="b">' + nf(b, decOf(k, b)) + '</span><span class="d">' + (same(c, b) ? '<span class="flat">' + nf(c, decOf(k, c)) + '</span>' : '<span class="dl">' + nf(c, decOf(k, c)) + '</span>') + '</span></div>'; }).join('');
+    if (wm !== null && wm > 0.001) h += '<div class="note warn" style="margin-top:10px">İstehsal və xərclər üsulu ilə ÜDM uzlaşdırılmayıb (fərq ' + nf(wm, 1) + '). <button class="btn sm" id="imp-yp" style="margin-top:6px">Uzlaşdır (ResidualYP)</button></div>';
+    h += '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn sm" href="#/neticeler">Bütün nəticələr</a><a class="btn sm" href="#/ssenariler">Ssenarini saxla</a></div>';
+    el.innerHTML = h;
+    wireYearSeg('iy', drawImpact);
+    var yp = $('#imp-yp'); if (yp) yp.onclick = function () { runMacro('YP'); };
+  }
+
+  // ------------------------------------------------------------------ RECONCILIATION (macros)
+  function pageReconcile(v) {
+    RERENDER = function () { pageReconcile(v); };
+    var w = wedges();
+    var h = '<div class="eyebrow">Uzlaşdırma</div><h1 class="h1" style="margin-top:6px">İstehsal və xərclər üsulu ilə ÜDM-in uzlaşdırılması</h1><p class="lead">CAEM-də real ÜDM iki yolla proqnozlaşdırılır: sahələr üzrə (1a, istehsal üsulu) və xərc komponentləri üzrə (1d, davranış tənlikləri). Hər proqnoz ilində onların fərqi (təklif–tələb fərqi) və ÜDM deflyatorunun ilkin təxmini ilə faktiki hesablanmış deflyator arasındakı fərq sıfır olmalıdır. Sənədin 6-cı əlavəsindəki makroslar bunu «Goal Seek» ilə edir; burada eyni alqoritm işləyir.</p>';
+    if (w) h += '<section class="sec"><div class="card itbl-wrap"><table class="itbl wedge"><thead><tr><th class="l">Fərq</th>' + w.map(function (x) { return '<th class="fc">' + x.y + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      '<tr><td class="lab">Təklif–tələb fərqi (GDP_diff), mln manat</td>' + w.map(function (x) { return '<td class="n ' + (Math.abs(x.g) > 0.001 ? 'bad' : 'ok') + '">' + nf(x.g, Math.abs(x.g) < 0.01 ? 4 : 1) + '</td>'; }).join('') + '</tr>' +
+      '<tr><td class="lab">ÜDM deflyatoru fərqi (deflator_diff), f.b.</td>' + w.map(function (x) { return '<td class="n ' + (Math.abs(x.d) > 0.001 ? 'bad' : 'ok') + '">' + nf(x.d, 4) + '</td>'; }).join('') + '</tr></tbody></table></div></section>';
+    h += '<section class="sec"><div class="grid g3">' +
+      '<div class="card pad"><h3>ResidualYP</h3><p class="small" style="color:var(--ink-2)">Təklif tərəfi ÜDM artımını (1a, <code>GDP_percent_change</code>) və ilkin deflyator təxminini (1b, <code>deflator_percent_change</code>) dəyişir: xərclər üsulu ilə ÜDM əsas götürülür.</p><button class="btn pri" data-m="YP">Uzlaşdır (YP)</button></div>' +
+      '<div class="card pad"><h3>ResidualCP</h3><p class="small" style="color:var(--ink-2)">Tələb tərəfinə düzəlişi (1d, <code>WedgeSD</code>) və ilkin deflyator təxminini dəyişir: istehsal üsulu ilə ÜDM əsas götürülür.</p><button class="btn pri" data-m="CP">Uzlaşdır (CP)</button></div>' +
+      '<div class="card pad"><h3>CaliManual</h3><p class="small" style="color:var(--ink-2)">Altı davranış tənliyinin (C, I, M, X, π, faiz) əlavə amillərini son proqnozlara uyğunlaşdırır — manual proqnozu «model» rejimində təkrarlamaq üçün.</p><button class="btn" data-m="CALI">Kalibrlə</button></div></div>' +
+      '<p class="small muted" style="margin-top:10px">Tolerantlıq 0,001; hər il üçün iki tənlik ardıcıl həll olunur (cəmi 20 dövrə, Excel-dəki kimi). Nəticələr ssenari dəyişikliyi kimi qeyd olunur və «Bazaya qaytar» ilə geri alınır. Qeyd: sənədlə yoxlamada aşkar edilib ki, <code>Final_I</code> və <code>Final_M</code> adları ümumi investisiya/idxal sətrinə baxır, <code>Model_I</code>/<code>Model_M</code> isə özəl/qeyri-neft tənliyinə — «Model» rejimində kalibrləmə əlavə amili hər dəfə artırır.</p></section>';
+    v.innerHTML = h;
+    $$('[data-m]', v).forEach(function (b) { b.onclick = function () { runMacro(b.getAttribute('data-m')); }; });
+  }
+  function runMacro(kind) {
+    var C = window.CaemMacros, res, t0 = performance.now();
+    var set = function (id, val) { M.V[id] = val; M.recalcFrom([id], EDITS.ov); };
+    try { res = kind === 'CALI' ? C.calibrate(M, set) : C.reconcile(M, set, kind); } catch (e) { toast('Makro dayandı: ' + e.message); return; }
+    res.changed.forEach(function (val, id) { if (same(val, M.V0[id])) EDITS.inputs.delete(id); else EDITS.inputs.set(id, val); });
+    persist(); changed();
+    var ms = Math.round(performance.now() - t0);
+    if (kind === 'CALI') toast('Kalibrləmə: ' + res.changed.size + ' əlavə amil yeniləndi (' + ms + ' ms)');
+    else if (res.status === 'done') toast('Hazırdır: 5 illik fərqlər bağlandı (maks. ' + res.maxWedge.toExponential(1) + ', ' + ms + ' ms)');
+    else if (res.status === 'notclosed') toast('t+' + res.year + ' ilinin fərqləri 20 dövrədə bağlanmadı — yenidən basın');
+    else toast('t+' + res.year + ': əvvəlki illərin fərqləri dəyişdi (irəliyə baxan dəyişən var)');
+  }
+
+  // ------------------------------------------------------------------ SCENARIOS
+  function scenarios() { try { return JSON.parse(lsGet(LS_SCEN) || '{}'); } catch (e) { return {}; } }
+  function pageScen(v) {
+    RERENDER = function () { pageScen(v); };
+    var all = scenarios(), ks = Object.keys(all);
+    var h = '<div class="eyebrow">Ssenarilər</div><h1 class="h1" style="margin-top:6px">Ssenariləri saxlamaq və müqayisə etmək</h1><p class="lead">Cari dəyişiklikləri adlandırılmış ssenari kimi saxlayın, sonra istənilən vaxt yükləyin. Ssenarilər klassik görünüşlə ortaqdır və yalnız bu brauzerdə saxlanılır — paylaşmaq üçün JSON ixracından istifadə edin.</p>';
+    h += '<section class="sec"><div class="card pad"><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input id="sn" placeholder="Ssenari adı, məs. Neft 60$ + üzən məzənnə" style="height:34px;border:1px solid var(--line);border-radius:8px;padding:0 10px;min-width:280px"><button class="btn pri" id="ss">Cari dəyişiklikləri saxla (' + editCount() + ')</button><button class="btn" id="sx">JSON ixrac</button><label class="btn" for="si">JSON idxal<input type="file" id="si" accept=".json" hidden></label></div>' +
+      (ks.length ? '<table class="itbl" style="margin-top:12px"><thead><tr><th class="l">Ad</th><th class="l">Saxlanıb</th><th>Dəyişiklik</th><th></th></tr></thead><tbody>' + ks.map(function (k) { var s = all[k], n = Object.keys(s.inputs || {}).length + Object.keys(s.coefficients || {}).length + Object.keys(s.overrides || {}).length; return '<tr><td class="lab"><b>' + esc(k) + '</b></td><td class="small">' + esc((s.saved || '').replace('T', ' ').slice(0, 16)) + '</td><td class="n">' + n + '</td><td class="n"><button class="btn sm" data-load="' + esc(k) + '">Yüklə</button> <button class="btn sm" data-del="' + esc(k) + '">Sil</button></td></tr>'; }).join('') + '</tbody></table>' : '<p class="muted small" style="margin-top:10px">Saxlanmış ssenari yoxdur.</p>') + '</div></section>';
+    h += '<section class="sec"><div class="sec-h"><h2>Cari ssenari və baza</h2><p>' + editCount() + ' dəyişiklik</p></div><div class="card itbl-wrap"><table class="itbl"><thead><tr><th class="l">Göstərici</th>' + FYEARS.map(function (y) { return '<th class="fc">' + y + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      KPI.filter(function (k) { return !k.sub; }).map(function (k) { return '<tr><td class="lab">' + esc(k.t) + '<span class="u">' + esc(k.u) + '</span></td>' + FYEARS.map(function (y) { var c = kpiVal(k, y), b = kpiVal(k, y, true); return '<td class="n fc">' + nf(c, decOf(k, c)) + (same(c, b) ? '' : '<div class="dcell">' + deltaHTML(k, c, b) + '</div>') + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div></section>';
+    h += '<section class="sec"><div class="sec-h"><h2>Dəyişikliklər</h2></div><div class="card itbl-wrap">' + changesTable() + '</div></section>';
+    v.innerHTML = h;
+    $('#ss').onclick = function () { var n = $('#sn').value.trim(); if (!n) { toast('Ssenari adını yazın'); return; } var a = scenarios(); a[n] = serialize(); lsSet(LS_SCEN, JSON.stringify(a)); toast('Saxlanıldı: ' + n); pageScen(v); };
+    $('#sx').onclick = function () { download('caem-ssenari.json', JSON.stringify(serialize(), null, 1), 'application/json'); };
+    $('#si').onchange = function () { var f = this.files[0]; if (!f) return; var rd = new FileReader(); rd.onload = function () { try { var bad = loadEdits(JSON.parse(rd.result)); persist(); changed(); toast('İdxal edildi' + (bad ? ' · ' + bad + ' tanınmayan açar' : '')); } catch (e) { toast('JSON oxunmadı'); } }; rd.readAsText(f); };
+    v.onclick = function (e) {
+      var l = e.target.getAttribute('data-load'), d = e.target.getAttribute('data-del'), u = e.target.getAttribute('data-undo');
+      if (l) { var bad = loadEdits(scenarios()[l]); persist(); changed(); toast('Yükləndi: ' + l + (bad ? ' · ' + bad + ' tanınmayan açar' : '')); }
+      if (d && confirm('«' + d + '» silinsin?')) { var a = scenarios(); delete a[d]; lsSet(LS_SCEN, JSON.stringify(a)); pageScen(v); }
+      if (u !== null) { resetCell(+u); }
+    };
+  }
+  function changesTable() {
+    var rows = [];
+    EDITS.inputs.forEach(function (val, id) { rows.push([id, val, 'giriş']); });
+    EDITS.ov.forEach(function (val, id) { rows.push([id, val, 'düsturun üzərinə']); });
+    var nk = Object.keys(K_KEEP).length;
+    if (!rows.length && !nk) return '<p class="muted pad" style="margin:0">Dəyişiklik yoxdur — model baza ilə eynidir.</p>';
+    return '<table class="itbl"><thead><tr><th class="l">Xana</th><th class="l">Göstərici</th><th>İl</th><th>Baza</th><th>Yeni</th><th></th></tr></thead><tbody>' + rows.map(function (x) {
+      var id = x[0], gs = M.sh[id];
+      return '<tr><td class="lab"><a href="' + classic(gs, M.r[id], M.c[id]) + '"><code>' + esc(SHEETS[gs].n + '!' + a1(M.r[id], M.c[id])) + '</code></a> <span class="chip">' + x[2] + '</span></td><td class="lab small">' + esc(rowLabel(gs, M.r[id]).slice(0, 90)) + '</td><td class="n">' + (yearOf(gs, M.r[id], M.c[id]) || '') + '</td><td class="n">' + nf(M.V0[id]) + '</td><td class="n"><b>' + nf(x[1]) + '</b></td><td class="n"><button class="btn sm" data-undo="' + id + '">Geri al</button></td></tr>';
+    }).join('') + (nk ? '<tr><td class="lab" colspan="6">+ ' + nk + ' düstur daxili əmsal dəyişikliyi (klassik görünüşdə edilib)</td></tr>' : '') + '</tbody></table>';
+  }
+
+  // ------------------------------------------------------------------ UPDATE
+  function pageUpdate(v) {
+    RERENDER = null;
+    v.innerHTML = '<div class="eyebrow">Yeniləmə</div><h1 class="h1" style="margin-top:6px">Faktiki məlumat, yeni il və yeni fayl</h1><p class="lead">İl başa çatanda faktiki rəqəmləri daxil edin və proqnozun ilk ilini irəli çəkin, və ya Nazirliyin yenilənmiş CAEM faylını yükləyin. Dəyişikliklər hər iki görünüşdə (iş paneli və klassik görünüş) tətbiq olunur.</p><div id="mu-host" style="margin-top:18px"></div>';
+    window.CaemUpdate.render($('#mu-host'), M, INFO);
+  }
+
+  // ------------------------------------------------------------------ GUIDE
+  function pageGuide(v) {
+    RERENDER = null;
+    var sec = [['baslangic', 'CAEM nədir'], ['axin', 'İş axını'], ['panel', 'Bu paneldən istifadə'], ['metod', 'Model və manual proqnoz'], ['uzlas', 'Uzlaşdırma və kalibrləmə'], ['yenil', 'Yeni il və yeni fayl'], ['luget', 'Terminlər'], ['sual', 'Tez-tez verilən suallar']];
+    var h = '<div class="eyebrow">Bələdçi</div><h1 class="h1" style="margin-top:6px">CAEM iş panelinə bələdçi</h1><div class="guide" style="margin-top:22px"><nav class="toc">' + sec.map(function (s) { return '<a href="#" data-to="' + s[0] + '">' + s[1] + '</a>'; }).join('') + '</nav><div>';
+    h += '<section class="gsec" id="g-baslangic"><h2>CAEM nədir</h2><p>CAEM — BVF-nin Maliyyə Proqramlaşdırması və Siyasətləri (FPP 2.0) layihəsinin «Pillar 1» Excel çərçivəsidir: FPP-nin uçot eyniliklərini (real və nominal ÜDM, fiskal sektor, tədiyə balansı, monetar icmal) kiçik davranış modeli ilə birləşdirir. Model illik tezlikdədir, proqnoz üfüqü 5 ildir (' + INFO.firstYear + '–' + INFO.endYear + '). Qiymətlər bloku: inflyasiya Phillips əyrisi, siyasət faizi Taylor qaydası, məzənnə açıq faiz pariteti (UİP) və alıcılıq qabiliyyəti pariteti (PPP) ilə; xərc komponentləri xəta-korreksiya tənlikləri ilə proqnozlaşdırılır. Hər tənlik üçün proqnozu model və ya manual vermək olar.</p></section>';
+    h += '<section class="gsec" id="g-axin"><h2>İş axını (sənədə əsasən)</h2><ol><li><b>Giriş</b> — INPUT vərəqində ilk proqnoz ili, məzənnə rejimi, fiskal ilin sonu, göstərmə miqyasları.</li><li><b>Məlumatlar</b> — ilkin məlumat vərəqləri (External sector, Real sector, Prices, Fiscal, BOP, Social, Monetary, Oil_and_gas) «Data» vərəqinə indikator kodları ilə yığılır; «Accounting consistency» əsas eynilikləri yoxlayır.</li><li><b>Son inkişaflar və xarici mühit</b> — A1, A2: tərəfdaşların artımı və inflyasiyası, neft və qaz qiymətləri, ABŞ faizləri.</li><li><b>Trend–kəsir təhlili</b> — B1a–B3: HP filtri (prior-larla) və istehsal funksiyası ilə potensial ÜDM, buraxılış kəsiri, neytral faiz və digər trendlər.</li><li><b>Proqnozlar</b> — 1a (sahələr üzrə real ÜDM), 1b (inflyasiya, məzənnə, deflyatorlar), 1c (faiz), 1d (xərc komponentləri), 1e (sosial sektor), 3a–3b (fiskal və borc), 2a–2b (tədiyə balansı), 4 (monetar icmal).</li><li><b>Nominal ÜDM, yığım–investisiya</b> — 5a, 5b; <b>uzlaşdırma</b> — makroslar ilə.</li><li><b>Orta müddətli perspektiv və ssenarilər</b> — 6a, 6b, MOE_report, risklər, 7. Scenario, 8a–8b.</li></ol></section>';
+    h += '<section class="gsec" id="g-panel"><h2>Bu paneldən istifadə</h2><div class="grid g3"><div class="card recipe"><h4>Neft qiyməti ssenarisi</h4><ol><li>«Fərziyyələr» → «Ekzogen fərziyyələr».</li><li>«Xarici mühit» qrupunda neftin qiymətini tapın (axtarış: <i>neft</i>).</li><li>«Bütün illər» sahəsinə −20 yazıb «+% bazaya» basın.</li><li>Sağdakı panel təsiri göstərir; «Nəticələr» bölməsində ətraflı baxın.</li><li>«Uzlaşdır» düyməsi ilə ÜDM-i uzlaşdırın və ssenarini saxlayın.</li></ol></div>' +
+      '<div class="card recipe"><h4>Üzən məzənnə rejimi</h4><ol><li>«Fərziyyələr» → «Açarlar».</li><li>«Məzənnə rejimi» üçün «Üzən məzənnə» seçin.</li><li>Faiz Taylor qaydası, məzənnə UİP/PPP ilə müəyyən olunur; dövri blok (inflyasiya–faiz–məzənnə) avtomatik yaxınlaşdırılır.</li></ol></div>' +
+      '<div class="card recipe"><h4>Manual inflyasiya proqnozu</h4><ol><li>«Açarlar»da «İQİ inflyasiyası: proqnoz metodu» — Manual.</li><li>«Manual proqnozlar»da illər üzrə inflyasiyanı yazın.</li><li>Model rejimində eyni proqnozu saxlamaq üçün «Uzlaşdırma» → «Kalibrlə».</li></ol></div></div></section>';
+    h += '<section class="gsec" id="g-metod"><h2>Model və manual proqnoz</h2><p>Özəl istehlak, investisiya, ixrac, idxal, inflyasiya və siyasət faizi üçün iki yol var. <b>Model</b> — kalibrə edilmiş davranış tənlikləri (əmsallar «Tənlik əmsalları» bölməsində; C2 vərəqində OLS qiymətləndirmələri başlanğıc nöqtəsidir). <b>Manual</b> — mühakimə, peyk modelləri və ya digər təhlillərə əsaslanan proqnoz sarı xanalara yazılır. Seçim bütün proqnoz dövrünə aiddir. «Nə olarsa» ssenariləri üçün bütün proqnozlar model əsaslı olmalıdır; manual proqnozu model ilə təkrarlamaq üçün əlavə amillərdən (add-factor) istifadə olunur.</p></section>';
+    h += '<section class="gsec" id="g-uzlas"><h2>Uzlaşdırma və kalibrləmə</h2><p>İstehsal üsulu ilə real ÜDM (sahələr) və xərclər üsulu ilə real ÜDM (davranış tənlikləri) fərqli ola bilər. «ResidualYP» təklif tərəfi artımını, «ResidualCP» tələb tərəfi düzəlişini dəyişərək hər il üçün fərqi və ÜDM deflyatoru fərqini sıfıra endirir. «CaliManual» əlavə amilləri elə seçir ki, model tənlikləri son (manual) proqnozları təkrarlasın. Excel-dəki saxlanmış baza uzlaşdırılmayıb — nəticələrə baxmazdan əvvəl uzlaşdırmanı işə salmaq tövsiyə olunur.</p></section>';
+    h += '<section class="gsec" id="g-yenil"><h2>Yeni il və yeni fayl</h2><p>İl başa çatanda «Yeniləmə» bölməsində: (1) həmin ilin faktiki rəqəmlərini daxil edin (sistem «Data» vərəqinin tələb etdiyi bütün sıraları siyahıya alır və onları ilkin məlumat xanalarına bağlayır); (2) yeni üfüq ili üçün xarici mühit fərziyyələrini verin; (3) «Yoxla» ilə sınaq hesablaması aparın; (4) proqnozun ilk ilini irəli çəkin — bütün vərəqlər CAEM-in öz qaydası ilə yeni illərə keçir, əl ilə daxil edilmiş proqnoz sətirləri bir sütun sola sürüşür. Nazirlik yeni CAEM faylı hazırlayıbsa, onu yükləyin: sistem düsturları oxuyur, Excel nəticələri ilə yoxlayır və yalnız sonra aktivləşdirir.</p></section>';
+    h += '<section class="gsec" id="g-luget"><h2>Terminlər</h2><dl class="gloss"><dt>Buraxılış kəsiri</dt><dd>Faktiki real ÜDM-in potensial ÜDM-dən faizlə fərqi; inflyasiya və faiz tənliklərinə daxil olur.</dd><dt>HP filtri</dt><dd>Hodrik–Preskott filtri: sıranı trend və tsiklik hissəyə ayırır (illik məlumat üçün λ=100); prior-larla versiyada istifadəçi müəyyən illər üçün trendi təyin edə bilər.</dd><dt>Phillips əyrisi</dt><dd>İnflyasiyanı gecikmiş və gözlənilən inflyasiya, idxal inflyasiyası və buraxılış kəsiri ilə əlaqələndirən tənlik.</dd><dt>Taylor qaydası</dt><dd>Siyasət faizinin neytral faiz, inflyasiyanın hədəfdən kənarlaşması və buraxılış kəsirinə reaksiyası.</dd><dt>UİP / PPP</dt><dd>Açıq faiz pariteti və alıcılıq qabiliyyəti pariteti — üzən rejimdə məzənnəni müəyyən edir.</dd><dt>Xəta-korreksiya tənliyi</dt><dd>Qısamüddətli dinamika ilə uzunmüddətli tarazlığa qayıdışı (λ — uyğunlaşma sürəti) birləşdirən tənlik.</dd><dt>Əlavə amil (add-factor)</dt><dd>Tənliyin proqnozuna mühakimə ilə edilən düzəliş.</dd><dt>ARDNF</dt><dd>Azərbaycan Respublikasının Dövlət Neft Fondu (SOFAZ).</dd></dl></section>';
+    h += '<section class="gsec" id="g-sual"><h2>Tez-tez verilən suallar</h2>' + [
+      ['Dəyişikliklərim harada saxlanılır?', 'Bu brauzerin yaddaşında. Başqa kompüterə köçürmək və ya paylaşmaq üçün «Ssenarilər» → JSON ixrac.'],
+      ['Nəticələr Excel ilə eynidirmi?', 'Bəli: bütün ' + M.order.length.toLocaleString('az') + ' düstur Excel-in saxladığı nəticələrlə yoxlanılıb və 100% üst-üstə düşür. Makroslar Excel-dəki alqoritmlə işləyir.'],
+      ['Nə üçün istehsal və xərclər üsulu ilə ÜDM artımı fərqlidir?', 'Excel faylındakı baza uzlaşdırılmayıb. «Uzlaşdırma» bölməsində ResidualYP və ya ResidualCP işə salın.'],
+      ['Bir xananın düsturunu necə görə bilərəm?', 'Göstəriciyə klikləyin və «Klassik görünüşdə aç» seçin — orada hər xananın düsturu, mənbələri və asılı xanaları göstərilir.'],
+      ['«Əsas proqnoza təsir etmir» nə deməkdir?', 'Formul qrafına görə həmin giriş yalnız struktur modelə (AZE Model, 8a), risk/yelpik qrafiklərinə və ya istifadə olunmayan xanalara təsir edir.']
+    ].map(function (q) { return '<details class="faq"><summary>' + q[0] + '</summary><p>' + q[1] + '</p></details>'; }).join('') + '</section>';
+    h += '</div></div>';
+    v.innerHTML = h;
+    $$('[data-to]', v).forEach(function (a) { a.onclick = function (e) { e.preventDefault(); var el = document.getElementById('g-' + a.getAttribute('data-to')); if (el) el.scrollIntoView({ behavior: 'smooth' }); }; });
+  }
+
+  // ------------------------------------------------------------------ search palette (Ctrl K)
+  var PAL = null, PAL_I = 0;
+  function palItems() {
+    if (PAL) return PAL;
+    PAL = [];
+    KPI.forEach(function (k) { PAL.push({ k: 'Göstərici', t: k.t, s: k.u, f: fold(k.t), go: function () { location.hash = '#/neticeler'; setTimeout(function () { openKpi(k); }, 60); } }); });
+    INP.forEach(function (e) { PAL.push({ k: 'Fərziyyə', t: e.it.label_az, s: e.g.title_az, f: fold(e.it.label_az + ' ' + (e.it.label_en || '') + ' ' + (e.it.excel_name || '')), go: function () { ASTATE.q = e.it.label_az; location.hash = '#/ferziyyeler/' + e.cat; if (ROUTE === 'ferziyyeler') pageAssump($('#view'), e.cat); } }); });
+    SHEETS.forEach(function (s, gs) { if (s.n === '__massivlər__') return; PAL.push({ k: 'Vərəq', t: sheetTitle(gs), s: s.n, f: fold(sheetTitle(gs) + ' ' + s.n), go: function () { location.href = classic(gs); } }); });
+    return PAL;
+  }
+  function openPal() { $('#pal').hidden = false; $('#pal-scrim').hidden = false; var i = $('#pal-in'); i.value = ''; drawPal(''); i.focus(); }
+  function closePal() { $('#pal').hidden = true; $('#pal-scrim').hidden = true; }
+  function drawPal(q) {
+    q = fold(q.trim()); var terms = q.split(/\s+/).filter(Boolean);
+    var res = palItems().filter(function (x) { return terms.every(function (t) { return x.f.indexOf(t) >= 0; }); }).slice(0, 40);
+    PAL_I = 0; $('#pal-list').innerHTML = res.map(function (x, i) { return '<div class="pal-item' + (i ? '' : ' on') + '" data-i="' + i + '"><span class="k">' + x.k + '</span><div>' + esc(x.t) + '<small>' + esc(x.s) + '</small></div></div>'; }).join('') || '<div class="pal-item">Nəticə yoxdur</div>';
+    drawPal.res = res;
+  }
+
+  // ------------------------------------------------------------------ boot
+  function boot() {
+    Store.boot(function (model, info) {
+      try {
+        M = model; INFO = info; CORE = window.MODEL_CORE; META = window.MODEL_META || META; SHEETS = CORE.sheets;
+        SHEETS.forEach(function (s, gs) { if (CORE.books[s.b].kind === 'model') SIDX[s.n] = gs; });
+        LOCK = Store.layout && Store.layout.b9 >= 0 ? Store.layout.b9 : -1;
+        YEARS = []; for (var y = INFO.firstYear - 2; y <= INFO.endYear; y++) YEARS.push(y);
+        FYEARS = []; for (y = INFO.firstYear; y <= INFO.endYear; y++) FYEARS.push(y);
+        var pv = null; try { pv = JSON.parse(lsGet(LS_PANEL) || 'null'); } catch (e) { /* ignore */ }
+        YEAR = pv && FYEARS.indexOf(pv.year) >= 0 ? pv.year : INFO.firstYear;
+        M.dependents();
+        buildInputs();
+        try { var saved = JSON.parse(lsGet(LS_EDITS) || 'null'); if (saved) loadEdits(saved); } catch (e) { /* ignore corrupt storage */ }
+        $('#brand-sub').textContent = 'İş paneli · proqnoz ' + INFO.firstYear + '–' + INFO.endYear;
+        window.addEventListener('hashchange', route);
+        $('#scrim').onclick = closeDrawer;
+        document.addEventListener('keydown', function (e) {
+          if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPal(); }
+          if (e.key === 'Escape') { closeDrawer(); closePal(); }
+          if (!$('#pal').hidden) {
+            var items = $$('.pal-item[data-i]');
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); PAL_I = Math.max(0, Math.min(items.length - 1, PAL_I + (e.key === 'ArrowDown' ? 1 : -1))); items.forEach(function (x, i) { x.classList.toggle('on', i === PAL_I); }); }
+            if (e.key === 'Enter' && drawPal.res && drawPal.res[PAL_I]) { closePal(); drawPal.res[PAL_I].go(); }
+          }
+        });
+        $('#open-pal').onclick = openPal; $('#pal-scrim').onclick = closePal;
+        $('#pal-in').oninput = function () { drawPal(this.value); };
+        $('#pal-list').onclick = function (e) { var it = e.target.closest('[data-i]'); if (it && drawPal.res) { closePal(); drawPal.res[+it.getAttribute('data-i')].go(); } };
+        route();
+        $('#boot').remove();
+        if (window.CaemUpdate) window.CaemUpdate.pendingToast();
+      } catch (e) { $('#boot').textContent = 'Model yüklənmədi: ' + e.message; console.error(e); }
+    });
+  }
+  window.CaemPanel = { inputs: function () { return INP; }, model: function () { return M; }, yearOfId: function (id) { return cellYear(id); } };
+  window.addEventListener('DOMContentLoaded', boot);
+})();
+</script>
+</body>
+</html>
