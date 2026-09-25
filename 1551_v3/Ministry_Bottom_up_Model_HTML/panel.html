@@ -324,6 +324,9 @@ details.faq p { margin: 8px 0 0; }
 <script src="xlsxwriter.js"></script>
 <script src="update-ui.js"></script>
 <script src="report.js"></script>
+<script src="ev-engine.js"></script>
+<script src="data/econ.js"></script>
+<script src="econ-ui.js"></script>
 <script>
 (function () {
   'use strict';
@@ -348,6 +351,7 @@ details.faq p { margin: 8px 0 0; }
 
   // ---------------------------------------------------------------- icons
   var IC = {
+    sigma: '<path d="M18 4H6l6 8-6 8h12"/>',
     file: '<path d="M14 3v5h5"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M9 13h6"/><path d="M9 17h4"/>',
     home: '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
@@ -358,7 +362,7 @@ details.faq p { margin: 8px 0 0; }
     gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/>'
   };
   function icon(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + IC[n] + '</svg>'; }
-  var TABS = [['', 'Başlanğıc', 'home'], ['neticeler', 'Nəticələr', 'chart'], ['ssenari', 'Ssenari', 'sliders'], ['hesabat', 'Hesabat', 'file'], ['model', 'Modeli araşdır', 'layers'], ['idare', 'İdarəetmə', 'gear'], ['beledci', 'Bələdçi', 'book']];
+  var TABS = [['', 'Başlanğıc', 'home'], ['neticeler', 'Nəticələr', 'chart'], ['ssenari', 'Ssenari', 'sliders'], ['hesabat', 'Hesabat', 'file'], ['ekonometrika', 'Ekonometrika', 'sigma'], ['model', 'Modeli araşdır', 'layers'], ['idare', 'İdarəetmə', 'gear'], ['beledci', 'Bələdçi', 'book']];
 
   // ---------------------------------------------------------------- helpers
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -719,6 +723,7 @@ details.faq p { margin: 8px 0 0; }
     else if (p[0] === 'model') pageExplorer(v, p[1] !== undefined && p[1] !== '' ? +p[1] : null);
     else if (p[0] === 'beledci') pageGuide(v, p[1]);
     else if (p[0] === 'hesabat') window.MakroReport.page(v);
+    else if (p[0] === 'ekonometrika') window.EconUI.page(v);
     else if (p[0] === 'idare') pageAdmin(v);
     else pageHome(v);
   }
@@ -1435,6 +1440,25 @@ details.faq p { margin: 8px 0 0; }
     });
   }
 
+  // ---------------------------------------------------------------- econometrics
+  function initEcon() {
+    if (!window.EconUI) return;
+    window.EconUI.init({
+      sheetIdx: sheetIdx,
+      cellId: cellId,
+      colForYear: colForYear,
+      value: function (id) { return M.V[id]; },
+      baseValue: function (id) { return M.V0[id]; },
+      setCell: setCell,
+      resetCell: resetCell,
+      isEdited: isEdited,
+      changed: changed,
+      years: function () { return { first: 1995, last: END, lastActual: LA }; },
+      nf: nf,
+      toast: toast
+    });
+  }
+
   // ---------------------------------------------------------------- boot
   function boot() {
     window.MakroStore.boot(function (model, info) {
@@ -1454,6 +1478,7 @@ details.faq p { margin: 8px 0 0; }
     try { var saved = JSON.parse(lsGet(LS_EDITS) || 'null'); if (saved) applySerialized(saved); } catch (e) { /* ignore corrupt storage */ }
     buildIndicators();
     initReport();
+    initEcon();
     renderScenBar();
     window.addEventListener('hashchange', route);
     $('#open-pal').onclick = openPal;
