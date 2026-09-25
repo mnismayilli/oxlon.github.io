@@ -113,6 +113,11 @@
         r.ok = false; r.identity = 1; r.why = 'təyinat tənliyidir — əmsallar qiymətləndirilmir, dəyişən elə bu düsturla hesablanır';
         out[e.id] = r; return;                     // estimating it against its own output would be circular
       }
+      if (e.bad) {
+        r.ok = false; r.malformed = 1;
+        r.why = 'vərəqdəki düsturda yazı xətası var (' + e.bad.join('; ') + ') — qiymətləndirmə aparılmır';
+        out[e.id] = r; return;
+      }
       var vs = (e.vars || []).map(function (v) { return DATA.alias[v] || v; });
       var miss = vs.filter(function (v) { return !d[v]; });
       if (miss.length) { r.ok = false; r.why = 'məlumat yoxdur: ' + miss.slice(0, 4).join(', '); r.miss = miss; out[e.id] = r; return; }
@@ -258,7 +263,8 @@
       if (f.indexOf('drift') >= 0) stats += '<span class="ec-chip bad">əmsal fərqlənir</span>';
       else stats += '<span class="ec-chip ok">uyğun</span>';
       if (f.indexOf('insig') >= 0) stats += '<span class="ec-chip warn">əhəmiyyətsiz hədd</span>';
-    } else if (r && r.identity) stats = '<span class="ec-chip">təyinat</span>';
+    } else if (r && r.malformed) stats = '<span class="ec-chip bad">düsturda xəta</span>';
+    else if (r && r.identity) stats = '<span class="ec-chip">təyinat</span>';
     else stats = '<span class="ec-chip">qiymətləndirilmir</span>';
     stats += e.live
       ? '<span class="ec-chip ok" title="Əmsalı dəyişsəniz, modeldə ' + e.reach + ' xana yenidən hesablanır">təsir: ' + (e.reach >= 1000 ? Math.round(e.reach / 1000) + ' min' : e.reach) + ' xana</span>'
