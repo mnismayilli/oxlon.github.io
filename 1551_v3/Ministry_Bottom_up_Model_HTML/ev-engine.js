@@ -255,12 +255,24 @@
     for (i = 0; i < k; i++) { var v = inv[i][i] * s2e; var sd = v > 0 ? Math.sqrt(v) : NaN; se.push(sd); var tt = b[i] / sd; tstat.push(tt); pval.push(tProb(tt, df)); }
     var dwn = 0; for (t = 1; t < n; t++) { var dd = res[t] - res[t - 1]; dwn += dd * dd; }
     var dw = ssr > 0 ? dwn / ssr : NaN;
-    // R2: uncentred if there is no intercept-like column
-    var hasConst = false;
-    for (i = 0; i < k; i++) { var c0 = X[i][0], same = true; for (t = 1; t < n; t++) if (Math.abs(X[i][t] - c0) > 1e-12) { same = false; break; } if (same && Math.abs(c0) > 1e-12) hasConst = true; }
-    var r2 = hasConst ? (tss > 0 ? 1 - ssr / tss : NaN) : (function () { var u = 0; for (t = 0; t < n; t++) u += y[t] * y[t]; return u > 0 ? 1 - ssr / u : NaN; })();
-    var adj = 1 - (1 - r2) * (n - (hasConst ? 1 : 0)) / df;
-    var fdf1 = hasConst ? k - 1 : k;
+    // Is a constant inside the column space? An explicit C column, or period dummies that partition the
+    // sample (@BEFORE/@DURING/@AFTER), both mean the intercept is there — EViews then centres R2 and
+    // drops one degree of freedom from the F test. R2 and F must use the SAME total sum of squares.
+    var spansConst = false;
+    (function () {
+      var A = [], c2 = [];
+      for (i = 0; i < k; i++) { A.push(new Array(k).fill(0)); var s3 = 0; for (t = 0; t < n; t++) s3 += X[i][t]; c2.push(s3); }
+      for (i = 0; i < k; i++) for (j = 0; j < k; j++) { var s4 = 0; for (t = 0; t < n; t++) s4 += X[i][t] * X[j][t]; A[i][j] = s4; }
+      var sc = solve(A, c2);
+      if (!sc) return;
+      var rss = 0;
+      for (t = 0; t < n; t++) { var f3 = 0; for (i = 0; i < k; i++) f3 += sc.x[i] * X[i][t]; var e3 = 1 - f3; rss += e3 * e3; }
+      spansConst = rss < 1e-9 * n;
+    })();
+    var hasConst = spansConst;
+    var r2 = tss > 0 ? 1 - ssr / tss : NaN;                    // centred, as EViews reports it
+    var adj = 1 - (1 - r2) * (n - (spansConst ? 1 : 0)) / df;
+    var fdf1 = spansConst ? k - 1 : k;
     var fst = fdf1 > 0 && ssr > 0 ? ((tss - ssr) / fdf1) / s2e : NaN;
     return {
       ok: true, n: n, k: k, df: df, beta: b, se: se, t: tstat, p: pval, names: names || [],

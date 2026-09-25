@@ -16,6 +16,38 @@
     return t.replace('.', ',');
   }
 
+  /* ---------------------------------------------------- year columns (strict)
+     The panel's colForYear treats any cell holding a year-like number as a header, which on sheets with
+     stray year numbers resolves to the wrong column. The variable map was built against header rows
+     carrying at least 5 years, so the same rule is applied here — otherwise the estimation, and the
+     admin's data entry, would silently read and write other cells. */
+  var HDR = {};
+  function headerRows(gs) {
+    if (HDR[gs]) return HDR[gs];
+    var rows = {}, M = CFG.model();
+    for (var i = 0; i < M.N; i++) {
+      if (M.sh[i] !== gs) continue;
+      var v = M.V0[i], y = null;
+      if (typeof v === 'number' && isFinite(v) && v === Math.floor(v) && v >= 1990 && v <= 2060) y = v;
+      else if (typeof v === 'string') { var m = /^\s*((?:19|20)\d\d)\s*$/.exec(v); if (m) y = +m[1]; }
+      if (y) { (rows[M.r[i]] = rows[M.r[i]] || {})[M.c[i]] = y; }
+    }
+    var list = [];
+    Object.keys(rows).map(Number).sort(function (a, b) { return a - b; }).forEach(function (r) {
+      var d = rows[r], n = 0; for (var c in d) n++;
+      if (n >= 5) list.push({ r: r, d: d });
+    });
+    return (HDR[gs] = list);
+  }
+  function colYear(gs, row, y) {
+    var hs = headerRows(gs), best = null;
+    for (var i = 0; i < hs.length; i++) {
+      if (hs[i].r >= row) break;
+      for (var c in hs[i].d) if (hs[i].d[c] === y) { best = +c; }
+    }
+    return best;
+  }
+
   /* ------------------------------------------------------------ data from the model */
   var SERIES = null, SRC = null, BUILT = 0;
   function buildData(force) {
@@ -27,7 +59,7 @@
       if (gs < 0) return;
       var o = {}, cells = {}, n = 0;
       for (var y = Y.first; y <= Y.last; y++) {
-        var c = CFG.colForYear(gs, v.r, y); if (c == null) continue;
+        var c = colYear(gs, v.r, y); if (c == null) continue;
         var id = CFG.cellId(gs, v.r, c); if (id < 0) continue;
         var val = CFG.value(id);
         if (isNum(val)) { o[y] = val; cells[y] = id; n++; }
@@ -60,6 +92,7 @@
       });
     }
     SERIES = d; SRC = src; BUILT++;
+    try { root.__ecSeries = d; root.__ecSrc = src; } catch (e) { }   // debug hook for verification
     return d;
   }
   var AST = {};
@@ -176,9 +209,10 @@
   /* --------------------------------------------------------------------- view */
   var FILTER = 'all', Q = '', OPEN = {}, TAB = 'eq';
   function tiles(res) {
-    var eqs = DATA.eqs, nEst = 0, nIns = 0, nDw = 0, nDrift = 0, nFit = 0, nCoef = 0, nSigCoef = 0, nIdent = 0;
+    var eqs = DATA.eqs, nEst = 0, nIns = 0, nDw = 0, nDrift = 0, nFit = 0, nCoef = 0, nSigCoef = 0, nIdent = 0, nDoc = 0;
     eqs.forEach(function (e) {
       var r = res[e.id];
+      if (!e.live) nDoc++;
       if (r && r.identity) nIdent++;
       if (r && r.ok) {
         nEst++;
@@ -194,6 +228,7 @@
       ['all', eqs.length, 'Tənlik', 'Nazirliyin EViews kataloqundan modelin «eq» vərəqlərinə köçürülüb', '#44525F'],
       ['est', nEst, 'Yenidən qiymətləndirildi', 'Bütün dəyişənləri modeldə var — OLS ilə yenidən hesablandı', '#1F6FB2'],
       ['ident', nIdent, 'Təyinat (ECM)', 'Uzunmüddətli əlaqəni təyin edən sətirlər — reqressiya deyil', '#7D6B12'],
+      ['doc', nDoc, 'Hesablamaya təsir etmir', 'Bu tənliklərin əmsallarına modeldə heç bir düstur istinad etmir — yalnız sənədləşmədir', '#8A96A3'],
       ['sig', nSigCoef + '/' + nCoef, 'Statistik əhəmiyyətli əmsal', 'p ≤ 0,05 — yeni qiymətləndirmədə', '#2F6B3D'],
       ['insig', nIns, 'Əhəmiyyətsiz həddi olan tənlik', 'Ən azı bir əmsal p > 0,10', '#8A6216'],
       ['drift', nDrift, 'Modeldəki əmsal fərqlənir', 'Modeldə istifadə olunan əmsal yeni qiymətin 95% intervalından kənardadır', '#A3352A'],
@@ -224,7 +259,10 @@
       else stats += '<span class="ec-chip ok">uyğun</span>';
       if (f.indexOf('insig') >= 0) stats += '<span class="ec-chip warn">əhəmiyyətsiz hədd</span>';
     } else if (r && r.identity) stats = '<span class="ec-chip">təyinat</span>';
-    else stats = '<span class="ec-chip">yalnız sənəd</span>';
+    else stats = '<span class="ec-chip">qiymətləndirilmir</span>';
+    stats += e.live
+      ? '<span class="ec-chip ok" title="Əmsalı dəyişsəniz, modeldə ' + e.reach + ' xana yenidən hesablanır">təsir: ' + (e.reach >= 1000 ? Math.round(e.reach / 1000) + ' min' : e.reach) + ' xana</span>'
+      : '<span class="ec-chip" title="Modeldə heç bir düstur bu əmsallara istinad etmir">təsir yoxdur</span>';
     var h = '<div class="ec-row" id="ec-' + esc(e.id) + '"><div class="ec-head" data-eq="' + esc(e.id) + '" role="button" tabindex="0" aria-expanded="' + open + '">' +
       '<div><h4>' + esc(e.dep) + '</h4><div class="sub">' + esc(e.desc || e.id) + ' · ' + esc(e.b + ' › ' + e.s) + ' · sətir ' + e.row + '</div></div>' +
       '<div class="ec-stats">' + stats + '</div></div>';
@@ -239,6 +277,7 @@
       h += r && r.identity
         ? '<p class="ec-note"><b>Təyinat (identity).</b> Bu sətir ' + esc(e.dep) + ' dəyişənini təyin edir — uzunmüddətli (ECM) əlaqədir, reqressiya deyil. Əmsallar Nazirliyin qiymətləndirməsindən gəlir və aşağıda əl ilə dəyişdirilə bilər; dəyişiklik ondan asılı bütün tənliklərə ötürülür.</p>'
         : '<p class="ec-note"><b>Yenidən qiymətləndirilmədi:</b> ' + esc(r ? r.why : '—') + '. Əmsallar Nazirliyin EViews nəticəsindən götürülüb və aşağıda əl ilə dəyişdirilə bilər.</p>';
+      if (!e.live) h += '<p class="ec-note"><b>Bu tənlik hesablamaya daxil deyil:</b> modelin düsturlarından heç biri bu əmsallara istinad etmir, ona görə burada edilən dəyişiklik proqnozu dəyişməyəcək.</p>';
       h += coefTable(e, null);
       return h;
     }
@@ -253,7 +292,8 @@
       '<span class="ec-src"><span style="display:inline-block;width:14px;border-top:1.3px solid #15202B;vertical-align:4px"></span> faktiki &nbsp; <span style="display:inline-block;width:14px;border-top:1.3px dashed #1F6FB2;vertical-align:4px"></span> tənliyin verdiyi</span></div>';
     h += '<div class="ec-act"><button class="btn sm" data-apply="' + esc(e.id) + '">Yeni qiymətləri modelə yaz</button>' +
       '<button class="btn sm" data-revert="' + esc(e.id) + '">Nazirliyin əmsallarına qaytar</button>' +
-      '<span class="ec-note" style="margin:0">Dəyişiklik modelin «' + esc(e.s) + '» vərəqindəki xanalara yazılır və bütün proqnoza ötürülür.</span></div>';
+      '<span class="ec-note" style="margin:0">Dəyişiklik modelin «' + esc(e.s) + '» vərəqindəki xanalara yazılır' +
+      (e.live ? ' və ondan asılı ' + e.reach + ' xanaya ötürülür.' : '. <b>Diqqət:</b> modeldə bu əmsallara istinad edən düstur yoxdur — dəyişiklik proqnoza təsir etməyəcək.') + '</span></div>';
     return h;
   }
   function d(t, v) { return '<div class="ec-d"><b>' + v + '</b><span>' + t + '</span></div>'; }
@@ -291,7 +331,7 @@
     var q = DQ.toLowerCase();
     var show = names.filter(function (n) { return !q || n.toLowerCase().indexOf(q) >= 0 || SRC[n].at.toLowerCase().indexOf(q) >= 0; });
     var filled = 0, total = 0;
-    names.forEach(function (n) { total++; var gs = SRC[n].gs, c = CFG.colForYear(gs, SRC[n].row, y); var id = c == null ? -1 : CFG.cellId(gs, SRC[n].row, c); if (id >= 0 && CFG.isEdited(id)) filled++; });
+    names.forEach(function (n) { total++; var gs = SRC[n].gs, c = colYear(gs, SRC[n].row, y); var id = c == null ? -1 : CFG.cellId(gs, SRC[n].row, c); if (id >= 0 && CFG.isEdited(id)) filled++; });
     var yrs = [];
     for (var yy = Y.lastActual - 1; yy <= Y.last; yy++) yrs.push(yy);
     var h = '<p class="lead">Faktiki məlumat gələndə onu burada göstərici üzrə daxil edin. Dəyər modelin öz xanasına yazılır, bütün proqnoz yenilənir və ekonometrik tənliklər yeni müşahidə ilə yenidən qiymətləndirilə bilər.</p>';
@@ -302,7 +342,7 @@
       '<button class="btn sm" id="ec-rerun" style="margin-left:auto">Tənlikləri yenidən qiymətləndir</button></div>';
     if (!show.length) return h + '<div class="ec-none">Uyğun göstərici tapılmadı.</div>';
     h += '<div class="ec-dgrid">' + show.map(function (n) {
-      var s = SRC[n], c = CFG.colForYear(s.gs, s.row, y), id = c == null ? -1 : CFG.cellId(s.gs, s.row, c);
+      var s = SRC[n], c = colYear(s.gs, s.row, y), id = c == null ? -1 : CFG.cellId(s.gs, s.row, c);
       var v = id >= 0 ? CFG.value(id) : null, ed = id >= 0 && CFG.isEdited(id);
       var prev = SERIES[n] ? SERIES[n][y - 1] : null;
       return '<div class="ec-dcard"><div class="h" title="' + esc(s.at) + '">' + esc(n) + '</div>' +
@@ -332,7 +372,7 @@
       '<span class="ec-src" id="ec-count"></span></div>';
     var list = filtered(res);
     h += '<div class="ec-list" id="ec-list">' + (list.length ? list.map(function (e) { return eqHTML(e, res); }).join('') : '<div class="ec-none">Seçimə uyğun tənlik yoxdur.</div>') + '</div>';
-    h += '<p class="ec-note" style="margin-top:14px">Qeyd: «Yeni qiymət» sütunu modelin cari faktiki məlumatı ilə sadə EKÜ (OLS) nəticəsidir. Nazirliyin əmsalları başqa vaxtda, başqa məlumat versiyası ilə qiymətləndirilib, ona görə fərq ola bilər — fərqin statistik ölçüsü «|Δ|/s.x.» sütunundadır (2-dən böyükdürsə, fərq təsadüfi deyil).</p>';
+    h += '<p class="ec-note" style="margin-top:14px">Hər tənlikdəki «təsir» nişanı əmsal dəyişdikdə neçə model xanasının yenidən hesablanacağını göstərir; «təsir yoxdur» olan ' + DATA.meta.docOnly + ' tənlik «eq» vərəqlərində sənəd kimi saxlanılır və hesablamaya girmir. Qeyd: «Yeni qiymət» sütunu modelin cari faktiki məlumatı ilə sadə EKÜ (OLS) nəticəsidir. Nazirliyin əmsalları başqa vaxtda, başqa məlumat versiyası ilə qiymətləndirilib, ona görə fərq ola bilər — fərqin statistik ölçüsü «|Δ|/s.x.» sütunundadır (2-dən böyükdürsə, fərq təsadüfi deyil).</p>';
     v.innerHTML = h;
     var cnt = $('#ec-count'); if (cnt) cnt.textContent = list.length + ' tənlik';
     wireEq(v, res);
@@ -343,6 +383,7 @@
       var r = res[e.id], f = flagsOf(e, r);
       if (FILTER === 'est' && !(r && r.ok)) return false;
       if (FILTER === 'ident' && !(r && r.identity)) return false;
+      if (FILTER === 'doc' && e.live) return false;
       if (FILTER === 'insig' && f.indexOf('insig') < 0) return false;
       if (FILTER === 'dw' && f.indexOf('dw') < 0) return false;
       if (FILTER === 'drift' && f.indexOf('drift') < 0) return false;
@@ -421,7 +462,7 @@
     v.addEventListener('change', function (e) {
       var inp = e.target.closest('[data-din]'); if (!inp) return;
       var n = inp.getAttribute('data-din'), s = SRC[n], y = dataYear();
-      var c = CFG.colForYear(s.gs, s.row, y), id = c == null ? -1 : CFG.cellId(s.gs, s.row, c);
+      var c = colYear(s.gs, s.row, y), id = c == null ? -1 : CFG.cellId(s.gs, s.row, c);
       if (id < 0) return;
       var val = parseNum(inp.value);
       if (val === null) { CFG.resetCell(id); CFG.changed(); SERIES = null; RES = null; CFG.toast(n + ' ilkin dəyərə qaytarıldı'); page(v); return; }
