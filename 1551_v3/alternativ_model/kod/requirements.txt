@@ -1,0 +1,45 @@
+# Macroeconomic_Model_v2 — MİİS §15.5.1 (FR1-FR12) təhvil paketi
+# Quraşdırma: pip install -r requirements.txt
+# İşə salınma: python3 run_all.py   (və ya bir mərhələ üçün: python3 run_all.py --stage FR05)
+#
+# Versiyalar DƏQİQ bağlanıb (`==`): paketin nəticələri bayt-bayt təkrar istehsal olunandır və
+# bu yalnız hesablama kitabxanalarının versiyası sabit qaldıqda təmin edilə bilər. Siyahı
+# `src/`, `notebooks/`, `tests/` və nəticə yazıcılarının FAKTİKİ idxallarından çıxarılıb;
+# istifadə olunmayan heç bir paket daxil edilməyib.
+
+# --- hesablama nüvəsi (src/ və dəftərlər birbaşa idxal edir) ---
+numpy==2.3.5
+pandas==2.2.3
+statsmodels==0.14.6
+scipy==1.16.3
+matplotlib==3.10.8
+openpyxl==3.1.5
+# openpyxl `lxml` mövcud olduqda XML-i onunla yazır. Yazıcı seçimi çıxışa TƏSİR EDİR:
+# lxml ilə yığılan `neticeler_15_5_1.xlsx` bayt-bayt təkrar istehsal olunur, lxml olmadan
+# openpyxl-in öz yazıcısı ad fəzalarını başqa yerdə yerləşdirir və fayl bayt səviyyəsində
+# fərqlənir. Ona görə lxml ixtiyari deyil — paketin təkrar istehsal olunma şərtidir.
+lxml==6.1.1
+
+# --- dəftərlərin icrası (run_all.py `jupyter nbconvert` çağırır) ---
+nbconvert==7.17.1
+nbformat==5.10.4
+jupyter-core==5.9.1
+jupyter-client==8.6.3
+nbclient==0.10.4
+ipykernel==7.1.0
+
+# Standart kitabxanadan istifadə olunan modullar quraşdırma tələb etmir və burada
+# göstərilmir: argparse, ast, contextlib, csv, dataclasses, datetime, hashlib, io, json,
+# math, os, pathlib, re, shutil, subprocess, sys, tempfile, typing, unicodedata, unittest,
+# warnings, zipfile, zlib.
+#
+# Testlər Python-un öz `unittest` modulu ilə işləyir — `pytest` TƏLƏB OLUNMUR:
+#     python3 -m unittest discover -s tests -p "test_*.py"
+#
+# Qəsdən DAXIL EDİLMƏYİB: arch, pyarrow — paketin heç bir hissəsi onları idxal etmir.
+#
+# İXTİYARİ (yalnız daxili builder üçün): `xlrd` — köhnə formatlı `.xls` fayllarını oxuyur və
+# YALNIZ açıq-mənbə panelini yenidən quran köməkçi skript icra olunanda lazımdır (dondurulmuş açıq-mənbə
+# panelinin mənbələrdən yenidən qurulması, `data_layer._xls_sheet`). Təhvil verilən paket
+# `data/public_sources_panel.csv` faylından oxuduğu üçün adi icrada TƏLƏB OLUNMUR:
+#     pip install xlrd==2.0.1   # yalnız panelin yenidən qurulması üçün

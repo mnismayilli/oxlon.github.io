@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nə əlavə olunub — MİİS §15.5.1</title>
+<meta name="description" content="Nə əlavə olunub — MİİS §15.5.1 makroiqtisadi proqnozlaşdırma modulu">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/katex/katex.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" data-sprite="miis-1551">
+  <!--
+    icons.svg — line icon sprite for the §15.5.1 site (blueprint §4).
+    Style: 24×24 box, 1.6 stroke set by CSS (.icon), fill none, stroke currentColor,
+    round caps and joins. Used small (15-18px), functional only.
+    build_site.py inlines this file into every page so <use href="#icon-…"> resolves
+    when the page is opened directly from disk (file://), where an external sprite
+    reference is blocked.
+  -->
+
+  <symbol id="icon-document" viewBox="0 0 24 24">
+    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+    <path d="M14 3v5h5"/>
+    <path d="M9 13h6M9 17h6"/>
+  </symbol>
+
+  <symbol id="icon-data" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="6" rx="7" ry="3"/>
+    <path d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/>
+    <path d="M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/>
+  </symbol>
+
+  <symbol id="icon-equation" viewBox="0 0 24 24">
+    <path d="M4 19c1.8 0 2.6-1.1 3-3l2.2-9.6C9.6 4.6 10.5 4 12 4"/>
+    <path d="M6 11h7"/>
+    <path d="M15 10.5l5 8M20 10.5l-5 8"/>
+  </symbol>
+
+  <symbol id="icon-chart" viewBox="0 0 24 24">
+    <path d="M4 4v15a1 1 0 0 0 1 1h15"/>
+    <path d="M8 16v-4M12 16v-7M16 16v-3M20 16V7"/>
+  </symbol>
+
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M4 12.6l5 5L20 6.5"/>
+  </symbol>
+
+  <symbol id="icon-warning" viewBox="0 0 24 24">
+    <path d="M10.3 3.9 2.5 17.4a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+    <path d="M12 9v4.5"/>
+    <path d="M12 17.2h.01"/>
+  </symbol>
+
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <path d="M12 3v11"/>
+    <path d="M7.5 10 12 14.5 16.5 10"/>
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+  </symbol>
+
+  <symbol id="icon-external-link" viewBox="0 0 24 24">
+    <path d="M14 4h6v6"/>
+    <path d="M20 4 11 13"/>
+    <path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/>
+  </symbol>
+
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <path d="M9.5 3h5"/>
+    <path d="M10.5 3v6.2L5.2 18a2 2 0 0 0 1.7 3h10.2a2 2 0 0 0 1.7-3l-5.3-8.8V3"/>
+    <path d="M7.7 14h8.6"/>
+  </symbol>
+
+  <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+</svg>
+<a class="skip" href="#main">Məzmuna keç</a>
+<button class="menu-button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+<svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>Mündəricat</button>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Saytın bölmələri">
+  <div class="sidebar-head">
+    <a class="mark" href="index.html">MİİS §15.5.1
+      <span class="mark-sub">Makroiqtisadi göstəricilər — proqnozlaşdırma modulu</span></a>
+  </div>
+  <div class="nav-group"><span class="nav-title">Ümumi</span><ul><li><a href="index.html">Ümumi baxış</a></li><li><a href="methodology.html">Metod</a></li><li><a href="data.html">Məlumat mənbələri</a></li><li><a href="notebooks.html">Jupyter dəftərləri</a></li></ul></div><div class="nav-group"><span class="nav-title">Funksional tələblər (§15.5.1)</span><ul><li><a href="fr/fr1.html"><span class="nav-num">FR1</span>ÜDM: artım, deflyator, struktur</a></li><li><a href="fr/fr2.html"><span class="nav-num">FR2</span>İstehsal strukturu, 11 sahə</a></li><li><a href="fr/fr3.html"><span class="nav-num">FR3</span>Fəaliyyət növləri üzrə struktur</a></li><li><a href="fr/fr4.html"><span class="nav-num">FR4</span>Məhsul proqnozları</a></li><li><a href="fr/fr5.html"><span class="nav-num">FR5</span>Neftin qiyməti</a></li><li><a href="fr/fr5b.html"><span class="nav-num">FR5b</span>Neft-qaz bloku: həcm × qiymət</a></li><li><a href="fr/fr6.html"><span class="nav-num">FR6</span>İnvestisiyalar və fiskal blok</a></li><li><a href="fr/fr7.html"><span class="nav-num">FR7</span>Xarici ticarət</a></li><li><a href="fr/fr8.html"><span class="nav-num">FR8</span>Gəlirlər, əmək haqqı, məşğulluq</a></li><li><a href="fr/fr9.html"><span class="nav-num">FR9</span>İstehlak qiymətləri</a></li><li><a href="fr/fr10.html"><span class="nav-num">FR10</span>Valyuta məzənnəsi</a></li><li><a href="fr/fr11.html"><span class="nav-num">FR11</span>Ticarət və gəlir balansları</a></li><li><a href="fr/fr12.html"><span class="nav-num">FR12</span>Tədiyə balansı</a></li></ul></div><div class="nav-group"><span class="nav-title">Əlavələr</span><ul><li><a class="current" href="additions.html">Nə əlavə olunub</a><ul class="nav-sections"><li><a href="#intro">Əhatə</a></li><li><a href="#additions">Əlavələr</a></li><li><a href="#collected">Bizim topladığımız məlumat</a></li></ul></li><li><a href="fr/fr13.html"><span class="nav-num nav-num-add">FR13</span>Əlavə — Nazirliyin təqdim etdiyi tənliklər sisteminin həlli</a></li></ul></div><div class="nav-group"><span class="nav-title">Təhvil</span><ul><li><a href="equations.html">Tənliklər kataloqu</a></li><li><a href="response.html">İcmala cavab</a></li><li><a href="register.html">Tələb registri</a></li><li><a href="results.html">Nəticələr və fayllar</a></li></ul></div>
+</nav>
+<main class="content" id="main">
+<h1>Nə əlavə olunub</h1>
+<p class="page-kicker">§15.5.1-in on iki funksional tələbindən kənarda təhvil verilmiş iş — ayrıca səhifədə saxlanılır ki, heç vaxt onların bir hissəsi kimi sayılmasın</p>
+
+<h2 id="intro"><a class="anchor" href="#intro" aria-hidden="true">#</a><span class="section-num">1</span>Əhatə</h2>
+<p>Spesifikasiya on iki funksional tələb müəyyən edir. Həmin on iki tələb — tələb səhifələridir və registr yalnız onları qiymətləndirir. Bunlardan başqa on iş də təhvil verilib; onları nə on iki cümlə, nə də onların müqavilə alt-tapşırıq siyahıları istəmir. Bir qismi icmal bəndi xahiş etdiyi üçün, bir qismi isə onlarsız tələbi dürüst qarşılamaq mümkün olmadığı üçün görülüb. Onlar tələb siyahısına qarışdırılmır, burada sadalanır ki, bu saytda tələb olmayan heç nə tələb kimi təqdim edilməsin. Sətirlər təhvil sırası ilədir, bu isə sıralama deyil.</p>
+<p>Təsnifat hər iki istiqamətdə yoxlanılır: müqavilənin istədiyi iş də burada dayana bilməz. Təhvil paketinin yenilənməsindən sonra bir sətir bu siyahını tərk edib; cədvəlin altındakı qeyd hansı sətrin və niyə getdiyini deyir.</p>
+<h2 id="additions"><a class="anchor" href="#additions" aria-hidden="true">#</a><span class="section-num">2</span>Əlavələr</h2>
+<div class="table-wrap"><table class="tbl"><thead><tr><th class="c-text">Əlavə</th><th class="c-wide">Nəticə</th><th class="c-text">Harada</th></tr></thead><tbody><tr><td class="c-text"><strong>E1 — Nazirlik spesifikasiyası işlək ssenari kimi.</strong> Şöbənin öz tənlik kataloqu bu paketin içində ikinci spesifikasiya kimi oxunur və həll edilir — eyni məlumat və eyni ekzogen yollar üzərində.</td><td class="c-wide">Alındığı kimi <span class="val">92</span> sətir; <span class="val">91</span>-i oxunur, <span class="val">81</span>-i canlı işə düşür. <span class="val">7</span> tənlik spesifikasiyanın təyin etmədiyi xəta korreksiyası səviyyələrini, <span class="val">3</span> tənlik isə təyin olunmamış dəyişənləri gözləyir; <span class="val">1</span> tənlik sintaksis deyil, mətndir. Ssenari <span class="val">16</span> göstərici üzrə <span class="val">80</span> proqnoz sətri və <span class="val">164</span> sınaq sətri nəşr edir — öz mənbə etiketi altında, heç vaxt mərkəzi yolda deyil.</td><td class="c-text"><a href="fr/fr13.html">Nazirliyin tənliklər sisteminin həlli</a> · <a href="equations.html#ministry">tənliklər kataloqu</a></td></tr><tr><td class="c-text"><strong>E2 — fiskal blok: məlumat qatı və üç canlı ötürülmə kanalı.</strong> Büdcə və investisiya proqramı məlumatı ümumiyyətlə modulda yox idi; indi etiket təsdiqi ilə yüklənir və təsir etdiyi yerlərə bağlanır.</td><td class="c-wide">Nazirlik iş kitabının fiskal vərəqi <span class="val val-year">2010</span>–<span class="val val-year">2026</span> illəri üzrə <span class="val">244</span> sıra, investisiya proqramı vərəqi isə daha <span class="val">18</span> sıra daşıyır. Üç kanal canlıdır: büdcənin əsaslı xərcləri dövlət investisiyasına, iki fiskal göstərici sahə sürücülərinə, sosial müdafiə və pensiya axınları isə ev təsərrüfatlarının transfertlərinə.</td><td class="c-text"><a href="fr/fr6.html">İnvestisiyalar və fiskal blok</a></td></tr><tr><td class="c-text"><strong>E3 — sınaq dəftəri təhvil verilən artefakt kimi.</strong> Yarışa girən hər namizəd dəftərə yazılır, uduzanlar da daxil olmaqla; beləliklə bacarıq iddiası yoxlanıla bilər və məğlubiyyət səssizcə atıla bilməz.</td><td class="c-wide"><span class="val">169</span> sıra və <span class="val">113</span> model etiketi üzrə <span class="val">6 747</span> sətir. Uduzmuş namizədlər silinmir, nəşr olunur — bu saytdakı mənfi hökmlərin müsbətlərlə eyni fayla qarşı oxuna bilməsinin səbəbi budur.</td><td class="c-text"><span class="file-held" title="təhvil paketi · 2_neticeler/validation_backtest.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>2_neticeler/validation_backtest.csv</span> · <a href="results.html#contract">Nəticələr və fayllar</a></td></tr><tr><td class="c-text"><strong>E4 — istehsal metodu ilə tələb nüvəsinin fərqi: uzlaşdırılmır, nəşr olunur.</strong> ÜDM-in iki oxunuşu quruluşca üst-üstə düşməyə məcbur edilmir.</td><td class="c-wide">Aralarındakı fərq öz sırası kimi nəşr olunur və tolerantlıq <span class="val">5</span> proqnoz ilindən <span class="val">4</span>-ində pozulur. Xəbərdarlıq çap olunur və bunu gizlətmək üçün heç bir sıra düzəldilmir. E11 eyni çatışmazlığı ikinci üsulla ölçür və ikisi üst-üstə düşür.</td><td class="c-text"><a href="fr/fr1.html">ÜDM: artım, deflyator, struktur</a></td></tr><tr><td class="c-text"><strong>E5 — dinamiklik göstəricisi, hər sıra üçün nəşr olunur.</strong> Proqnoz yolu dəqiq ola və eyni zamanda düz qala bilər, ona görə dəyişkənlik ölçülür və xəta sətirlərinin yanında dəftərə yazılır.</td><td class="c-wide">Proqnozun faktiki dəyişkənliyə nisbəti <span class="val">43</span> sıra üçün öz model etiketi altında qeyd olunur. Daxili qəbul zolağında nüvənin <span class="val">7</span> sırasından <span class="val">1</span>-i, sahələrin <span class="val">24</span> sırasından isə <span class="val">1</span>-i zolağın içindədir — nəticə keçid kimi təqdim edilmir, olduğu kimi deyilir.</td><td class="c-text"><span class="file-held" title="təhvil paketi · 2_neticeler/validation_backtest.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>2_neticeler/validation_backtest.csv</span></td></tr><tr><td class="c-text"><strong>E7 — etalon müqayisə.</strong> Mərkəzi yolların qarşı oxunacağı nəşr olunmuş xarici proqnoz, bir vintajda dondurulmuş şəkildə.</td><td class="c-wide">Yalnız oxunan <span class="val">15</span> sətirlik çıxarış; tərifcə uyğun gələn üç sıra ilə məhdudlaşır, zolaqsız nəşr olunur və quruluşca fərziyyə dəstinə düşə bilmir: ona qarşı müqayisə etmək olar, ondan proqnoz qurmaq olmaz.</td><td class="c-text"><a href="fr/fr9.html">İstehlak qiymətləri</a> · <span class="file-held" title="təhvil paketi · 4_melumat/reference_forecasts.json"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>4_melumat/reference_forecasts.json</span></td></tr><tr><td class="c-text"><strong>E8 — tələb registri və mənfi sübut.</strong> On iki cümlə atomik alt-tələblərə ayrıldı və hər biri iki istiqamətdə izlənildi: onu qarşılayan məlumata və onu icra edən modula.</td><td class="c-wide"><span class="val">58</span> atomik sətir; hər biri kəmiyyəti nəyin daşıdığını, nəyin çatmadığını və nəyin onu tamamlayacağını öz sözü ilə yazır. Kəmiyyətin ümumiyyətlə olmaması yalnız mənbə materialının hər üç dilində anlayış üzrə axtarışdan və namizəd vərəqlərin xana səviyyəsində təkrar oxunuşundan sonra qeyd olunur; sübut duruşdursa, sətir onu bağlayacaq məlumat sorğusunu adlandırır.</td><td class="c-text"><a href="register.html">Tələb registri</a></td></tr><tr><td class="c-text"><strong>E9 — icmala cavab.</strong> 14.08.2026 tarixli icmalın hər bəndi bir yerdə və eyni quruluşda cavablandırılır: nə deyilib, nə edilib, ölçülmüş nəticə nə olub.</td><td class="c-wide">Hər bəndin nəticəsi iddia edilmir, canlı çıxış fayllarından oxunur; sınanıb uduzan variantlar isə bunu açıq yazır.</td><td class="c-text"><a href="response.html">İcmala cavab</a></td></tr><tr><td class="c-text"><strong>E10 — təkrar istehsal bir əmrlə.</strong> Bir əmr təhvildəki hər rəqəmi giriş məlumatından yenidən qurur, ona görə sayt və iş kitabı modeldən sürüşə bilmir.</td><td class="c-wide">Asılılıq sırası ilə <span class="val">15</span> dəftər üzrə <span class="val">16</span> mərhələ, üstəgəl iş kitabının və JSON faylının yenidən yığılması. Boru xətti köhnə girişlərlə davam etmir, ilk uğursuz mərhələdə dayanır; ardıcıl iki tam icra bayt-bayt eynidir. Onu <span class="val">36</span> oxuyucu yoxlaması, <span class="val">8</span> müqavilə yoxlaması, <span class="val">7</span> reyestr yoxlaması və <span class="val">9</span> adlandırılmış ekonometrik blok qoruyur; test dəsti təhvil paketi ilə birlikdə gedir, ona görə yoxlamalar yalnız standart kitabxana ilə təhvil verilmiş fayllara qarşı təkrarlana bilər.</td><td class="c-text"><span class="file-held" title="təhvil paketi · 3_model/run_all.py"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>3_model/run_all.py</span> · <a href="methodology.html">Metod</a></td></tr><tr><td class="c-text"><strong>E11 — resurslar–istifadə balansı, açıq qayda ilə bağlanır.</strong> İcmal soruşdu ki, təklif və tələb necə tarazlaşdırılır. Cavab verməyə xərc hesabı yox idi, ona görə o quruldu: 2013–2030 üzrə ÜDM-in tam istifadə hesabı, mal və xidmət eyniliyi hər il bağlanmaqla.</td><td class="c-wide">Eynilik hər 18 ildə duruşdurur — tarixdə mənbənin öz yuvarlaqlaşdırma həddində, proqnozda maşın dəqiqliyində — və paket səviyyəsində təhvil verilmiş fayla qarşı yenidən yoxlanılır. Qalığı hansı maddənin daşıdığı mühakimə ilə deyil, çap olunan sınaqla həll edilir: altı namizədə və bir mütənasib variantla qalıq verilir və nəzərdə tutulan pay həmin payın 2013–2025-də qaldığı aralıqdan çıxırsa, namizəd rədd olunur. Bir namizəd sağ qalır. Bağlanışdan əvvəlki fərq (2030-cu ildə ÜDM-in <span class="val">11,7</span> %-i) və hər iki rədd edilmiş bağlanış rəqəmləri ilə nəşr olunur.</td><td class="c-text"><a href="fr/fr1.html#fr1b">Resurslar–istifadə balansı</a> · <span class="file-held" title="təhvil paketi · 3_model/notebooks/FR01b.ipynb"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-flask"/></svg>FR01b.ipynb</span></td></tr></tbody></table></div>
+<p><strong>Bu siyahını nə tərk etdi.</strong> E6 nəticələrin iş kitabı idi və o, on iki tələb cümləsi müqavilənin bütünü kimi oxunduğu müddətdə burada sadalanırdı. Onlar müqavilənin bütünü deyil. §15.5.1-in 5-ci alt-tapşırığı on iki tələbin hər birinin altında eyni sözlərlə tələb edir ki, alınan nəticələr Excel (xlsx) və json formatında saxlanılsın — deməli, həm iş kitabı, həm də nəticələrin JSON faylı müqavilədir, heç biri əlavə deyil. Hər ikisi təhvil verilən nəticələrlə birlikdə <a href="results.html#workbook">nəticələr səhifəsində</a> sadalanır; məzmunları dəyişməyib, yalnız təsnifatı dəyişib. E6 kodu təkrar işlədilmir və qalan kodlar öz nömrələrini saxlayır ki, əvvəlki siyahını əlində tutan oxucu hansı sətrin hara keçdiyini görə bilsin.</p>
+<h2 id="collected"><a class="anchor" href="#collected" aria-hidden="true">#</a><span class="section-num">3</span>Bizim topladığımız məlumat</h2>
+<p>Bəzi tələbləri onlarla birlikdə verilən fayllardan qarşılamaq mümkün olmadı. Belə hallarda məlumat nəşr olunmuş mənbələrdən əldə edildi, mənşəyi fayl üzrə deyil, sıra üzrə qeyd olundu və götürülmə tarixi ilə saxlanıldı. Məlumat toplamaq özlüyündə nəticə deyil, ona görə son sütun hər toplamanın nəşr olunan rəqəmlərdə nəyi dəyişdiyini yazır — pisə doğru dəyişdiyi halları da daxil olmaqla.</p>
+<div class="table-wrap"><table class="tbl tbl-dense"><thead><tr><th class="c-text">Mənbə</th><th class="c-num">Sıra</th><th class="c-num">Əhatə</th><th class="c-text">Nəyə xidmət edir</th><th class="c-wide">Nəyi dəyişdi</th></tr></thead><tbody><tr><td class="c-text">Dövlət Gömrük Komitəsi, illik bülletenlər, cədvəl 7 (enerji məhsulları mövqeləri)</td><td class="c-num"><span class="val">18</span></td><td class="c-num"><span class="val val-year">2016</span>–<span class="val val-year">2025</span></td><td class="c-text">Xarici ticarət</td><td class="c-wide">İcmalın adlandırdığı ticarət məlumatı boşluğunu bağladı. Pəncərənin əvvəlindəki əhatə kəsilməsi hamarlanmır, sənədləşdirilir — səviyyə sıçrayışı birləşdirilmiş yolun içində gizlənmir, görünür.</td></tr><tr><td class="c-text">Mərkəzi Bank, monetar göstəricilər, cədvəl 2.16</td><td class="c-num"><span class="val">2</span></td><td class="c-num"><span class="val val-year">1995</span>–<span class="val val-year">2025</span></td><td class="c-text">Valyuta məzənnəsi</td><td class="c-wide">Uyğunluğun yaxşılaşması deyil, hesab düzəlişi: statutar anlayış dövrün sonuna deyil, orta illik məzənnədir və devalvasiya illərində ikisi ciddi fərqlənir. Avro məzənnəsi artıq çarpaz məzənnə kimi qurulmur, birbaşa oxunur.</td></tr><tr><td class="c-text">Statistika Komitəsi, milli hesablar, cədvəl 013en</td><td class="c-num"><span class="val">93</span></td><td class="c-num"><span class="val val-year">2005</span>–<span class="val val-year">2025</span></td><td class="c-text">İstehsal strukturu</td><td class="c-wide">Aralıq istehlak törədilmir, birbaşa oxunur. Demək olar ki, hər sahə-il dəyişməyib; fərqlənən bir neçəsi uzlaşdırılıb yox edilmir, istisna kimi nəşr olunur. Törədilən nisbət beş sahədə dəyişdi.</td></tr><tr><td class="c-text">Statistika Komitəsi, sənaye cədvəli 018en və kənd təsərrüfatı cədvəlləri 1.46, 1.47</td><td class="c-num"><span class="val">11</span></td><td class="c-num"><span class="val val-year">1985</span>–<span class="val val-year">2024</span></td><td class="c-text">Məhsul proqnozları</td><td class="c-wide">Statutar şablonda sınıq istinadlarla dondurulmuş <span class="val">11</span> məhsul sətrindən <span class="val">10</span>-i bərpa olundu; hamısı təsadüfi gəzişməni üstələyir və <span class="val">480</span> yeni sınaq sətri əlavə edir. Bir sətir qəsdən bərpa olunmadı: şablonun vahidi ilə Statistika Komitəsinin vahidi fərqli ölçülərdir.</td></tr><tr><td class="c-text">Statistika Komitəsi, milli hesablar, cədvəl 027en</td><td class="c-num"><span class="val">15</span></td><td class="c-num"><span class="val val-year">1993</span>–<span class="val val-year">2025</span></td><td class="c-text">ÜDM və xərclər</td><td class="c-wide">Bu cədvəl ÜDM-in <em>istifadə</em> hesabıdır. Ondan üç sətir oxunurdu — dövlət idarələrinin son istehlakı, təhvil verilən heç bir faylda olmayan göstərici, ilk dəfə bu yolla modula girdi. Cədvəlin qalanının oxunması isə E11-i mümkün etdi və mövcud olmadığı ortaya çıxan bir məlumat boşluğunu bağladı: ehtiyatların dəyişməsi heç bir mənbədə yoxdur kimi qeyd olunmuşdu, halbuki 1993-cü ildən elə bu cədvəldədir.</td></tr><tr><td class="c-text">Statistika Komitəsi, əmək cədvəlləri 4.5–4.8 və 2.12</td><td class="c-num"><span class="val">120</span></td><td class="c-num"><span class="val val-year">2005</span>–<span class="val val-year">2024</span></td><td class="c-text">Gəlirlər, əmək haqqı</td><td class="c-wide">Fəaliyyət növü × mülkiyyət paneli; əvvəllər yalnız sınaqdan keçməmiş trend qaydası olan yerdə pay modelini mümkün etdi. Panel modeli həmin qaydanı hər pay sırasında təxminən iki dəfə üstələyir, lakin yenə də təsadüfi gəzişməni keçmir, ona görə yolu təsadüfi gəzişmə saxlayır və bacarıq sıfır göstərilir.</td></tr><tr><td class="c-text">opendata.az, əsas kapitala investisiyalar maliyyələşmə mənbəyi üzrə</td><td class="c-num"><span class="val">3</span></td><td class="c-num"><span class="val val-year">1995</span>–<span class="val val-year">2024</span></td><td class="c-text">İnvestisiyalar</td><td class="c-wide">Müəssisələrin öz vəsaiti sırasını üç müşahidədən iyirmi altıya uzatdı; üst-üstə düşən hissədə miqyaslama olmadan dəqiq uyğun gəlir. Mənfi hökmü mümkün edən də budur: icmalın istədiyi ikinci dövlət investisiyası termi uzun nümunədə sınandı və uduzdu.</td></tr><tr><td class="c-text">Mərkəzi Bankın ödəniş statistikası və Nazirliyin tədiyə balansı iş kitabı</td><td class="c-num"><span class="val">4</span></td><td class="c-num"><span class="val val-year">1996</span>–<span class="val val-year">2025</span></td><td class="c-text">Tədiyə balansı</td><td class="c-wide">Pul baratları qalığın içində oturmaq əvəzinə öz sırası kimi nəşr olunur; bir gəlir maddəsində isə əvvəllər heç bir model etalonu üstələməzkən indi üstələyən model var.</td></tr><tr><td class="c-text">Statistika Komitəsi, milli hesablar, cədvəl 010en</td><td class="c-num"><span class="val">2</span></td><td class="c-num"><span class="val val-year">1990</span>–<span class="val val-year">2025</span></td><td class="c-text">Valyuta məzənnəsi</td><td class="c-wide">Yeni giriş deyil, müstəqil təsdiq: son faktiki ildə Mərkəzi Bankın sırası ilə üst-üstə düşür — yuxarıdakı məzənnə düzəlişinin ikinci mühakiməyə ehtiyac olmadan aparılmasının səbəbi budur.</td></tr></tbody></table></div>
+<p>Yuxarıdakı hər sətrin mənşəyi sıra-sıra qeyd olunur: mənbə faylı, götürülmə tarixi və əhatə pəncərəsi ilə. Həmin dəftəri <a href="data.html">məlumat səhifəsi</a> daşıyır və bu panellərin Nazirliyin öz iş kitabından necə ayrı saxlandığını izah edir. E7-də təsvir olunan etalon proqnoz bu cədvəldə deyil: o, toplanmış məlumat yox, başqasının nəşr etdiyi rəqəmlərin dondurulmuş çıxarışıdır və quruluşca yalnız oxunandır.</p>
+<footer class="site-footer">
+  <span class="stamp-row">Buraxılış v3.7 · yığılıb 2026-08-26 · boru xətti möhürü <code>21d4c3f2afa8</code></span>
+  <span class="stamp-row">Bu səhifədəki hər rəqəm yığım anında bu beş fayldan oxunur:
+    <code>2_neticeler/forecast_long.csv</code>, <code>2_neticeler/equations_catalog.csv</code>,
+    <code>2_neticeler/validation_backtest.csv</code>, <code>2_neticeler/series_dictionary.csv</code>,
+    <code>2_neticeler/assumptions.csv</code>. Möhür həmin beş faylın md5 cəmidir.</span>
+</footer>
+</main>
+</div>
+<script src="assets/plotly.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

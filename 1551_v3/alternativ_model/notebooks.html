@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jupyter dəftərləri — Məlumat mənbələri — MİİS §15.5.1</title>
+<meta name="description" content="Məlumat mənbələri — MİİS §15.5.1 makroiqtisadi proqnozlaşdırma modulu">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/katex/katex.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" data-sprite="miis-1551">
+  <!--
+    icons.svg — line icon sprite for the §15.5.1 site (blueprint §4).
+    Style: 24×24 box, 1.6 stroke set by CSS (.icon), fill none, stroke currentColor,
+    round caps and joins. Used small (15-18px), functional only.
+    build_site.py inlines this file into every page so <use href="#icon-…"> resolves
+    when the page is opened directly from disk (file://), where an external sprite
+    reference is blocked.
+  -->
+
+  <symbol id="icon-document" viewBox="0 0 24 24">
+    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+    <path d="M14 3v5h5"/>
+    <path d="M9 13h6M9 17h6"/>
+  </symbol>
+
+  <symbol id="icon-data" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="6" rx="7" ry="3"/>
+    <path d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/>
+    <path d="M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/>
+  </symbol>
+
+  <symbol id="icon-equation" viewBox="0 0 24 24">
+    <path d="M4 19c1.8 0 2.6-1.1 3-3l2.2-9.6C9.6 4.6 10.5 4 12 4"/>
+    <path d="M6 11h7"/>
+    <path d="M15 10.5l5 8M20 10.5l-5 8"/>
+  </symbol>
+
+  <symbol id="icon-chart" viewBox="0 0 24 24">
+    <path d="M4 4v15a1 1 0 0 0 1 1h15"/>
+    <path d="M8 16v-4M12 16v-7M16 16v-3M20 16V7"/>
+  </symbol>
+
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M4 12.6l5 5L20 6.5"/>
+  </symbol>
+
+  <symbol id="icon-warning" viewBox="0 0 24 24">
+    <path d="M10.3 3.9 2.5 17.4a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+    <path d="M12 9v4.5"/>
+    <path d="M12 17.2h.01"/>
+  </symbol>
+
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <path d="M12 3v11"/>
+    <path d="M7.5 10 12 14.5 16.5 10"/>
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+  </symbol>
+
+  <symbol id="icon-external-link" viewBox="0 0 24 24">
+    <path d="M14 4h6v6"/>
+    <path d="M20 4 11 13"/>
+    <path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/>
+  </symbol>
+
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <path d="M9.5 3h5"/>
+    <path d="M10.5 3v6.2L5.2 18a2 2 0 0 0 1.7 3h10.2a2 2 0 0 0 1.7-3l-5.3-8.8V3"/>
+    <path d="M7.7 14h8.6"/>
+  </symbol>
+
+  <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+</svg>
+<a class="skip" href="#main">Məzmuna keç</a>
+<button class="menu-button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+<svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>Mündəricat</button>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Saytın bölmələri">
+  <div class="sidebar-head">
+    <a class="mark" href="index.html">MİİS §15.5.1
+      <span class="mark-sub">Makroiqtisadi göstəricilər — proqnozlaşdırma modulu</span></a>
+  </div>
+  <div class="nav-group"><span class="nav-title">Ümumi</span><ul><li><a href="index.html">Ümumi baxış</a></li><li><a href="methodology.html">Metod</a></li><li><a href="data.html">Məlumat mənbələri</a></li><li><a class="current" href="notebooks.html">Jupyter dəftərləri</a></li></ul></div><div class="nav-group"><span class="nav-title">Funksional tələblər (§15.5.1)</span><ul><li><a href="fr/fr1.html"><span class="nav-num">FR1</span>ÜDM: artım, deflyator, struktur</a></li><li><a href="fr/fr2.html"><span class="nav-num">FR2</span>İstehsal strukturu, 11 sahə</a></li><li><a href="fr/fr3.html"><span class="nav-num">FR3</span>Fəaliyyət növləri üzrə struktur</a></li><li><a href="fr/fr4.html"><span class="nav-num">FR4</span>Məhsul proqnozları</a></li><li><a href="fr/fr5.html"><span class="nav-num">FR5</span>Neftin qiyməti</a></li><li><a href="fr/fr5b.html"><span class="nav-num">FR5b</span>Neft-qaz bloku: həcm × qiymət</a></li><li><a href="fr/fr6.html"><span class="nav-num">FR6</span>İnvestisiyalar və fiskal blok</a></li><li><a href="fr/fr7.html"><span class="nav-num">FR7</span>Xarici ticarət</a></li><li><a href="fr/fr8.html"><span class="nav-num">FR8</span>Gəlirlər, əmək haqqı, məşğulluq</a></li><li><a href="fr/fr9.html"><span class="nav-num">FR9</span>İstehlak qiymətləri</a></li><li><a href="fr/fr10.html"><span class="nav-num">FR10</span>Valyuta məzənnəsi</a></li><li><a href="fr/fr11.html"><span class="nav-num">FR11</span>Ticarət və gəlir balansları</a></li><li><a href="fr/fr12.html"><span class="nav-num">FR12</span>Tədiyə balansı</a></li></ul></div><div class="nav-group"><span class="nav-title">Əlavələr</span><ul><li><a href="additions.html">Nə əlavə olunub</a></li><li><a href="fr/fr13.html"><span class="nav-num nav-num-add">FR13</span>Əlavə — Nazirliyin təqdim etdiyi tənliklər sisteminin həlli</a></li></ul></div><div class="nav-group"><span class="nav-title">Təhvil</span><ul><li><a href="equations.html">Tənliklər kataloqu</a></li><li><a href="response.html">İcmala cavab</a></li><li><a href="register.html">Tələb registri</a></li><li><a href="results.html">Nəticələr və fayllar</a></li></ul></div>
+</nav>
+<style>
+.nb-tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+.nb-tbl th,.nb-tbl td{padding:9px 10px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top}
+.nb-tbl thead th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#6b7280}
+.nb-tbl td.nb-code{font-weight:700;white-space:nowrap}
+.nb-tbl td.nb-n{text-align:right;white-space:nowrap;color:#6b7280;font-variant-numeric:tabular-nums}
+.nb-sub{color:#6b7280;font-size:12.5px;margin-top:2px;line-height:1.45}
+.nb-dl{white-space:nowrap;font-size:13px}
+.nb-steps li{margin:6px 0;line-height:1.6}
+</style><main class="content" id="main">
+<h1>Jupyter dəftərləri</h1>
+<p class="lead">Alternativ modelin bütün hesablamaları 15 Jupyter dəftərində aparılır — hər funksional tələb (FR) üçün bir dəftər.
+Hər dəftəri brauzerdə oxumaq olar (bütün kod, cədvəl və qrafiklər nəticələri ilə birlikdə saxlanılıb) və ya <code>.ipynb</code> faylını yükləyib
+Jupyter-də işə salmaq olar.</p>
+
+<table class="nb-tbl">
+<thead><tr><th>Kod</th><th>Dəftər</th><th>Kod xanası</th><th>Ölçü</th><th>Yüklə</th></tr></thead>
+<tbody><tr><td class="nb-code">FR01</td><td><a href="notebooks/html/FR01.html">ÜDM: real artım, deflyator, sektor və mülkiyyət strukturu</a><div class="nb-sub">ÜDM-in real artım tempinin, deflyator indeksinin, dövlət və qeyri-dövlət sektorunun, neft və qeyri-neft</div></td><td class="nb-n">45</td><td class="nb-n">596 KB</td><td><a class="nb-dl" href="notebooks/FR01.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR01b</td><td><a href="notebooks/html/FR01b.html">Resurslar–istifadə balansı: ÜDM-in xərc metodu və məcmu tələb–təklif tarazlığı</a><div class="nb-sub">ÜDM-in istifadə (xərc) hesabının qurulması və mal-xidmət bazarının tarazlıq şərtinin</div></td><td class="nb-n">17</td><td class="nb-n">303 KB</td><td><a class="nb-dl" href="notebooks/FR01b.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR02</td><td><a href="notebooks/html/FR02.html">ÜDM istehsal strukturu (11 sahə) və qeyri-neft ÜDM-in aşağıdan-yuxarı hesablanması</a><div class="nb-sub">Ümumi buraxılışın, aralıq istehlakın və əlavə dəyərin 11 iqtisadi sahə üzrə artım və deflyator</div></td><td class="nb-n">40</td><td class="nb-n">661 KB</td><td><a class="nb-dl" href="notebooks/FR02.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR03</td><td><a href="notebooks/html/FR03.html">ÜDM-in sahə strukturu (fəaliyyət növləri üzrə birləşdirilmiş görünüş)</a><div class="nb-sub">ÜDM-in sahə (fəaliyyət) strukturunun — kənd təsərrüfatı, sənaye (neft-qaz mədənçıxarması və qeyri-neft</div></td><td class="nb-n">18</td><td class="nb-n">225 KB</td><td><a class="nb-dl" href="notebooks/FR03.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR04</td><td><a href="notebooks/html/FR04.html">Əsas məhsul növlərinin natural göstəriciləri</a><div class="nb-sub">Əsas məhsul növlərinin sahələr üzrə natural göstəricilərinin proqnozlaşdırılması, o cümlədən aksizli məhsullar (MİİS §15.5.1, bənd 2.4.1.4.).</div></td><td class="nb-n">29</td><td class="nb-n">260 KB</td><td><a class="nb-dl" href="notebooks/FR04.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR05</td><td><a href="notebooks/html/FR05.html">Neftin dünya bazarında qiymətinin proqnozlaşdırılması</a><div class="nb-sub">Tələb (MİİS §15.5.1, FR5). «Neftin dünya bazarında qiymətinin proqnozlaşdırılması.»</div></td><td class="nb-n">16</td><td class="nb-n">323 KB</td><td><a class="nb-dl" href="notebooks/FR05.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR05b</td><td><a href="notebooks/html/FR05b.html">Neft-qaz bloku: hasilat həcmləri, ixrac qiymətləri və sektorun əlavə dəyəri</a><div class="nb-sub">Neft-qaz sektorunun real artımı və deflyatoru bu dəftərdə həcm və qiymət kəmiyyətlərindən</div></td><td class="nb-n">24</td><td class="nb-n">218 KB</td><td><a class="nb-dl" href="notebooks/FR05b.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR06</td><td><a href="notebooks/html/FR06.html">İnvestisiyalar və fiskal ötürücü blok</a><div class="nb-sub">İnvestisiyaların strukturu və real artım sürətlərinin proqnozlaşdırılması (MİİS §15.5.1, bənd</div></td><td class="nb-n">42</td><td class="nb-n">540 KB</td><td><a class="nb-dl" href="notebooks/FR06.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR07</td><td><a href="notebooks/html/FR07.html">Xarici ticarət və tədiyə balansı</a><div class="nb-sub">Mal və xidmətlərin idxal-ixracının əsas göstəriciləri, strukturu və tədiyə balansının</div></td><td class="nb-n">39</td><td class="nb-n">747 KB</td><td><a class="nb-dl" href="notebooks/FR07.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR08</td><td><a href="notebooks/html/FR08.html">Əhalinin gəlirləri və xərcləri</a><div class="nb-sub">Əhalinin pul gəlirlərinin, xərclərinin və onların artım sürətlərinin təhlili və proqnozlaşdırılması</div></td><td class="nb-n">53</td><td class="nb-n">478 KB</td><td><a class="nb-dl" href="notebooks/FR08.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR09</td><td><a href="notebooks/html/FR09.html">İnflyasiya (İstehlak Qiymətləri İndeksi)</a><div class="nb-sub">İstehlak qiymətlərinin orta illik indeksinin (inflyasiya) təhlili və proqnozlaşdırılması</div></td><td class="nb-n">35</td><td class="nb-n">365 KB</td><td><a class="nb-dl" href="notebooks/FR09.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR10</td><td><a href="notebooks/html/FR10.html">Milli valyutanın ABŞ dollarına və avroya nisbətdə orta illik məzənnəsinin təhlili və proqnazlaşdırılması</a><div class="nb-sub">Milli valyutanın ABŞ dollarına və avroya nisbətdə orta illik məzənnəsinin təhlili və proqnozlaşdırılması (MİİS §15.5.1, bənd 2.4.1.5.-7.).</div></td><td class="nb-n">20</td><td class="nb-n">256 KB</td><td><a class="nb-dl" href="notebooks/FR10.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR11</td><td><a href="notebooks/html/FR11.html">Ticarət-tədiyə strukturu</a><div class="nb-sub">Ticarət və tədiyə balansına görə idxal-ixracın əsas göstəriciləri, struktur təhlili və</div></td><td class="nb-n">28</td><td class="nb-n">483 KB</td><td><a class="nb-dl" href="notebooks/FR11.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR12</td><td><a href="notebooks/html/FR12.html">Tədiyə balansının təhlili və proqnozlaşdırılması</a><div class="nb-sub">Tədiyə balansının təhlili və proqnozlaşdırılması (MİİS §15.5.1, bənd 2.4.1.13.-14.; hüquqi əsas —</div></td><td class="nb-n">21</td><td class="nb-n">512 KB</td><td><a class="nb-dl" href="notebooks/FR12.ipynb" download>.ipynb</a></td></tr><tr><td class="nb-code">FR13</td><td><a href="notebooks/html/FR13_nazirlik_spes.html">«Nazirlik spesifikasiyası» işlək ssenari kimi</a><div class="nb-sub">Bu dəftər Nazirliyin öz makroekonometrik nümunə-modelinin 92 sətirlik tənlik kataloqunu</div></td><td class="nb-n">17</td><td class="nb-n">115 KB</td><td><a class="nb-dl" href="notebooks/FR13_nazirlik_spes.ipynb" download>.ipynb</a></td></tr></tbody></table>
+
+<h2>Dəftərləri öz kompüterinizdə işə salmaq</h2>
+<ol class="nb-steps">
+<li>Python 3.10–3.13 quraşdırın.</li>
+<li><code>pip install -r kod/requirements.txt</code></li>
+<li>Giriş məlumatını əlavə edin: dəftərlər Nazirliyin statistik məlumat kitabını oxuyur
+(<code>Statistik data dinamika</code>, ≈108 MB). Fayl həcminə görə sayta yüklənmir — Drive-dakı
+<code>18august/model/data/</code> qovluğundan götürülməlidir.</li>
+<li>Bütün mərhələləri ardıcıl icra etmək üçün: <code>python3 kod/run_all.py</code></li>
+</ol>
+
+<h2>Bu qovluqda nə var</h2>
+<ul class="nb-steps">
+<li><code>notebooks/</code> — 15 dəftərin mənbə faylları (<code>.ipynb</code>)</li>
+<li><code>notebooks/html/</code> — hər dəftərin brauzerdə oxunan variantı</li>
+<li><code>kod/src/</code>, <code>kod/tests/</code>, <code>kod/run_all.py</code> — modelin Python kodu və testləri</li>
+<li>Saytın qalan səhifələri — metod, məlumat mənbələri, tənliklər kataloqu və nəticələr</li>
+</ul>
+</main>
+</div>
+<script src="assets/plotly.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

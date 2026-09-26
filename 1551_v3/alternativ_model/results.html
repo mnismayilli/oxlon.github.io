@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nəticələr və fayllar — MİİS §15.5.1</title>
+<meta name="description" content="Nəticələr və fayllar — MİİS §15.5.1 makroiqtisadi proqnozlaşdırma modulu">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/katex/katex.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" data-sprite="miis-1551">
+  <!--
+    icons.svg — line icon sprite for the §15.5.1 site (blueprint §4).
+    Style: 24×24 box, 1.6 stroke set by CSS (.icon), fill none, stroke currentColor,
+    round caps and joins. Used small (15-18px), functional only.
+    build_site.py inlines this file into every page so <use href="#icon-…"> resolves
+    when the page is opened directly from disk (file://), where an external sprite
+    reference is blocked.
+  -->
+
+  <symbol id="icon-document" viewBox="0 0 24 24">
+    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+    <path d="M14 3v5h5"/>
+    <path d="M9 13h6M9 17h6"/>
+  </symbol>
+
+  <symbol id="icon-data" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="6" rx="7" ry="3"/>
+    <path d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/>
+    <path d="M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/>
+  </symbol>
+
+  <symbol id="icon-equation" viewBox="0 0 24 24">
+    <path d="M4 19c1.8 0 2.6-1.1 3-3l2.2-9.6C9.6 4.6 10.5 4 12 4"/>
+    <path d="M6 11h7"/>
+    <path d="M15 10.5l5 8M20 10.5l-5 8"/>
+  </symbol>
+
+  <symbol id="icon-chart" viewBox="0 0 24 24">
+    <path d="M4 4v15a1 1 0 0 0 1 1h15"/>
+    <path d="M8 16v-4M12 16v-7M16 16v-3M20 16V7"/>
+  </symbol>
+
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M4 12.6l5 5L20 6.5"/>
+  </symbol>
+
+  <symbol id="icon-warning" viewBox="0 0 24 24">
+    <path d="M10.3 3.9 2.5 17.4a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+    <path d="M12 9v4.5"/>
+    <path d="M12 17.2h.01"/>
+  </symbol>
+
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <path d="M12 3v11"/>
+    <path d="M7.5 10 12 14.5 16.5 10"/>
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+  </symbol>
+
+  <symbol id="icon-external-link" viewBox="0 0 24 24">
+    <path d="M14 4h6v6"/>
+    <path d="M20 4 11 13"/>
+    <path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/>
+  </symbol>
+
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <path d="M9.5 3h5"/>
+    <path d="M10.5 3v6.2L5.2 18a2 2 0 0 0 1.7 3h10.2a2 2 0 0 0 1.7-3l-5.3-8.8V3"/>
+    <path d="M7.7 14h8.6"/>
+  </symbol>
+
+  <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+</svg>
+<a class="skip" href="#main">Məzmuna keç</a>
+<button class="menu-button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+<svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>Mündəricat</button>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Saytın bölmələri">
+  <div class="sidebar-head">
+    <a class="mark" href="index.html">MİİS §15.5.1
+      <span class="mark-sub">Makroiqtisadi göstəricilər — proqnozlaşdırma modulu</span></a>
+  </div>
+  <div class="nav-group"><span class="nav-title">Ümumi</span><ul><li><a href="index.html">Ümumi baxış</a></li><li><a href="methodology.html">Metod</a></li><li><a href="data.html">Məlumat mənbələri</a></li><li><a href="notebooks.html">Jupyter dəftərləri</a></li></ul></div><div class="nav-group"><span class="nav-title">Funksional tələblər (§15.5.1)</span><ul><li><a href="fr/fr1.html"><span class="nav-num">FR1</span>ÜDM: artım, deflyator, struktur</a></li><li><a href="fr/fr2.html"><span class="nav-num">FR2</span>İstehsal strukturu, 11 sahə</a></li><li><a href="fr/fr3.html"><span class="nav-num">FR3</span>Fəaliyyət növləri üzrə struktur</a></li><li><a href="fr/fr4.html"><span class="nav-num">FR4</span>Məhsul proqnozları</a></li><li><a href="fr/fr5.html"><span class="nav-num">FR5</span>Neftin qiyməti</a></li><li><a href="fr/fr5b.html"><span class="nav-num">FR5b</span>Neft-qaz bloku: həcm × qiymət</a></li><li><a href="fr/fr6.html"><span class="nav-num">FR6</span>İnvestisiyalar və fiskal blok</a></li><li><a href="fr/fr7.html"><span class="nav-num">FR7</span>Xarici ticarət</a></li><li><a href="fr/fr8.html"><span class="nav-num">FR8</span>Gəlirlər, əmək haqqı, məşğulluq</a></li><li><a href="fr/fr9.html"><span class="nav-num">FR9</span>İstehlak qiymətləri</a></li><li><a href="fr/fr10.html"><span class="nav-num">FR10</span>Valyuta məzənnəsi</a></li><li><a href="fr/fr11.html"><span class="nav-num">FR11</span>Ticarət və gəlir balansları</a></li><li><a href="fr/fr12.html"><span class="nav-num">FR12</span>Tədiyə balansı</a></li></ul></div><div class="nav-group"><span class="nav-title">Əlavələr</span><ul><li><a href="additions.html">Nə əlavə olunub</a></li><li><a href="fr/fr13.html"><span class="nav-num nav-num-add">FR13</span>Əlavə — Nazirliyin təqdim etdiyi tənliklər sisteminin həlli</a></li></ul></div><div class="nav-group"><span class="nav-title">Təhvil</span><ul><li><a href="equations.html">Tənliklər kataloqu</a></li><li><a href="response.html">İcmala cavab</a></li><li><a href="register.html">Tələb registri</a></li><li><a class="current" href="results.html">Nəticələr və fayllar</a><ul class="nav-sections"><li><a href="#intro">Mənşə</a></li><li><a href="#workbook">Nəticələrin iş kitabı və JSON faylı</a></li><li><a href="#contract">Çıxış müqaviləsi</a></li><li><a href="#figures">Qrafiklər</a></li><li><a href="#model">Model</a></li></ul></li></ul></div>
+</nav>
+<main class="content" id="main">
+<h1>Nəticələr və fayllar</h1>
+
+<h2 id="intro"><a class="anchor" href="#intro" aria-hidden="true">#</a><span class="section-num">1</span>Mənşə</h2>
+<p>Aşağıdakı hər şey bir əmrlə və yalnız onunla yaradılır. Beş müqavilə faylını boru xəttinin mərhələləri yazır; Excel iş kitabı və nəticələrin JSON faylı isə sonradan həmin beş fayldan yenidən qurulur, ona görə onların heç biri müqavilədə olmayan dəyəri daşıya bilməz. Bu saytdakı hər rəqəm yığım anında eyni fayllardan oxunur. Kartlardakı ölçülər və saylar da faylların özündən oxunur.</p>
+<h2 id="workbook"><a class="anchor" href="#workbook" aria-hidden="true">#</a><span class="section-num">2</span>Nəticələrin iş kitabı və JSON faylı</h2>
+<p>§15.5.1-in 5-ci alt-tapşırığı on iki tələbin hər birinin altında eyni sözlərlə tələb edir ki, Python və EViews-dən alınan nəticələr Excel (xlsx) <strong>və</strong> json formatında saxlanılsın. Ona görə aşağıdakı hər iki fayl müqavilənin bir hissəsidir, heç biri əlavə deyil; hər ikisi mərhələdən sonrakı addımda beş müqavilə faylından yenidən qurulur, deməli heç biri müqavilədə olmayan rəqəmi daşıya bilməz.</p>
+<dl class="qa-list"><div><dt>neticeler_15_5_1.xlsx</dt><dd>— <span class="val">19</span> vərəq: mündəricat, statutar vərəq quruluşu, hər tələb üçün bir vərəq, fərziyyə dəsti və «Geriyə Sınaq» (sınaq dəftəri). Yalnız beş müqavilə faylından qurulur; nə əl ilə qoyulmuş dəyər, nə də xarici keçid var. <span class="val">140 kB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/neticeler_15_5_1.xlsx"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>2_neticeler/neticeler_15_5_1.xlsx</span></dd></div><div><dt>neticeler_15_5_1.json</dt><dd>— eyni nəticələr bir JSON sənədi kimi: <span class="val">7</span> bölmə, metadata başlığı və hər müqavilə faylı üçün bir massiv, cəmi <span class="val">22 907</span> sətir. Hər sətir öz sətrində yazılır, ona görə fayl həm proqramla, həm də adi mətn alətləri ilə oxunur; boş xana boş sətir deyil, JSON <code>null</code>-dur, ədədi sütunlar ədəddir, faylda isə nə vaxt möhürü, nə icra nömrəsi, nə də mütləq yol var — eyni girişlər eyni baytları verir. <span class="val">5,9 MB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/neticeler_15_5_1.json"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>2_neticeler/neticeler_15_5_1.json</span></dd></div></dl>
+<h2 id="contract"><a class="anchor" href="#contract" aria-hidden="true">#</a><span class="section-num">3</span>Çıxış müqaviləsi</h2>
+<dl class="qa-list"><div><dt>forecast_long.csv</dt><dd>— nəşr olunan bütün sıralar uzun formada: <span class="val">653</span> sıra üzrə <span class="val">14 603</span> sətir. <code>source</code> sütunu bizim yolu, şablon-nümunə örtüyünü, Nazirlik spesifikasiyası ssenarisini və BVF etalon dəyərlərini bir-birindən ayırır. <span class="val">1,6 MB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/forecast_long.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>forecast_long.csv</span></dd></div><div><dt>equations_catalog.csv</dt><dd>— <span class="val">486</span> qiymətləndirilmiş tənlik: sol və sağ tərəfləri, nümunə illəri, düzəlişli R² və reqressiyanın standart xətası ilə. <span class="val">179 kB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/equations_catalog.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>equations_catalog.csv</span></dd></div><div><dt>validation_backtest.csv</dt><dd>— sınaq dəftəri: <span class="val">169</span> sıra və <span class="val">113</span> model etiketi üzrə <span class="val">6 747</span> sətir, uduzmuş namizədlər də daxil olmaqla. <span class="val">984 kB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/validation_backtest.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>validation_backtest.csv</span></dd></div><div><dt>series_dictionary.csv</dt><dd>— <span class="val">681</span> sıra: azərbaycanca və ingiliscə adları, ölçü vahidi, tələbi, statutar vərəq istinadı və qiymət bazası ilə. <span class="val">175 kB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/series_dictionary.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>series_dictionary.csv</span></dd></div><div><dt>assumptions.csv</dt><dd>— proqnoz üfüqünün bütün girişləri: <span class="val">65</span> açar × beş il = <span class="val">325</span> sətir, vahidi və mənşə qeydi ilə. <span class="val">91 kB</span> · <span class="file-held" title="təhvil paketi · 2_neticeler/assumptions.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>assumptions.csv</span></dd></div><div><dt>assumption_registry.csv</dt><dd>— əvəzləmə reyestri: hər fərziyyə açarının rəsmi göstərici ilə əvəzlənmə sinfi (A/B/C) və dəyərin sahibi olan qurum. <em>Ssenari qurucusu</em> ekranının seçim siyahısı bu fayldan qurulur. <span class="file-held" title="təhvil paketi · 4_melumat/assumption_registry.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>assumption_registry.csv</span></dd></div><div><dt>SXEM.md</dt><dd>— yuxarıdakı faylların sütun-sütun sxemi; təhvil paketi ilə birlikdə verilir.</dd></div></dl>
+<h2 id="figures"><a class="anchor" href="#figures" aria-hidden="true">#</a><span class="section-num">4</span>Qrafiklər</h2>
+<ul><li><strong>5_qrafikler/</strong> — PNG formatında <span class="val">25</span> statik qrafik; tələb səhifələrindəki interaktiv qrafiklərin əkizləridir və hər ikisi eyni çıxış fayllarından çəkilir. <span class="file-held" title="təhvil paketi · 5_qrafikler/"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>5_qrafikler/</span></li></ul>
+<h2 id="model"><a class="anchor" href="#model" aria-hidden="true">#</a><span class="section-num">5</span>Model</h2>
+<dl class="qa-list"><div><dt>3_model/notebooks/</dt><dd>— <span class="val">15</span> dəftər: hər tələb üçün bir dəftər, üstəgəl neft-qaz bloku və Nazirlik spesifikasiyası ssenarisi. Sonuncu on iki tələbdən biri deyil, əlavədir. Hər dəftər öz izahını, qiymətləndirmə çıxışını və yoxlayıcısını daşıyır. <span class="file-held" title="təhvil paketi · 3_model/notebooks/"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>3_model/notebooks/</span></dd></div><div><dt>3_model/src/</dt><dd>və <strong>3_model/run_all.py</strong> — ortaq mühərrik (konfiqurasiya, məlumat qatı, ekonometrika, spesifikasiya oxuyucusu, çıxış yazıcıları, eynilik yoxlayıcısı) və <span class="val">16</span> mərhələli boru xətti. <span class="file-held" title="təhvil paketi · 3_model/src/"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>3_model/src/</span> · <span class="file-held" title="təhvil paketi · 3_model/run_all.py"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>run_all.py</span></dd></div><div><dt>build_results_xlsx.py</dt><dd>və <strong>build_results_json.py</strong> — iki nəticə yazıcısı: beş müqavilə faylını oxuyur və iş kitabını ilə JSON faylını onlardan yenidən yazır. Boru xəttinin yanında göndərilir, ona görə hər iki təqdimat heç nəyi yenidən qiymətləndirmədən təhvil verilmiş fayllardan bərpa oluna bilər. <span class="file-held" title="təhvil paketi · 3_model/build_results_xlsx.py"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>3_model/build_results_xlsx.py</span> · <span class="file-held" title="təhvil paketi · 3_model/build_results_json.py"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>3_model/build_results_json.py</span></dd></div><div><dt>3_model/tests/</dt><dd>— oxuyucunu, çıxış müqaviləsini, əvəzləmə reyestrini və ekonometrik alətləri qoruyan dörd test modulu: <span class="val">36</span> oxuyucu yoxlaması, <span class="val">8</span> müqavilə yoxlaması, <span class="val">7</span> reyestr yoxlaması və <span class="val">9</span> adlandırılmış ekonometrik blok. Təhvil paketi ilə birlikdə göndərilir və yalnız standart kitabxana ilə işləyir, ona görə təhvil verilmiş fayllar heç nə quraşdırmadan yoxlanıla bilər; iş kitabı çıxarışını tələb edən oxuyucu yoxlamaları boru xətti bir dəfə işləyənə qədər atlanır. <span class="file-held" title="təhvil paketi · 3_model/tests/"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-document"/></svg>3_model/tests/</span></dd></div></dl>
+<footer class="site-footer">
+  <span class="stamp-row">Buraxılış v3.7 · yığılıb 2026-08-26 · boru xətti möhürü <code>21d4c3f2afa8</code></span>
+  <span class="stamp-row">Bu səhifədəki hər rəqəm yığım anında bu beş fayldan oxunur:
+    <code>2_neticeler/forecast_long.csv</code>, <code>2_neticeler/equations_catalog.csv</code>,
+    <code>2_neticeler/validation_backtest.csv</code>, <code>2_neticeler/series_dictionary.csv</code>,
+    <code>2_neticeler/assumptions.csv</code>. Möhür həmin beş faylın md5 cəmidir.</span>
+</footer>
+</main>
+</div>
+<script src="assets/plotly.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

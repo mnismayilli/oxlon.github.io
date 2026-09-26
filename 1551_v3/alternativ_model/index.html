@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MİİS §15.5.1 — Makroiqtisadi təhlil və proqnozlaşdırma — MİİS §15.5.1</title>
+<meta name="description" content="MİİS §15.5.1 — Makroiqtisadi təhlil və proqnozlaşdırma — MİİS §15.5.1 makroiqtisadi proqnozlaşdırma modulu">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/katex/katex.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" data-sprite="miis-1551">
+  <!--
+    icons.svg — line icon sprite for the §15.5.1 site (blueprint §4).
+    Style: 24×24 box, 1.6 stroke set by CSS (.icon), fill none, stroke currentColor,
+    round caps and joins. Used small (15-18px), functional only.
+    build_site.py inlines this file into every page so <use href="#icon-…"> resolves
+    when the page is opened directly from disk (file://), where an external sprite
+    reference is blocked.
+  -->
+
+  <symbol id="icon-document" viewBox="0 0 24 24">
+    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+    <path d="M14 3v5h5"/>
+    <path d="M9 13h6M9 17h6"/>
+  </symbol>
+
+  <symbol id="icon-data" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="6" rx="7" ry="3"/>
+    <path d="M5 6v6c0 1.66 3.13 3 7 3s7-1.34 7-3V6"/>
+    <path d="M5 12v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/>
+  </symbol>
+
+  <symbol id="icon-equation" viewBox="0 0 24 24">
+    <path d="M4 19c1.8 0 2.6-1.1 3-3l2.2-9.6C9.6 4.6 10.5 4 12 4"/>
+    <path d="M6 11h7"/>
+    <path d="M15 10.5l5 8M20 10.5l-5 8"/>
+  </symbol>
+
+  <symbol id="icon-chart" viewBox="0 0 24 24">
+    <path d="M4 4v15a1 1 0 0 0 1 1h15"/>
+    <path d="M8 16v-4M12 16v-7M16 16v-3M20 16V7"/>
+  </symbol>
+
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M4 12.6l5 5L20 6.5"/>
+  </symbol>
+
+  <symbol id="icon-warning" viewBox="0 0 24 24">
+    <path d="M10.3 3.9 2.5 17.4a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+    <path d="M12 9v4.5"/>
+    <path d="M12 17.2h.01"/>
+  </symbol>
+
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <path d="M12 3v11"/>
+    <path d="M7.5 10 12 14.5 16.5 10"/>
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+  </symbol>
+
+  <symbol id="icon-external-link" viewBox="0 0 24 24">
+    <path d="M14 4h6v6"/>
+    <path d="M20 4 11 13"/>
+    <path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/>
+  </symbol>
+
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <path d="M9.5 3h5"/>
+    <path d="M10.5 3v6.2L5.2 18a2 2 0 0 0 1.7 3h10.2a2 2 0 0 0 1.7-3l-5.3-8.8V3"/>
+    <path d="M7.7 14h8.6"/>
+  </symbol>
+
+  <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+</svg>
+<a class="skip" href="#main">Məzmuna keç</a>
+<button class="menu-button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+<svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>Mündəricat</button>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Saytın bölmələri">
+  <div class="sidebar-head">
+    <a class="mark" href="index.html">MİİS §15.5.1
+      <span class="mark-sub">Makroiqtisadi göstəricilər — proqnozlaşdırma modulu</span></a>
+  </div>
+  <div class="nav-group"><span class="nav-title">Ümumi</span><ul><li><a class="current" href="index.html">Ümumi baxış</a><ul class="nav-sections"><li><a href="#what">Əhatə</a></li><li><a href="#headline">Baş göstəricilər, 2026–2030</a></li><li><a href="#scoreboard">Yekun mənzərə</a></li><li><a href="#fr-grid">On iki tələb</a></li><li><a href="#additions">Onlardan kənarda nə əlavə olunub</a></li><li><a href="#run">Modulun işə salınması</a></li></ul></li><li><a href="methodology.html">Metod</a></li><li><a href="data.html">Məlumat mənbələri</a></li><li><a href="notebooks.html">Jupyter dəftərləri</a></li></ul></div><div class="nav-group"><span class="nav-title">Funksional tələblər (§15.5.1)</span><ul><li><a href="fr/fr1.html"><span class="nav-num">FR1</span>ÜDM: artım, deflyator, struktur</a></li><li><a href="fr/fr2.html"><span class="nav-num">FR2</span>İstehsal strukturu, 11 sahə</a></li><li><a href="fr/fr3.html"><span class="nav-num">FR3</span>Fəaliyyət növləri üzrə struktur</a></li><li><a href="fr/fr4.html"><span class="nav-num">FR4</span>Məhsul proqnozları</a></li><li><a href="fr/fr5.html"><span class="nav-num">FR5</span>Neftin qiyməti</a></li><li><a href="fr/fr5b.html"><span class="nav-num">FR5b</span>Neft-qaz bloku: həcm × qiymət</a></li><li><a href="fr/fr6.html"><span class="nav-num">FR6</span>İnvestisiyalar və fiskal blok</a></li><li><a href="fr/fr7.html"><span class="nav-num">FR7</span>Xarici ticarət</a></li><li><a href="fr/fr8.html"><span class="nav-num">FR8</span>Gəlirlər, əmək haqqı, məşğulluq</a></li><li><a href="fr/fr9.html"><span class="nav-num">FR9</span>İstehlak qiymətləri</a></li><li><a href="fr/fr10.html"><span class="nav-num">FR10</span>Valyuta məzənnəsi</a></li><li><a href="fr/fr11.html"><span class="nav-num">FR11</span>Ticarət və gəlir balansları</a></li><li><a href="fr/fr12.html"><span class="nav-num">FR12</span>Tədiyə balansı</a></li></ul></div><div class="nav-group"><span class="nav-title">Əlavələr</span><ul><li><a href="additions.html">Nə əlavə olunub</a></li><li><a href="fr/fr13.html"><span class="nav-num nav-num-add">FR13</span>Əlavə — Nazirliyin təqdim etdiyi tənliklər sisteminin həlli</a></li></ul></div><div class="nav-group"><span class="nav-title">Təhvil</span><ul><li><a href="equations.html">Tənliklər kataloqu</a></li><li><a href="response.html">İcmala cavab</a></li><li><a href="register.html">Tələb registri</a></li><li><a href="results.html">Nəticələr və fayllar</a></li></ul></div>
+</nav>
+<main class="content" id="main">
+<h1>MİİS §15.5.1 — Makroiqtisadi təhlil və proqnozlaşdırma</h1>
+
+<h2 id="what"><a class="anchor" href="#what" aria-hidden="true">#</a><span class="section-num">1</span>Əhatə</h2>
+<p>Bu sayt §15.5.1 modulunun təqdimat qatıdır: Texniki Tapşırığın on iki funksional tələbi, hər biri öz səhifəsində — tələb cümləsindən başlayaraq seçilmiş modelə, qiymətləndirilmiş tənliklərə, işlədilmiş məlumata, nəşr olunan nəticəyə və onu təkrar istehsal edən əmrə qədər izlənilir. Bu səhifələrdəki hər rəqəm yığım anında modulun öz çıxış müqaviləsindən oxunur — <span class="file-held" title="təhvil paketi · 2_neticeler/forecast_long.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>forecast_long.csv</span>, <span class="file-held" title="təhvil paketi · 2_neticeler/validation_backtest.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>validation_backtest.csv</span>, <span class="file-held" title="təhvil paketi · 2_neticeler/equations_catalog.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>equations_catalog.csv</span>, <span class="file-held" title="təhvil paketi · 2_neticeler/series_dictionary.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>series_dictionary.csv</span> və <span class="file-held" title="təhvil paketi · 2_neticeler/assumptions.csv"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-data"/></svg>assumptions.csv</span> — ona görə mətnlə model bir-birindən sürüşə bilmir. Tələb yalnız qismən, yaxud ümumiyyətlə qarşılanmırsa, səhifə bunu deyir, ölçülmüş səbəbi verir və nəyin onu bağlayacağını adlandırır.</p>
+<h2 id="headline"><a class="anchor" href="#headline" aria-hidden="true">#</a><span class="section-num">2</span>Baş göstəricilər, 2026–2030</h2>
+<figure class="fig" id="fig-index_headline"><h4 class="fig-title" id="fig-index_headline-title">Baş göstəricilər: ÜDM artımı və inflyasiya</h4><div class="fig-mount is-loading" data-fig="index_headline" data-src="assets/figdata/index_headline.json">qrafik yüklənir…</div><script type="application/json" id="figdata-index_headline">{"data":[{"type":"scatter","mode":"lines","name":"80 % zolağı — ÜDM artımı (yuxarı hədd)","line":{"width":0,"color":"rgba(15,107,107,0.14)"},"showlegend":false,"hoverinfo":"skip","legendrank":3000,"x":[2026,2027,2028,2029,2030],"y":[7.7585,8.141,8.0482,9.3038,9.2901]},{"type":"scatter","mode":"lines","name":"80 % zolağı — ÜDM artımı","line":{"width":0,"color":"rgba(15,107,107,0.14)"},"fill":"tonexty","fillcolor":"rgba(15,107,107,0.14)","hoverinfo":"skip","legendrank":3000,"x":[2026,2027,2028,2029,2030],"y":[-0.3617,-0.3829,-0.1226,1.1662,0.293]},{"type":"scatter","mode":"lines","name":"ÜDM real artım tempi","line":{"color":"#0f6b6b","dash":"solid","width":3},"connectgaps":false,"x":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030],"y":[11.1,9.9,9.44,10.21,9.25,27.96,34.47,25.46,10.59,9.37,4.79,-1.57,2.2,5.907261,2.821737,0.903142,-3.133318,0.176072,1.5,2.5,-4.2,5.6,4.669204,1.419354,4.066031,1.4,3.772653,3.767997,3.950898,5.224595,4.649694]},{"type":"scatter","mode":"lines","name":"İnflyasiya (İQİ, orta illik)","line":{"color":"#5f6368","dash":"solid","width":2.4},"connectgaps":false,"x":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030],"y":[1.8,1.5,2.8,2.2,6.7,9.6,8.3,16.7,20.8,1.5,5.7,7.9,1.1,2.4,1.4,4.0,12.4,12.9,2.3,2.6,2.76,6.7,13.9,8.8,2.2,5.6,5.2991,5.7416,5.8752,5.9149,5.9278]}],"layout":{"height":370,"autosize":true,"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","font":{"family":"-apple-system, 'Segoe UI', Roboto, Inter, sans-serif","size":13,"color":"#1c1e21"},"margin":{"l":64,"r":26,"t":58,"b":46},"hovermode":"x unified","hoverlabel":{"font":{"family":"-apple-system, 'Segoe UI', Roboto, Inter, sans-serif","size":12}},"legend":{"orientation":"h","y":1.02,"yanchor":"bottom","x":0,"xanchor":"left","traceorder":"normal","font":{"size":12,"color":"#5f6368"}},"colorway":["#0f6b6b","#5f6368"],"xaxis":{"title":{"text":"İl"},"gridcolor":"#eceff1","zeroline":false,"tickformat":"d","dtick":5,"tick0":2000,"range":[1999.4,2030.6]},"yaxis":{"gridcolor":"#eceff1","zeroline":true,"zerolinecolor":"#dadce0","title":{"text":"illik %"}},"shapes":[{"type":"rect","xref":"x","yref":"paper","layer":"below","x0":2025.5,"x1":2030.6,"y0":0,"y1":1,"fillcolor":"rgba(15,107,107,0.045)","line":{"width":0}},{"type":"line","xref":"x","yref":"paper","x0":2025.5,"x1":2025.5,"y0":0,"y1":1,"line":{"color":"#b8c2c4","width":1.2,"dash":"dot"}}],"annotations":[{"text":"Proqnoz 2026–2030","showarrow":false,"xref":"x","yref":"paper","x":2025.75,"y":1.0,"xanchor":"left","yanchor":"top","font":{"size":11,"color":"#9aa0a6"}}]}}</script><figcaption><span class="fig-cap">İki baş göstərici: ÜDM-in real artımı və istehlak qiymətləri inflyasiyası — 2025-ə qədər faktiki, 2030-a qədər proqnoz.</span><span class="fig-window">Pəncərə 2000–2030. Pəncərə 2000-də açılır, ona görə 1993–1996-cı illərin hiperinflyasiyası inflyasiya xəttindən kənardadır.</span><span class="fig-id">[index_headline]</span></figcaption></figure>
+<div class="table-wrap"><table class="tbl tbl-dense"><thead><tr><th class="c-wide">Göstərici</th><th class="c-tight">Vahid</th><th class="c-num">2026</th><th class="c-num">2027</th><th class="c-num">2028</th><th class="c-num">2029</th><th class="c-num">2030</th><th class="c-text">80 % zolağı, 2030</th></tr></thead><tbody><tr><td class="c-wide">ÜDM, real artım</td><td class="c-tight">%</td><td class="c-num"><span class="val">3,8</span></td><td class="c-num"><span class="val">3,8</span></td><td class="c-num"><span class="val">4,0</span></td><td class="c-num"><span class="val">5,2</span></td><td class="c-num"><span class="val">4,6</span></td><td class="c-text"><span class="val">0,3</span> … <span class="val">9,3</span></td></tr><tr><td class="c-wide">Qeyri-neft ÜDM, real artım</td><td class="c-tight">%</td><td class="c-num"><span class="val">5,3</span></td><td class="c-num"><span class="val">5,4</span></td><td class="c-num"><span class="val">5,6</span></td><td class="c-num"><span class="val">5,6</span></td><td class="c-num"><span class="val">5,7</span></td><td class="c-text"><span class="val">−0,2</span> … <span class="val">12,1</span></td></tr><tr><td class="c-wide">ÜDM, nominal həcm</td><td class="c-tight">mln AZN</td><td class="c-num"><span class="val">141 482</span></td><td class="c-num"><span class="val">155 631</span></td><td class="c-num"><span class="val">172 107</span></td><td class="c-num"><span class="val">192 781</span></td><td class="c-num"><span class="val">214 908</span></td><td class="c-text"><span class="val">174 822</span> … <span class="val">266 117</span></td></tr><tr><td class="c-wide">İstehlak qiymətləri, orta illik</td><td class="c-tight">%</td><td class="c-num"><span class="val">5,3</span></td><td class="c-num"><span class="val">5,7</span></td><td class="c-num"><span class="val">5,9</span></td><td class="c-num"><span class="val">5,9</span></td><td class="c-num"><span class="val">5,9</span></td><td class="c-text"><span class="val">−0,1</span> … <span class="val">11,9</span></td></tr><tr><td class="c-wide">Brent</td><td class="c-tight">USD/barel</td><td class="c-num"><span class="val">68,98</span></td><td class="c-num"><span class="val">68,97</span></td><td class="c-num"><span class="val">69,40</span></td><td class="c-num"><span class="val">69,46</span></td><td class="c-num"><span class="val">69,19</span></td><td class="c-text"><span class="val">27,47</span> … <span class="val">173,96</span></td></tr></tbody></table></div>
+<p>Mərkəzi yollar modulun özünündür; çıxış müqaviləsinin <code>source</code> sütunu onları statutar şablonun müqayisə örtüyündən (şablon-nümunə ssenarisi), Nazirlik spesifikasiyası ssenarisindən və BVF etalon dəyərlərindən ayrı saxlayır. Zolaqlar enlidir və üfüq uzandıqca genişlənir: 2030-cu ildə qeyri-neft artımı üzrə 80 % aralığı həm mənfi, həm də ikirəqəmli nəticələri əhatə edir — illik məlumat üzərində qiymətləndirilmiş beşillik aralıq belə görünür. Mərkəzi yol modulun ən yaxşı nöqtəvi qiymətidir; zolaq isə onun istisna edə bilmədiyi aralıqdır.</p>
+<h2 id="scoreboard"><a class="anchor" href="#scoreboard" aria-hidden="true">#</a><span class="section-num">3</span>Yekun mənzərə</h2>
+<p>On iki tələb <span class="val">58</span> atomik alt-tələbə ayrıldı; hər biri onu qarşılayan Nazirlik məlumatına və onu icra edən dəftər ilə sıra koduna bağlandı. Hər sətir bir sözlük hökmlə deyil, öz izahı ilə verilir: kəmiyyəti nəyin daşıdığı, nəyin çatmadığı və nəyin onu tamamlayacağı yazılır. Bir kəmiyyət yalnız eyniliklə alınırsa — öz tənliyi və sınaq dəftərində sətri yoxdursa — rəqəm nəşr olunsa belə, bu, həmin sətrin izahında açıq deyilir. Hər sətir üçün yoxlanılmış səbəbi olan tam cədvəl registr səhifəsindədir.</p>
+<h2 id="fr-grid"><a class="anchor" href="#fr-grid" aria-hidden="true">#</a><span class="section-num">4</span>On iki tələb</h2>
+<ul><li><strong>FR1 — ÜDM: real artım, deflyator, neft/qeyri-neft və dövlət/qeyri-dövlət bölgüləri.</strong> Baş ÜDM artıq ayrıca tənlik deyil, on bir sahəlik istehsal blokunun, neft-qaz blokunun və xalis vergi bölgüsünün cəmidir. <span class="val">12</span> alt-tələb; açıq qalan: mülkiyyət bölgüsü üzrə real artım və deflyator heç bir mənbədə yoxdur.</li><li><strong>FR2 — İstehsal strukturu: fəaliyyət növləri üzrə buraxılış, aralıq istehlak və əlavə dəyər.</strong> On bir fəaliyyətin hər biri həm öz sürücüsünə, həm də dinamik etalonlara qarşı yarışdırılır. <span class="val">5</span> alt-tələb; açıq qalan: üç fəaliyyət sahəyə xas həcm tənliyi daşımır, üç deflyatoru isə etalon aparır.</li><li><strong>FR3 — ÜDM-in bölmələr üzrə strukturu və sənayenin neft/qeyri-neft bölgüsü.</strong> Beş bölmə üstəgəl xalis vergilər; hər ildə FR2-nin sahə cəmi ilə uzlaşdırılır. <span class="val">4</span> alt-tələb; açıq qalan yoxdur.</li><li><strong>FR4 — Əsas məhsul növlərinin natural həcmi, aksizli mallar daxil olmaqla.</strong> <span class="val">157</span> məhsul tənliyi, onlardan <span class="val">126</span>-i hədlənmiş median artım etalonudur. <span class="val">7</span> alt-tələb; açıq qalan: rəsmi hasilat planları mənbələrdə yoxdur və şablonun öz məhsul vərəqi <span class="val">272</span> <code>#REF!</code> xanası daşıyır.</li><li><strong>FR5 — Neftin dünya bazarında qiyməti.</strong> Şərtsiz məlumat dəstində heç bir namizəd təsadüfi gəzişməni üstələmir; mərkəzi yolu struktur tənliyi tərəfdaş artımına şərti olaraq daşıyır, yelpik isə təsadüfi gəzişmənin nümunədən kənar xətasından qurulur. <span class="val">1</span> alt-tələb; açıq qalan yoxdur.</li><li><strong>FR6 — İnvestisiyaların strukturu və real artım templəri.</strong> Sabit paylar hər iki kəsikdə sınaqdan keçmiş modellərlə əvəz olunub, büdcənin əsaslı xərcləri kanalı isə qoşulub. <span class="val">6</span> alt-tələb; açıq qalan: icmalın istədiyi ikinci dövlət investisiyası termi sınandı və uduzdu, qeyri-neft dövlət ayağı isə eyniliklə alınır və öz sınaq sətri yoxdur.</li><li><strong>FR7 — Mal və xidmət ticarəti, struktur, tədiyə balansı.</strong> Xidmətlər icmalın adlandırdığı altı komponentə, hər iki istiqamətdə bölünüb. <span class="val">5</span> alt-tələb; açıq qalan: neft-qaz mal idxalı düz saxlanılır, çünki heç bir namizəd təsadüfi gəzişməni üstələmədi.</li><li><strong>FR8 — Əhalinin gəlirləri, xərcləri və onların artım templəri.</strong> Gəlir əmək haqqı fonduna, transfertlərə və digər gəlirlərə ayrılır və bu dekompozisiya öz yarışını udur. <span class="val">5</span> alt-tələb; açıq qalan: sektor əmək haqqı payları təsadüfi gəzişməni keçmir, ona görə onları təsadüfi gəzişmə daşıyır.</li><li><strong>FR9 — İstehlak qiymətləri indeksi, orta illik.</strong> AR(1) termi, Mərkəzi Bankın hədəf lövbəri və gecikmiş Filips formasından ibarət ansambl; ən güclü tək üzvün təsadüfi gəzişməyə qarşı bacarığı <span class="val">+14 %</span>. <span class="val">1</span> alt-tələb; açıq qalan yoxdur.</li><li><strong>FR10 — Manatın dollara və avroya qarşı orta illik məzənnəsi.</strong> Statutar anlayış dövrün sonuna deyil, orta illik məzənnədir; hər iki məzənnə artıq Mərkəzi Bankın öz cədvəlindən oxunur. <span class="val">2</span> alt-tələb; açıq qalan yoxdur.</li><li><strong>FR11 — Ticarət və tədiyə balansı göstəriciləri və strukturu.</strong> FR7 ilə eyni istəyin ikinci oxunuşu; eyni dəftər, üstəgəl tədiyə balansının struktur bloku ilə qarşılanır. <span class="val">3</span> alt-tələb; açıq qalan yoxdur.</li><li><strong>FR12 — Tədiyə balansı: təhlil və proqnoz.</strong> Cari, kapital və maliyyə hesabları; ilkin gəlirlərin brüt axınları və pul baratları öz sıraları kimi nəşr olunur. <span class="val">7</span> alt-tələb; açıq qalan yoxdur.</li></ul>
+<h2 id="additions"><a class="anchor" href="#additions" aria-hidden="true">#</a><span class="section-num">5</span>Onlardan kənarda nə əlavə olunub</h2>
+<p>Yuxarıdakı siyahı tələb siyahısıdır və o, on ikidə bağlanır. Ondan kənarda təhvil verilmiş iş — Nazirlik spesifikasiyasının ssenari kimi işə salınması, fiskal blok, sınaq dəftərinin təhvil verilən artefakt olması, girişlər verilmədikdə toplanan məlumat — öz səhifəsində, hər əlavənin nə verdiyi və harada açıla biləcəyi ilə birlikdə göstərilir: <a href="additions.html">nə əlavə olunub</a>. O, on ikidən ayrı saxlanılır ki, burada tələb olmayan heç nə tələb kimi sayılmasın.</p>
+<h2 id="run"><a class="anchor" href="#run" aria-hidden="true">#</a><span class="section-num">6</span>Modulun işə salınması</h2>
+<pre><code>python3 run_all.py                 # <span class="val">15</span> dəftər üzrə <span class="val">16</span> mərhələ, DAG sırası ilə
+python3 run_all.py --stage FR09    # yalnız bir mərhələni yenidən işə salır</code></pre>
+<p>Boru xətti köhnə girişlərlə davam etmir, ilk uğursuz mərhələdə dayanır; ardıcıl iki tam icra bayt-bayt eynidir (MD5 ilə müqayisə olunur). Excel iş kitabı və nəticələrin JSON faylı — alt-tapşırıq siyahısının istədiyi iki saxlama formatı — mərhələdən sonrakı addımda çıxış fayllarından yenidən qurulur, ona görə heç biri müqavilədə olmayan dəyəri daşıya bilməz.</p>
+<footer class="site-footer">
+  <span class="stamp-row">Buraxılış v3.7 · yığılıb 2026-08-26 · boru xətti möhürü <code>21d4c3f2afa8</code></span>
+  <span class="stamp-row">Bu səhifədəki hər rəqəm yığım anında bu beş fayldan oxunur:
+    <code>2_neticeler/forecast_long.csv</code>, <code>2_neticeler/equations_catalog.csv</code>,
+    <code>2_neticeler/validation_backtest.csv</code>, <code>2_neticeler/series_dictionary.csv</code>,
+    <code>2_neticeler/assumptions.csv</code>. Möhür həmin beş faylın md5 cəmidir.</span>
+</footer>
+</main>
+</div>
+<script src="assets/plotly.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
