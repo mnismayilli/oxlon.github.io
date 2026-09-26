@@ -123,7 +123,7 @@
     '.rep-doc tbody tr:hover{background:#FAFBFD}',
     '.rep-doc .spark{width:62px;height:17px;display:block}',
     '.rep-doc .nil{color:#B8C2CC}',
-    '.rep-doc .dif.up{color:#1F6FB2}.rep-doc .dif.dn{color:#B4651A}',
+    '.rep-doc .dif.up{color:#1E7B4F}.rep-doc .dif.dn{color:#B3261E}',
     '.rep-doc .note{margin-top:14px;font-size:11.5px;color:#4A5764;border-top:1px solid #E7EBEF;padding-top:9px;white-space:pre-wrap}',
     '.rep-doc .foot{margin-top:9px;font-size:10.5px;color:#71808D}',
     '.rep-empty{padding:34px;text-align:center;color:var(--muted,#71808D);font-size:13px}',
