@@ -3,8 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FR10</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<style type="text/css">
+<title>FR10</title><style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7292,7 +7291,6 @@ a.anchor-link {
 }
 </style>
 <!-- Load mathjax -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
 <!-- MathJax configuration -->
 <script type="text/x-mathjax-config">
     init_mathjax = function() {
@@ -7793,7 +7791,29 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
-<!-- End of mermaid configuration --></head>
+<!-- End of mermaid configuration --><link rel="stylesheet" href="../../assets/katex-full/katex.min.css">
+<script defer src="../../assets/katex-full/katex.min.js"></script>
+<script defer src="../../assets/katex-full/auto-render.min.js"></script>
+<script>
+// Offline maths: the package ships KaTeX locally, so notebooks render without a network.
+document.addEventListener("DOMContentLoaded", function () {
+  if (!window.renderMathInElement) return;
+  var opts = {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+    throwOnError: false
+  };
+  document.querySelectorAll(".jp-RenderedMarkdown, .jp-RenderedLatex, .text_cell_render, .output_latex").forEach(function (el) {
+    try { renderMathInElement(el, opts); } catch (e) {}
+  });
+});
+</script>
+</head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=267d5a23">
 <div class="jp-Cell-inputWrapper" tabindex="0">

@@ -1,0 +1,67 @@
+MAKROİQTİSADİ PROQNOZ MODELLƏRİ — İŞLƏK HTML PAKETİ
+===================================================
+
+BAŞLAMAQ
+
+  index.html faylını brauzerdə açın (iki dəfə klikləyin).
+  Bütün bölmələrə oradan keçid var.
+
+  Quraşdırma tələb olunmur. İnternet bağlantısı lazım deyil — paket tam
+  oflayn işləyir. Chrome və ya Edge-in son versiyası tövsiyə olunur
+  (Safari və Firefox da dəstəklənir).
+
+  Qovluğu olduğu kimi saxlayın: fayllar bir-birinə nisbi yolla bağlıdır.
+  Ayrı-ayrı faylları başqa yerə köçürmək əlaqələri qırır.
+
+
+PAKETDƏ NƏ VAR
+
+  index.html
+      Giriş səhifəsi — üç alətin hamısına keçid.
+
+  Ministry_Bottom_up_Model_HTML/
+      Aşağıdan-yuxarı model (Nazirliyin 11 Excel faylı, 109 vərəq,
+      125 253 düstur, 1995–2030).
+        index.html  — klassik görünüş (bütün vərəqlər və düsturlar)
+        panel.html  — iş paneli (nəticələr, ssenari, hesabat, ekonometrika)
+
+  CAEM_HTML/
+      CAEM proqnoz aləti (BVF FPP 2.0, 54 vərəq, 57 150 düstur, 2025–2029).
+        index.html  — klassik görünüş
+        panel.html  — iş paneli (nəticələr, fərziyyələr, uzlaşdırma, hesabat)
+
+  alternativ_model/
+      Alternativ model (Oxlon §15.5.1) — müstəqil metodla eyni göstəricilər.
+        index.html      — modelin saytı (metod, məlumat, tənliklər, nəticələr)
+        notebooks.html  — 15 Jupyter dəftəri: brauzerdə oxumaq və ya yükləmək
+        kod/            — modelin Python kodu, testləri, run_all.py
+
+
+İŞ QAYDASI
+
+  Hər iki Nazirlik modelində iki görünüş var və hər ikisi EYNİ modeli işlədir:
+  klassik görünüşdə etdiyiniz dəyişiklik paneldə də görünür və əksinə.
+  Yuxarı sağdakı düymə ilə keçid edilir.
+
+  Bir fərziyyəni dəyişdikdə bütün asılı düsturlar dərhal yenidən hesablanır.
+
+
+DƏYİŞİKLİKLƏRİN SAXLANMASI
+
+  Etdiyiniz dəyişikliklər yalnız həmin kompüterdə, həmin brauzerdə saxlanılır.
+  Paylaşmaq və ya arxivləmək üçün:
+      — ssenarini JSON kimi ixrac edin («Ssenarilər» bölməsi),
+      — nəticələri Excel və ya PDF kimi ixrac edin («Hesabat» bölməsi),
+      — yenilənmiş Excel iş kitabını yükləyin («İdarəetmə» bölməsi).
+
+  Qeyd: bəzi brauzer parametrləri yerli fayllar üçün yaddaşı bağlayır.
+  Belə halda model işləyir, lakin dəyişikliklər brauzer bağlananda itir —
+  bu zaman ixrac funksiyalarından istifadə edin.
+
+
+MƏNBƏ FAYLLARI
+
+  Orijinal Excel faylları dəyişdirilmir. Hər düstur Excel-in öz nəticəsi ilə
+  tutuşdurulub: aşağıdan-yuxarı modeldə 125 251 / 125 253, CAEM-də
+  57 149 / 57 150 düstur eyni nəticəni verir. Fərqlər hər modelin
+  «Yoxlama» bölməsində açıqlanıb.
