@@ -149,6 +149,14 @@ table.itbl { border-collapse: collapse; width: 100%; font-size: 13.5px; }
 .mm input:disabled { background: var(--surface-2); color: var(--muted); }
 .mm .gap { font-weight: 700; }
 .mm .gap.z { color: var(--muted); font-weight: 400; }
+.rstat { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); border-left-width: 4px; border-radius: 10px; padding: 12px 14px; margin: 0 0 14px; background: var(--surface); }
+.rstat.open { border-left-color: #C08A2E; background: #FDF8EE; }
+.rstat.done { border-left-color: #2F6B3D; background: #F2F8F4; }
+.rstat.base { border-left-color: #8A96A3; }
+.rstat .rs-t { font-weight: 700; font-size: 14px; margin: 0 0 3px; }
+.rstat .rs-d { font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+.rstat .rs-a { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 720px) { .rstat { flex-direction: column; } .rstat .rs-a { margin-left: 0; } }
 .sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 10px; margin-bottom: 12px; }
 .sum .s { border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; background: var(--surface); }
 .sum .s b { display: block; font-size: 17px; font-variant-numeric: tabular-nums; line-height: 1.2; }
@@ -434,6 +442,7 @@ details.faq p { margin: 8px 0 0; }
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var KEYS = Store.keys, LS_EDITS = KEYS.edits, LS_SCEN = KEYS.scen, LS_PANEL = KEYS.panel;
+  var LS_MACRO = String(KEYS.panel || 'caemModel.panel.v1').replace('panel', 'macro');
   var YEARS = [], FYEARS = [], YEAR = 2025;
 
   // ------------------------------------------------------------------ icons
@@ -499,6 +508,30 @@ details.faq p { margin: 8px 0 0; }
     return first;
   }
   function yearOf(gs, r, c) { return Store.colYearIn(yearRows(gs), r, c); }
+  // The macros write to cells addressed by Excel defined name (GDP_percent_change, WedgeSD, …).
+  // Those rows often carry no text label of their own, so the name is the clearest thing to show.
+  var NAME_ROW = null;
+  function nameForRow(gs, r) {
+    if (!NAME_ROW) {
+      NAME_ROW = {};
+      (CORE.names || []).forEach(function (nm) {
+        var m = /^'?([^'!]+)'?!\$?([A-Z]+)\$?(\d+)$/.exec(String(nm.f || ''));
+        if (!m) return;
+        var g = gsOf(m[1]); if (g < 0) return;
+        var k = g + ':' + (+m[3]);
+        if (!NAME_ROW[k]) NAME_ROW[k] = nm.n;
+      });
+    }
+    return NAME_ROW[gs + ':' + r] || '';
+  }
+  function rowLabelOrName(gs, r) {
+    var l = rowLabel(gs, r);
+    if (l) return l;
+    var nm = nameForRow(gs, r);
+    if (nm) return nm;
+    for (var k = 1; k <= 6 && r - k > 0; k++) { var up = rowLabel(gs, r - k); if (up) return up + ' →'; }
+    return '';
+  }
   function rowLabel(gs, r) {
     var out = []; for (var c = 1; c <= 6; c++) { var x = cellId(gs, r, c); if (x >= 0 && typeof M.V0[x] === 'string' && M.V0[x].trim() && !/^[\d.,\s%-]+$/.test(M.V0[x])) out.push(M.V0[x].trim()); }
     return out.join(' · ');
@@ -869,7 +902,7 @@ details.faq p { margin: 8px 0 0; }
     el.innerHTML = '<span><span class="dotline" style="background:#1F6FB2"></span><b>Ssenari</b>: ' + n + ' dəyişiklik bazaya əlavə olunub</span><span><span class="dotline" style="background:#8A96A3"></span>baza: ' + esc(INFO.baseLabel) + ' (proqnoz ' + INFO.firstYear + '–' + INFO.endYear + ')</span>' +
       (wm !== null && wm > 0.001 ? '<span class="chip warn" title="Təklif–tələb və ya deflyator fərqi 0,001-dən böyükdür">uzlaşdırılmayıb</span>' : '') +
       '<span style="margin-left:auto;display:flex;gap:8px"><a class="btn sm" href="#/ssenariler">Saxla / müqayisə et</a><button class="btn sm" id="sb-reset">Bazaya qaytar</button></span>';
-    $('#sb-reset').onclick = function () { if (!confirm('Bütün ' + n + ' dəyişiklik silinsin?')) return; loadEdits(null); persist(); changed(); toast('Baza modelə qaytarıldı'); };
+    $('#sb-reset').onclick = function () { if (!confirm('Bütün ' + n + ' dəyişiklik silinsin?')) return; loadEdits(null); LAST_MACRO = null; saveMacro(null); persist(); changed(); toast('Baza modelə qaytarıldı'); };
   }
   function route() {
     var h = decodeURIComponent(location.hash.replace(/^#\/?/, '')), p = h.split('/');
@@ -1158,10 +1191,33 @@ details.faq p { margin: 8px 0 0; }
   }
 
   // ------------------------------------------------------------------ RECONCILIATION (macros)
+  function reconBanner() {
+    var st = reconState(), L = LAST_MACRO;
+    if (!st.closed) {
+      return '<div class="rstat open"><div><p class="rs-t">Model uzlaşdırılmayıb</p>' +
+        '<p class="rs-d">İstehsal və xərclər üsulu ilə ÜDM arasında fərq var (maksimum <b>' + nf(st.wm, 1) + '</b> mln manat). ' +
+        'Bu, modelin baza vəziyyətidir — uzlaşdırma məcburi deyil, özünüz qərar verirsiniz. Aşağıdakı düymələrdən birini seçsəniz, ' +
+        'dəyişən bütün dəyərlər elə bu səhifədə göstəriləcək.</p></div></div>';
+    }
+    if (L && L.params && L.params.length) {
+      var name = L.kind === 'CALI' ? 'CaliManual' : L.kind === 'YP' ? 'ResidualYP' : 'ResidualCP';
+      var when = '';
+      try { when = L.at.toLocaleDateString('az') + ' ' + L.at.toLocaleTimeString('az').slice(0, 5); } catch (e) { }
+      return '<div class="rstat done"><div><p class="rs-t">Uzlaşdırma tətbiq olunub — bu, modelin ilkin vəziyyəti deyil</p>' +
+        '<p class="rs-d">Fərqlər sıfıra endirilib, çünki <b>' + esc(name) + '</b> makrosu işə salınıb' + (when ? ' (' + esc(when) + ')' : '') +
+        ' və <b>' + L.params.length + '</b> parametr dəyişdirilib. Dəyişən dəyərlərin hamısı aşağıda verilib. ' +
+        'İstəsəniz, bir kliklə uzlaşdırmadan əvvəlki vəziyyətə qayıda bilərsiniz.</p></div>' +
+        '<div class="rs-a"><button class="btn sm" id="rc-undo">Uzlaşdırmanı geri al</button></div></div>';
+    }
+    return '<div class="rstat base"><div><p class="rs-t">Fərqlər bağlıdır</p>' +
+      '<p class="rs-d">Təklif–tələb və deflyator fərqləri hazırda sıfıra bərabərdir, lakin bu səhifədə qeydə alınmış uzlaşdırma icrası yoxdur — ' +
+      'fərqlər ya baza faylında bağlı olub, ya da dəyişikliklər başqa yolla edilib.</p></div></div>';
+  }
   function pageReconcile(v) {
     RERENDER = function () { pageReconcile(v); };
     var w = wedges();
     var h = '<div class="eyebrow">Uzlaşdırma</div><h1 class="h1" style="margin-top:6px">İstehsal və xərclər üsulu ilə ÜDM-in uzlaşdırılması</h1><p class="lead">CAEM-də real ÜDM iki yolla proqnozlaşdırılır: sahələr üzrə (1a, istehsal üsulu) və xərc komponentləri üzrə (1d, davranış tənlikləri). Hər proqnoz ilində onların fərqi (təklif–tələb fərqi) və ÜDM deflyatorunun ilkin təxmini ilə faktiki hesablanmış deflyator arasındakı fərq sıfır olmalıdır. Sənədin 6-cı əlavəsindəki makroslar bunu «Goal Seek» ilə edir; burada eyni alqoritm işləyir.</p>';
+    h += reconBanner();
     if (w) h += '<section class="sec"><div class="card itbl-wrap"><table class="itbl wedge"><thead><tr><th class="l">Fərq</th>' + w.map(function (x) { return '<th class="fc">' + x.y + '</th>'; }).join('') + '</tr></thead><tbody>' +
       '<tr><td class="lab">Təklif–tələb fərqi (GDP_diff), mln manat</td>' + w.map(function (x) { return '<td class="n ' + (Math.abs(x.g) > 0.001 ? 'bad' : 'ok') + '">' + nf(x.g, Math.abs(x.g) < 0.01 ? 4 : 1) + '</td>'; }).join('') + '</tr>' +
       '<tr><td class="lab">ÜDM deflyatoru fərqi (deflator_diff), f.b.</td>' + w.map(function (x) { return '<td class="n ' + (Math.abs(x.d) > 0.001 ? 'bad' : 'ok') + '">' + nf(x.d, 4) + '</td>'; }).join('') + '</tr></tbody></table></div></section>';
@@ -1173,8 +1229,54 @@ details.faq p { margin: 8px 0 0; }
     h += macroTables();
     v.innerHTML = h;
     $$('[data-m]', v).forEach(function (b) { b.onclick = function () { runMacro(b.getAttribute('data-m')); }; });
+    var un = $('#rc-undo'); if (un) un.onclick = function () { if (confirm('Uzlaşdırma geri alınsın? ' + LAST_MACRO.params.length + ' parametr əvvəlki dəyərinə qaytarılacaq.')) undoMacro(); };
   }
   var LAST_MACRO = null;
+  // The reconciliation result is a scenario change: it survives a reload. Without a record the page
+  // would just show zero wedges with no explanation, so the run itself is stored alongside the edits.
+  function saveMacro(L) {
+    try {
+      if (!L) { lsSet(LS_MACRO, ''); return; }
+      lsSet(LS_MACRO, JSON.stringify({
+        kind: L.kind, ms: L.ms, status: L.status, at: (L.at instanceof Date ? L.at : new Date()).toISOString(),
+        moved: L.moved, sheets: L.sheets, wBefore: L.wBefore, wAfter: L.wAfter,
+        params: L.params.map(function (x) { return { k: cellKey(x.id), sheet: x.sheet, a1: x.a1, y: x.y, label: x.label, b: x.b, a: x.a }; }),
+        rows: L.rows.map(function (r) { return { t: r.k.t, u: r.k.u, cells: r.cells }; })
+      }));
+    } catch (e) { /* storage may be unavailable — the page still works, only the record is lost */ }
+  }
+  function loadMacro() {
+    try {
+      var o = JSON.parse(lsGet(LS_MACRO) || 'null');
+      if (!o || !o.params) return null;
+      o.at = new Date(o.at);
+      o.nParams = o.params.length;
+      o.params.forEach(function (x) { x.id = idFromKey(x.k); });
+      o.params = o.params.filter(function (x) { return x.id >= 0; });
+      o.rows = (o.rows || []).map(function (r) { return { k: { t: r.t, u: r.u }, cells: r.cells }; });
+      o.restored = 1;
+      return o;
+    } catch (e) { return null; }
+  }
+  // is the model reconciled right now, and did that come from a run we recorded?
+  function reconState() {
+    var wm = wedgeMax();
+    var closed = wm !== null && wm <= 0.001;
+    var rec = LAST_MACRO && LAST_MACRO.kind !== 'CALI' ? LAST_MACRO : null;
+    return { closed: closed, wm: wm, rec: rec };
+  }
+  function undoMacro() {
+    var L = LAST_MACRO; if (!L || !L.params.length) return;
+    var n = 0;
+    L.params.forEach(function (x) {
+      if (x.id < 0) return;
+      if (same(x.b, M.V0[x.id])) resetCell(x.id, true); else setCell(x.id, x.b, true);
+      n++;
+    });
+    LAST_MACRO = null; saveMacro(null);
+    persist(); changed();
+    toast(n + ' parametr uzlaşdırmadan əvvəlki dəyərinə qaytarıldı');
+  }
   function runMacro(kind) {
     var C = window.CaemMacros, res, t0 = performance.now();
     var before = M.V.slice();                       // snapshot, so the impact can be reported cell by cell
@@ -1184,6 +1286,7 @@ details.faq p { margin: 8px 0 0; }
     res.changed.forEach(function (val, id) { if (same(val, M.V0[id])) EDITS.inputs.delete(id); else EDITS.inputs.set(id, val); });
     persist();
     LAST_MACRO = macroImpact(kind, res, before, wBefore, Math.round(performance.now() - t0));
+    saveMacro(LAST_MACRO);
     changed();
     var ms = Math.round(performance.now() - t0);
     if (kind === 'CALI') toast('Kalibrləmə: ' + res.changed.size + ' əlavə amil yeniləndi (' + ms + ' ms)');
@@ -1196,7 +1299,7 @@ details.faq p { margin: 8px 0 0; }
   function macroImpact(kind, res, before, wBefore, ms) {
     var params = [];
     res.changed.forEach(function (val, id) {
-      params.push({ id: id, sheet: SHEETS[M.sh[id]].n, a1: a1(M.r[id], M.c[id]), y: cellYear(id), label: rowLabel(M.sh[id], M.r[id]), b: before[id], a: M.V[id] });
+      params.push({ id: id, sheet: SHEETS[M.sh[id]].n, a1: a1(M.r[id], M.c[id]), y: cellYear(id), label: rowLabelOrName(M.sh[id], M.r[id]), b: before[id], a: M.V[id] });
     });
     params.sort(function (x, y) { return (x.sheet === y.sheet ? (x.y || 0) - (y.y || 0) : x.sheet < y.sheet ? -1 : 1); });
     // Which indicators moved: read the ministry's own report table, which carries the unit
@@ -1310,7 +1413,8 @@ details.faq p { margin: 8px 0 0; }
   function macroTables() {
     var L = LAST_MACRO; if (!L) return '';
     var name = L.kind === 'CALI' ? 'CaliManual' : L.kind === 'YP' ? 'ResidualYP' : 'ResidualCP';
-    var h = '<section class="sec"><div class="sec-h"><h2>Uzlaşdırmanın nəticəsi</h2><p>' + esc(L.at.toLocaleTimeString('az')) + ' · ' + esc(name) + '</p></div>';
+    var when = ''; try { when = L.at.toLocaleDateString('az') + ' ' + L.at.toLocaleTimeString('az').slice(0, 5); } catch (e) { }
+    var h = '<section class="sec"><div class="sec-h"><h2>Uzlaşdırmanın nəticəsi</h2><p>' + esc(when) + ' · ' + esc(name) + (L.restored ? ' · əvvəlki sessiyadan bərpa olundu' : '') + '</p></div>';
     h += macroSummary(L);
     var grow = L.rows.filter(function (r) { return isPct(r.k.u); }), lev = L.rows.filter(function (r) { return !isPct(r.k.u); });
     if (!L.rows.length) h += '<div class="card pad"><p class="muted" style="margin:0">Hesabat cədvəlində dəyişiklik olmadı.</p></div>';
@@ -1477,6 +1581,7 @@ details.faq p { margin: 8px 0 0; }
         YEAR = pv && FYEARS.indexOf(pv.year) >= 0 ? pv.year : INFO.firstYear;
         M.dependents();
         buildInputs();
+        LAST_MACRO = loadMacro();
         initReport();
         try { var saved = JSON.parse(lsGet(LS_EDITS) || 'null'); if (saved) loadEdits(saved); } catch (e) { /* ignore corrupt storage */ }
         $('#brand-sub').textContent = 'İş paneli · proqnoz ' + INFO.firstYear + '–' + INFO.endYear;
