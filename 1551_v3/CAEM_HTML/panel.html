@@ -149,6 +149,23 @@ table.itbl { border-collapse: collapse; width: 100%; font-size: 13.5px; }
 .mm input:disabled { background: var(--surface-2); color: var(--muted); }
 .mm .gap { font-weight: 700; }
 .mm .gap.z { color: var(--muted); font-weight: 400; }
+.sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.sum .s { border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; background: var(--surface); }
+.sum .s b { display: block; font-size: 17px; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.sum .s span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.sum .s .arr { font-size: 12px; color: var(--muted); font-weight: 400; }
+.sum .s.ok b { color: #2F6B3D; }
+.sum .s.warn b { color: #A3352A; }
+.movers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.movers .m { border: 1px solid var(--line); border-radius: 9px; background: var(--surface); overflow: hidden; }
+.movers h4 { margin: 0; padding: 7px 11px; font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); }
+.movers ul { list-style: none; margin: 0; padding: 4px 0; }
+.movers li { display: flex; gap: 8px; align-items: baseline; padding: 4px 11px; font-size: 12.5px; }
+.movers li .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.movers li .yr { color: var(--muted); font-size: 11px; }
+.movers li .dv { font-variant-numeric: tabular-nums; font-weight: 700; }
+.movers li .dv.up { color: #1F6FB2; } .movers li .dv.dn { color: #B4651A; }
+.sum-note { font-size: 12.5px; color: var(--ink-2); margin: 0 0 12px; line-height: 1.55; }
 .chip.bad { background: #FCF1F0; border-color: #E0A6A0; color: #A3352A; }
 .toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
 .toolbar input[type=search] { height: 34px; border: 1px solid var(--line); border-radius: 8px; padding: 0 12px; min-width: 240px; background: var(--surface); }
@@ -1236,11 +1253,65 @@ details.faq p { margin: 8px 0 0; }
     }).filter(Boolean);
   }
   function isPct(u) { return /%|f\.b\./.test(u || ''); }
+  function maxAbs(w, key) { var m = 0; (w || []).forEach(function (x) { if (isNum(x[key])) m = Math.max(m, Math.abs(x[key])); }); return m; }
+  // Rank by the size of the change itself, not by the percentage: series that pass near zero
+  // (trade balance, net income) would otherwise dominate with meaningless −400% figures.
+  function topMovers(rows, n) {
+    var out = [];
+    rows.forEach(function (r) {
+      var best = null;
+      r.cells.forEach(function (c) {
+        if (!isNum(c.a) || !isNum(c.b) || same(c.a, c.b)) return;
+        var d = Math.abs(c.a - c.b);
+        if (!best || d > Math.abs(best.d)) best = { y: c.y, d: c.a - c.b, b: c.b, a: c.a };
+      });
+      if (best) out.push({ t: r.k.t, u: r.k.u, m: best });
+    });
+    out.sort(function (a, b) { return Math.abs(b.m.d) - Math.abs(a.m.d); });
+    return out.slice(0, n || 4);
+  }
+  function moverList(title, rows, pct) {
+    var top = topMovers(rows, 4);
+    if (!top.length) return '';
+    return '<div class="m"><h4>' + esc(title) + '</h4><ul>' + top.map(function (x) {
+      var d = x.m.d, sgn = d > 0 ? '+' : '−', ad = Math.abs(d);
+      // the percentage is only shown when the starting level makes it meaningful
+      var pctTxt = (!pct && isNum(x.m.b) && Math.abs(x.m.b) >= 2 * ad) ? ' (' + sgn + nf(ad / Math.abs(x.m.b) * 100, 1) + '%)' : '';
+      var txt = pct ? sgn + nf(ad, 1) + ' f.b.' : sgn + nf(ad, 0) + pctTxt;
+      return '<li><span class="nm" title="' + esc(x.t) + (x.u ? ' · ' + esc(x.u) : '') + '">' + esc(x.t) + (pct ? '' : ' <span class="yr">' + esc(x.u) + '</span>') + '</span><span class="yr">' + x.m.y + '</span><span class="dv ' + (d > 0 ? 'up' : 'dn') + '">' + txt + '</span></li>';
+    }).join('') + '</ul></div>';
+  }
+  function macroSummary(L) {
+    var name = L.kind === 'CALI' ? 'CaliManual' : L.kind === 'YP' ? 'ResidualYP' : 'ResidualCP';
+    var gB = maxAbs(L.wBefore, 'g'), gA = maxAbs(L.wAfter, 'g'), dB = maxAbs(L.wBefore, 'd'), dA = maxAbs(L.wAfter, 'd');
+    var grow = L.rows.filter(function (r) { return isPct(r.k.u); }), lev = L.rows.filter(function (r) { return !isPct(r.k.u); });
+    var closed = gA <= 0.001 && dA <= 0.001;
+    var what = L.kind === 'YP' ? 'istehsal tərəfinin artımı və ilkin deflyator təxmini xərclər üsuluna uyğunlaşdırıldı'
+      : L.kind === 'CP' ? 'tələb tərəfinə düzəliş (WedgeSD) və ilkin deflyator təxmini istehsal üsuluna uyğunlaşdırıldı'
+      : 'davranış tənliklərinin əlavə amilləri son proqnozlara uyğunlaşdırıldı';
+    var h = '<p class="sum-note"><b>' + name + '</b> icra olundu: ' + what + '. ' +
+      (L.kind === 'CALI' ? '' : (closed ? 'Hər iki fərq bağlandı' : 'Fərqlər tam bağlanmadı') + ' (' + FYEARS[0] + '–' + FYEARS[FYEARS.length - 1] + '). ') +
+      'Nəticədə hesabat cədvəlində <b>' + L.rows.length + '</b> sətir dəyişdi — ' + grow.length + ' artım/nisbət, ' + lev.length + ' nominal göstərici; modelin ' +
+      '<b>' + nf(L.moved, 0) + '</b> xanası yenidən hesablandı.</p>';
+    h += '<div class="sum">';
+    if (L.kind !== 'CALI') {
+      h += '<div class="s ' + (gA <= 0.001 ? 'ok' : 'warn') + '"><b>' + nf(gA, gA < 0.01 ? 4 : 1) + ' <span class="arr">← ' + nf(gB, gB < 0.01 ? 4 : 1) + '</span></b><span>Təklif–tələb fərqi, maks. (mln manat)</span></div>';
+      h += '<div class="s ' + (dA <= 0.001 ? 'ok' : 'warn') + '"><b>' + nf(dA, 4) + ' <span class="arr">← ' + nf(dB, 4) + '</span></b><span>Deflyator fərqi, maks. (f.b.)</span></div>';
+    }
+    h += '<div class="s"><b>' + L.nParams + '</b><span>Dəyişdirilən parametr</span></div>';
+    h += '<div class="s"><b>' + L.rows.length + '</b><span>Təsirlənən göstərici</span></div>';
+    h += '<div class="s"><b>' + nf(L.moved, 0) + '</b><span>Yenidən hesablanan xana</span></div>';
+    h += '<div class="s"><b>' + L.ms + ' ms</b><span>İcra müddəti</span></div>';
+    h += '</div>';
+    var ml = moverList('Ən çox dəyişən artım göstəriciləri', grow, true) + moverList('Ən çox dəyişən nominal göstəricilər', lev, false);
+    if (ml) h += '<div class="movers">' + ml + '</div>';
+    return h;
+  }
   function macroTables() {
     var L = LAST_MACRO; if (!L) return '';
     var name = L.kind === 'CALI' ? 'CaliManual' : L.kind === 'YP' ? 'ResidualYP' : 'ResidualCP';
-    var h = '<section class="sec"><div class="sec-h"><h2>Son icra: ' + name + '</h2><p>' + L.nParams + ' parametr dəyişdirildi · ' + L.ms + ' ms · ' +
-      (L.status === 'done' ? 'fərqlər bağlandı' : esc(String(L.status))) + '</p></div>';
+    var h = '<section class="sec"><div class="sec-h"><h2>Uzlaşdırmanın nəticəsi</h2><p>' + esc(L.at.toLocaleTimeString('az')) + ' · ' + esc(name) + '</p></div>';
+    h += macroSummary(L);
     var grow = L.rows.filter(function (r) { return isPct(r.k.u); }), lev = L.rows.filter(function (r) { return !isPct(r.k.u); });
     if (!L.rows.length) h += '<div class="card pad"><p class="muted" style="margin:0">Hesabat cədvəlində dəyişiklik olmadı.</p></div>';
     else h += '<div class="card itbl-wrap">' + impactTable('Artım tempi və nisbətlər (%)', grow) + impactTable('Nominal dəyərlər (səviyyə)', lev) + '</div>';
