@@ -50,9 +50,61 @@ Hər sıra iki hissə ilə ünvanlanır:
 | `period` | il (illik tezlik) | `2025` |
 | `value` | ədəd və ya `null` | `1.95` |
 
-Kataloqda **559 sıra** var: aşağıdan-yuxarı modeldən 100 (EViews dəyişənləri),
-CAEM-dən 459 (fərziyyələr, əmsallar, əlavə amillər, açarlar).
+Kataloqda **1 179 sıra** var: aşağıdan-yuxarı modeldən 100 (EViews dəyişənləri),
+CAEM-dən 459 (fərziyyələr, əmsallar, əlavə amillər, açarlar) və Nazirliyin rəsmi
+siyahısından 620 (`resmi` modeli — ASİS adları və mənbələri ilə).
 Hər sıra üçün mənbə Excel vərəqi və sətri də saxlanılır.
+
+---
+
+## 2a. Rəsmi adlar və mənbələr (məlumat anbarı ilə uyğunlaşdırma)
+
+Nazirliyin «8 vərəq — rəsmi adlar» faylındakı **620 göstərici** kataloqa `resmi`
+modeli kimi əlavə olunub. Hər sıra üçün saxlanılır:
+
+| Sahə | İzah |
+|---|---|
+| `asis_name` | ASİS-dəki rəsmi ad |
+| `asis_parent` | ana göstərici (məs. sahənin adı) |
+| `asis_path` | `vərəq \| ana göstərici › ad` — birləşdirmə üçün əsas açar |
+| `agency` | `DSK`, `AMB` və ya `DSK\|AMB` |
+| `agency_inferred` | 1 — mənbə faylda həmin sətirdə yazılmayıb, yuxarıdakı sətirdən götürülüb |
+| `note` | Nazirliyin həmin sətir üçün qeydi |
+| `ministry_sheet`, `ministry_row` | mənbə faylındakı yeri |
+
+### Vacib: rəsmi ad tək başına açar deyil
+
+620 göstərici cəmi **275 fərqli ASİS adı** işlədir. «Real artım tempi» 63 sətirdə,
+«Deflyator» 53 sətirdə, «Əlavə dəyər» 50 sətirdə təkrarlanır — çünki bunlar ana
+göstəricinin alt sətirləridir.
+
+Buna görə anbar birləşdirməsində:
+
+1. **ən etibarlısı** — `code` (məs. `2.4.1.2_r14`), dəyişmir;
+2. **rəsmi ad üzrə** — `asis_path` istifadə edin: 615 adlı sıradan **595-ni** tək-tək
+   müəyyən edir;
+3. yalnız `asis_name` ilə axtarsanız, `/v1/resolve` cavabında `unique: false` və
+   izahedici `hint` qayıdır.
+
+Qalan **20 sətir** (8 təkrarlanan yol) yalnız `code` ilə ayrılır — siyahı:
+
+```bash
+curl -H "Authorization: Bearer anbar-oxu" "http://127.0.0.1:8787/v1/series?ambiguous=1"
+```
+
+### Nümunə
+
+```bash
+# rəsmi ad → modelin sırası
+curl -G -H "Authorization: Bearer anbar-oxu" http://127.0.0.1:8787/v1/resolve \
+     --data-urlencode "asis_path=2.4.1.2. | Mədənçıxarma sənayesi › Əlavə dəyər"
+
+# mənbə üzrə süzgəc
+curl -H "Authorization: Bearer anbar-oxu" "http://127.0.0.1:8787/v1/series?agency=AMB"
+
+# mənbələrin xülasəsi və Nazirliyin qeydləri
+curl -H "Authorization: Bearer anbar-oxu" "http://127.0.0.1:8787/v1/sources"
+```
 
 ---
 
@@ -157,6 +209,7 @@ dəyərin üzərinə yazmaq deməkdir.
 |---|---|
 | `openapi.yaml` | Rəsmi müqavilə (OpenAPI 3.1) — 8 endpoint, 5 sxem |
 | `server.py` | İstinad serveri (yalnız standart kitabxana, SQLite) |
-| `catalogue.json` | 559 sıra və 5 172 başlanğıc nöqtəsi — bazanı doldurmaq üçün |
+| `catalogue.json` | 1 179 sıra və 13 418 başlanğıc nöqtəsi — bazanı doldurmaq üçün |
 | `sync_example.py` | Anbara artımlı yükləmə nümunəsi |
 | `miis.db` | SQLite bazası (server yaradır) |
+| `../8_vərəq_rəsmi_adlar.xlsx` | Nazirliyin göndərdiyi mənbə sənədi — rəsmi adlar və mənbələr bu fayldan götürülüb |

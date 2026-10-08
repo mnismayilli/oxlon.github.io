@@ -30,8 +30,14 @@ CREATE TABLE IF NOT EXISTS series (
   model TEXT NOT NULL, code TEXT NOT NULL, kind TEXT, label_az TEXT, unit_az TEXT,
   freq TEXT, book TEXT, sheet TEXT, row INTEGER, first_year INTEGER, last_year INTEGER,
   options TEXT, updated_at TEXT,
+  asis_name TEXT, asis_path TEXT, asis_parent TEXT, asis_ambiguous INTEGER,
+  agency TEXT, agency_inferred INTEGER, note TEXT,
+  ministry_sheet TEXT, ministry_row INTEGER,
   PRIMARY KEY (model, code)
 );
+CREATE INDEX IF NOT EXISTS series_asis ON series(asis_name);
+CREATE INDEX IF NOT EXISTS series_path ON series(asis_path);
+CREATE INDEX IF NOT EXISTS series_agency ON series(agency);
 CREATE TABLE IF NOT EXISTS observation (
   model TEXT NOT NULL, code TEXT NOT NULL, period INTEGER NOT NULL,
   value REAL, source TEXT, actor TEXT, note TEXT, revision INTEGER DEFAULT 1,
@@ -96,15 +102,27 @@ def seed(con, path):
         n_s = n_o = 0
         for s in data["series"]:
             src = s.get("source") or {}
-            con.execute("INSERT INTO series(model,code,kind,label_az,unit_az,freq,book,sheet,row,first_year,last_year,options,updated_at) "
-                        "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(model,code) DO UPDATE SET "
+            mref = s.get("ministry_ref") or {}
+            ag = s.get("agency")
+            con.execute("INSERT INTO series(model,code,kind,label_az,unit_az,freq,book,sheet,row,first_year,last_year,"
+                        "options,updated_at,asis_name,asis_path,asis_parent,asis_ambiguous,"
+                        "agency,agency_inferred,note,ministry_sheet,ministry_row) "
+                        "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(model,code) DO UPDATE SET "
                         "kind=excluded.kind,label_az=excluded.label_az,unit_az=excluded.unit_az,freq=excluded.freq,"
                         "book=excluded.book,sheet=excluded.sheet,row=excluded.row,first_year=excluded.first_year,"
-                        "last_year=excluded.last_year,options=excluded.options,updated_at=excluded.updated_at",
+                        "last_year=excluded.last_year,options=excluded.options,updated_at=excluded.updated_at,"
+                        "asis_name=excluded.asis_name,asis_path=excluded.asis_path,asis_parent=excluded.asis_parent,"
+                        "asis_ambiguous=excluded.asis_ambiguous,agency=excluded.agency,agency_inferred=excluded.agency_inferred,"
+                        "note=excluded.note,ministry_sheet=excluded.ministry_sheet,ministry_row=excluded.ministry_row",
                         (s["model"], s["code"], s.get("kind", "series"), s.get("label_az"), s.get("unit_az"),
                          s.get("freq", "A"), src.get("book"), src.get("sheet"), src.get("row"),
                          s.get("first"), s.get("last"),
-                         json.dumps(s["options"], ensure_ascii=False) if s.get("options") else None, ts))
+                         json.dumps(s["options"], ensure_ascii=False) if s.get("options") else None, ts,
+                         s.get("asis_name"), s.get("asis_path"), s.get("asis_parent"),
+                         1 if s.get("asis_ambiguous") else 0,
+                         ("|".join(ag) if isinstance(ag, list) else ag),
+                         1 if s.get("agency_inferred") else 0, s.get("note"),
+                         mref.get("sheet"), mref.get("row")))
             n_s += 1
             for per, val in (s.get("obs") or {}).items():
                 sq = next_seq(con)
@@ -230,9 +248,12 @@ class Handler(BaseHTTPRequestHandler):
             where, args = [], []
             if one("model"): where.append("model=?"); args.append(one("model"))
             if one("kind"): where.append("kind=?"); args.append(one("kind"))
+            if one("agency"): where.append("IFNULL(agency,'') LIKE ?"); args.append("%" + one("agency") + "%")
+            if one("asis"): where.append("(IFNULL(asis_name,'') LIKE ? OR IFNULL(asis_path,'') LIKE ?)"); args += ["%" + one("asis") + "%"] * 2
+            if one("ambiguous") in ("1", "true"): where.append("asis_ambiguous=1")
             if one("q"):
-                where.append("(code LIKE ? OR IFNULL(label_az,'') LIKE ?)")
-                args += ["%" + one("q") + "%"] * 2
+                where.append("(code LIKE ? OR IFNULL(label_az,'') LIKE ? OR IFNULL(asis_name,'') LIKE ?)")
+                args += ["%" + one("q") + "%"] * 3
             lim = max(1, min(2000, num("limit", 500))); off = max(0, num("offset", 0))
             sql = "SELECT * FROM series" + (" WHERE " + " AND ".join(where) if where else "") + " ORDER BY model, code LIMIT ? OFFSET ?"
             rows = [dict(r) for r in con.execute(sql, args + [lim, off])]
@@ -255,6 +276,32 @@ class Handler(BaseHTTPRequestHandler):
                                   "actor": r["actor"], "updated_at": r["updated_at"], "revision": r["revision"]}
                                  for r in con.execute("SELECT * FROM observation WHERE model=? AND code=? ORDER BY period", (model, code))]
             return self._send(200, d)
+
+        if p == ["v1", "sources"] and method == "GET":
+            rows = [dict(r) for r in con.execute(
+                "SELECT IFNULL(agency,'(təyin edilməyib)') agency, COUNT(*) series, "
+                "SUM(CASE WHEN agency_inferred=1 THEN 1 ELSE 0 END) inferred "
+                "FROM series GROUP BY IFNULL(agency,'(təyin edilməyib)') ORDER BY series DESC")]
+            legend = {"DSK": "Dövlət Statistika Komitəsi (stat.gov.az / ASİS)",
+                      "AMB": "Azərbaycan Mərkəzi Bankı (tədiyə balansı hesabatı)"}
+            notes = [dict(r) for r in con.execute(
+                "SELECT model, code, label_az, note FROM series WHERE note IS NOT NULL AND note<>''")]
+            return self._send(200, {"items": rows, "legend": legend, "notes": notes})
+
+        if p == ["v1", "resolve"] and method == "GET":
+            nm = one("asis_name") or one("name") or one("asis_path")
+            if not nm: raise ApiError(400, "bad_request", "«asis_name» və ya «asis_path» parametri tələb olunur")
+            rows = [dict(r) for r in con.execute(
+                "SELECT model,code,label_az,asis_name,asis_path,asis_parent,asis_ambiguous,unit_az,agency,"
+                "first_year,last_year FROM series "
+                "WHERE asis_path=? OR asis_name=? OR asis_path LIKE ? OR asis_name LIKE ? LIMIT 50",
+                (nm, nm, "%" + nm + "%", "%" + nm + "%"))]
+            exact = [r for r in rows if r["asis_path"] == nm or r["asis_name"] == nm]
+            return self._send(200, {"query": nm, "items": rows, "exact": len(exact),
+                                    "unique": len(exact) == 1,
+                                    "hint": None if len(exact) <= 1 else
+                                            "Bu ad bir neçə göstəriciyə aiddir — «asis_path» (vərəq | ana göstərici › ad) "
+                                            "və ya «code» ilə dəqiqləşdirin."})
 
         if p == ["v1", "observations"] and method == "GET":
             where, args = [], []

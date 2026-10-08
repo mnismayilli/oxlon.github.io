@@ -68,7 +68,10 @@ paths:
       summary: Baza sıralarının kataloqu
       parameters:
         - { name: model, in: query, schema: { type: string, enum: [bum, caem] } }
-        - { name: kind, in: query, schema: { type: string }, description: "series, scalar, coef, addfactor, switch" }
+        - { name: kind, in: query, schema: { type: string }, description: "series, scalar, coef, addfactor, switch, official" }
+        - { name: agency, in: query, schema: { type: string }, description: "Mənbə üzrə süzgəc: DSK, AMB" }
+        - { name: asis, in: query, schema: { type: string }, description: Rəsmi ad və ya yol üzrə axtarış }
+        - { name: ambiguous, in: query, schema: { type: boolean }, description: Yalnız adı təkrarlanan sıralar }
         - { name: q, in: query, schema: { type: string }, description: Kod və ya ad üzrə axtarış
           }
         - { name: limit, in: query, schema: { type: integer, default: 500, maximum: 2000 } }
@@ -106,6 +109,56 @@ paths:
                         type: array
                         items: { $ref: "#/components/schemas/Observation" }
         "404": { $ref: "#/components/responses/Error" }
+  /v1/sources:
+    get:
+      tags: [Kataloq]
+      summary: Mənbələr üzrə xülasə və Nazirliyin qeydləri
+      description: |
+        Hansı qurumun neçə sırası var və onlardan neçəsi birbaşa faylda yazılıb, neçəsi
+        yuxarıdakı sətirdən götürülüb. Nazirliyin «Mənbə / qeyd» sütununda qeyd etdiyi
+        problemli sətirlər də burada qayıdır.
+      responses:
+        "200":
+          description: Mənbələr
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        agency: { type: string }
+                        series: { type: integer }
+                        inferred: { type: integer }
+                  legend: { type: object, additionalProperties: { type: string } }
+                  notes: { type: array, items: { type: object } }
+  /v1/resolve:
+    get:
+      tags: [Kataloq]
+      summary: Rəsmi ad üzrə sıranın tapılması (məlumat anbarı üçün)
+      description: |
+        Anbardakı rəsmi adı modelin sırası ilə uyğunlaşdırır. ASİS adları təkrarlana
+        bilər (məs. «Real artım tempi» 63 sətirdə işlənir), ona görə dəqiq nəticə üçün
+        `asis_path` istifadə edin. `unique: false` qayıdırsa, `code` ilə dəqiqləşdirin.
+      parameters:
+        - { name: asis_name, in: query, schema: { type: string } }
+        - { name: asis_path, in: query, schema: { type: string } }
+      responses:
+        "200":
+          description: Tapılan sıralar
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query: { type: string }
+                  exact: { type: integer }
+                  unique: { type: boolean }
+                  hint: { type: [string, "null"] }
+                  items: { type: array, items: { $ref: "#/components/schemas/Series" } }
   /v1/observations:
     get:
       tags: [Müşahidələr]
@@ -315,9 +368,18 @@ components:
     Series:
       type: object
       properties:
-        model: { type: string }
-        code: { type: string }
-        kind: { type: string, description: "series, scalar, coef, addfactor, switch" }
+        model: { type: string, description: "bum, caem və ya resmi (Nazirliyin 8 vərəq göstəriciləri)" }
+        code: { type: string, description: Dəyişməz daxili açar — birləşdirmə üçün ən etibarlı sahə }
+        kind: { type: string, description: "series, scalar, coef, addfactor, switch, official" }
+        asis_name: { type: [string, "null"], description: ASİS-dəki rəsmi ad (təkrarlana bilər) }
+        asis_parent: { type: [string, "null"], description: Ana göstərici (məs. sahə adı) }
+        asis_path: { type: [string, "null"], description: "«vərəq | ana göstərici › ad» — 615 sıradan 595-ni tək-tək müəyyən edir" }
+        asis_ambiguous: { type: [integer, "null"], description: 1 — bu yol birdən çox sıraya aiddir, «code» ilə dəqiqləşdirin }
+        agency: { type: [string, "null"], description: "DSK, AMB və ya DSK|AMB" }
+        agency_inferred: { type: [integer, "null"], description: 1 — mənbə yuxarıdakı sətirdən götürülüb, faylda açıq yazılmayıb }
+        note: { type: [string, "null"], description: Nazirliyin həmin sətir üçün qeydi }
+        ministry_sheet: { type: [string, "null"] }
+        ministry_row: { type: [integer, "null"] }
         label_az: { type: [string, "null"] }
         unit_az: { type: [string, "null"] }
         freq: { type: string, example: A }
