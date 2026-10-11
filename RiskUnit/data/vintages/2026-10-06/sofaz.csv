@@ -1,0 +1,16 @@
+series,date,value,unit
+sofaz_assets_usd_mln,2026-06-30,72596.6,mln ABŞ dolları
+sofaz_ccy_cny_mln,2026-06-30,11570.7,"mln, valyutada"
+sofaz_ccy_eur_mln,2026-06-30,11279.8,"mln, valyutada"
+sofaz_ccy_gbp_mln,2026-06-30,2690.0,"mln, valyutada"
+sofaz_ccy_jpy_mln,2026-06-30,174308.7,"mln, valyutada"
+sofaz_ccy_other_mln,2026-06-30,2844.9,"mln, valyutada"
+sofaz_ccy_usd_mln,2026-06-30,50566.1,"mln, valyutada"
+sofaz_class_equities_pct,2026-06-30,28.1,%
+sofaz_class_fixed_income_pct,2026-06-30,33.8,%
+sofaz_class_gold_pct,2026-06-30,31.4,%
+sofaz_class_real_estate_pct,2026-06-30,6.7,%
+sofaz_gold_share_pct,2026-06-30,31.4,%
+sofaz_gold_tons,2026-06-30,178.1,ton
+sofaz_gold_usd_mln,2026-06-30,22827.2,mln ABŞ dolları
+sofaz_transfers_cum_azn_mln,2026-06-30,176832.9,"mln AZN, yığılmış"
