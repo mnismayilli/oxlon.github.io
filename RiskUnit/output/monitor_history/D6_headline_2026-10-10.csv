@@ -1,0 +1,136 @@
+driver,target_id,year,channel,delta
+brent,fr1:balance_n,2026,"FR1 multiplikatoru (Brent +10, xətti miqyas)",610.179
+brent,fr1:balance_n,2026,MicroUnit zənciri FR1→… (brent),618.503
+brent,fr1:balance_n,2027,"FR1 multiplikatoru (Brent +10, xətti miqyas)",735.713
+brent,fr1:balance_n,2027,MicroUnit zənciri FR1→… (brent),903.798
+brent,fr1:balance_n,2028,"FR1 multiplikatoru (Brent +10, xətti miqyas)",376.047
+brent,fr1:balance_n,2028,MicroUnit zənciri FR1→… (brent),614.406
+brent,fr1:balance_n,2029,"FR1 multiplikatoru (Brent +10, xətti miqyas)",246.084
+brent,fr1:balance_n,2029,MicroUnit zənciri FR1→… (brent),514.637
+brent,fr1:balance_n,2030,"FR1 multiplikatoru (Brent +10, xətti miqyas)",83.2453
+brent,fr1:balance_n,2030,MicroUnit zənciri FR1→… (brent),373.651
+brent,fr1:gdp_n,2026,MicroUnit zənciri FR1→… (brent),11280.6
+brent,fr1:gdp_n,2027,MicroUnit zənciri FR1→… (brent),20489.2
+brent,fr1:gdp_n,2028,MicroUnit zənciri FR1→… (brent),21166.3
+brent,fr1:gdp_n,2029,MicroUnit zənciri FR1→… (brent),22798.3
+brent,fr1:gdp_n,2030,MicroUnit zənciri FR1→… (brent),23331.9
+brent,fr1:infl,2026,"FR1 multiplikatoru (Brent +10, xətti miqyas)",0.274349
+brent,fr1:infl,2026,MicroUnit zənciri FR1→… (brent),0.257975
+brent,fr1:infl,2026,RU: Brent → idxal (ərzaq daxil) qiymətləri → İQİ (vahid ötürmə 'cpi_ext'),3.19534
+brent,fr1:infl,2026,RU: R01 investisiya reaksiyasının İQİ təsiri,0.0385698
+brent,fr1:infl,2027,"FR1 multiplikatoru (Brent +10, xətti miqyas)",0.0915864
+brent,fr1:infl,2027,MicroUnit zənciri FR1→… (brent),0.230206
+brent,fr1:infl,2027,RU: Brent → idxal (ərzaq daxil) qiymətləri → İQİ (vahid ötürmə 'cpi_ext'),3.48015
+brent,fr1:infl,2027,RU: R01 investisiya reaksiyasının İQİ təsiri,0.641746
+brent,fr1:infl,2028,"FR1 multiplikatoru (Brent +10, xətti miqyas)",0.0876704
+brent,fr1:infl,2028,MicroUnit zənciri FR1→… (brent),0.0792408
+brent,fr1:infl,2028,RU: Brent → idxal (ərzaq daxil) qiymətləri → İQİ (vahid ötürmə 'cpi_ext'),1.05534
+brent,fr1:infl,2028,RU: R01 investisiya reaksiyasının İQİ təsiri,0.271822
+brent,fr1:infl,2029,"FR1 multiplikatoru (Brent +10, xətti miqyas)",0.0462845
+brent,fr1:infl,2029,MicroUnit zənciri FR1→… (brent),0.0411842
+brent,fr1:infl,2029,RU: Brent → idxal (ərzaq daxil) qiymətləri → İQİ (vahid ötürmə 'cpi_ext'),0.0583868
+brent,fr1:infl,2029,RU: R01 investisiya reaksiyasının İQİ təsiri,0.0880163
+brent,fr1:infl,2030,"FR1 multiplikatoru (Brent +10, xətti miqyas)",0.0389776
+brent,fr1:infl,2030,MicroUnit zənciri FR1→… (brent),0.0283243
+brent,fr1:infl,2030,RU: Brent → idxal (ərzaq daxil) qiymətləri → İQİ (vahid ötürmə 'cpi_ext'),-0.122499
+brent,fr1:infl,2030,RU: R01 investisiya reaksiyasının İQİ təsiri,0.0464687
+brent,fr1:rev_tot_n,2026,MicroUnit zənciri FR1→… (brent),5197.57
+brent,fr1:rev_tot_n,2027,MicroUnit zənciri FR1→… (brent),9438.13
+brent,fr1:rev_tot_n,2028,MicroUnit zənciri FR1→… (brent),10002
+brent,fr1:rev_tot_n,2029,MicroUnit zənciri FR1→… (brent),10572.4
+brent,fr1:rev_tot_n,2030,MicroUnit zənciri FR1→… (brent),10871.7
+brent,fr1:rgdp,2026,"FR1 multiplikatoru (Brent +10, xətti miqyas)",381.874
+brent,fr1:rgdp,2026,MicroUnit zənciri FR1→… (brent),360.074
+brent,fr1:rgdp,2027,"FR1 multiplikatoru (Brent +10, xətti miqyas)",285.6
+brent,fr1:rgdp,2027,MicroUnit zənciri FR1→… (brent),412.119
+brent,fr1:rgdp,2028,"FR1 multiplikatoru (Brent +10, xətti miqyas)",-54.429
+brent,fr1:rgdp,2028,MicroUnit zənciri FR1→… (brent),108.799
+brent,fr1:rgdp,2029,"FR1 multiplikatoru (Brent +10, xətti miqyas)",-48.3079
+brent,fr1:rgdp,2029,MicroUnit zənciri FR1→… (brent),115.569
+brent,fr1:rgdp,2030,"FR1 multiplikatoru (Brent +10, xətti miqyas)",-260.596
+brent,fr1:rgdp,2030,MicroUnit zənciri FR1→… (brent),-89.0527
+brent,fr1:rgdpnon,2026,"FR1 multiplikatoru (Brent +10, xətti miqyas)",421.942
+brent,fr1:rgdpnon,2026,MicroUnit zənciri FR1→… (brent),397.854
+brent,fr1:rgdpnon,2026,RU: R01 prosiklik investisiya reaksiyası (FR1-dən artıq hissə; simulate ilə eyni),59.5299
+brent,fr1:rgdpnon,2027,"FR1 multiplikatoru (Brent +10, xətti miqyas)",938.084
+brent,fr1:rgdpnon,2027,MicroUnit zənciri FR1→… (brent),792.022
+brent,fr1:rgdpnon,2027,RU: R01 prosiklik investisiya reaksiyası (FR1-dən artıq hissə; simulate ilə eyni),1100.52
+brent,fr1:rgdpnon,2028,"FR1 multiplikatoru (Brent +10, xətti miqyas)",1142.53
+brent,fr1:rgdpnon,2028,MicroUnit zənciri FR1→… (brent),961.219
+brent,fr1:rgdpnon,2028,RU: R01 prosiklik investisiya reaksiyası (FR1-dən artıq hissə; simulate ilə eyni),1607.32
+brent,fr1:rgdpnon,2029,"FR1 multiplikatoru (Brent +10, xətti miqyas)",1278.79
+brent,fr1:rgdpnon,2029,MicroUnit zənciri FR1→… (brent),1080.85
+brent,fr1:rgdpnon,2029,RU: R01 prosiklik investisiya reaksiyası (FR1-dən artıq hissə; simulate ilə eyni),1840.51
+brent,fr1:rgdpnon,2030,"FR1 multiplikatoru (Brent +10, xətti miqyas)",1383.09
+brent,fr1:rgdpnon,2030,MicroUnit zənciri FR1→… (brent),1179.94
+brent,fr1:rgdpnon,2030,RU: R01 prosiklik investisiya reaksiyası (FR1-dən artıq hissə; simulate ilə eyni),2005.46
+brent,mx:ca_gdp_ratio,2026,OxLon: Brent lo80/hi80 elastikliyi (ÜDM sabit),12.5532
+brent,mx:ca_gdp_ratio,2027,OxLon: Brent lo80/hi80 elastikliyi (ÜDM sabit),19.6576
+brent,mx:ca_gdp_ratio,2028,OxLon: Brent lo80/hi80 elastikliyi (ÜDM sabit),17.3029
+brent,mx:ca_gdp_ratio,2029,OxLon: Brent lo80/hi80 elastikliyi (ÜDM sabit),16.0598
+brent,mx:ca_gdp_ratio,2030,OxLon: Brent lo80/hi80 elastikliyi (ÜDM sabit),14.4501
+brent,mx:current_account,2026,OxLon: Brent lo80/hi80 ssenarilərindən cari hesab elastikliyi,10447.3
+brent,mx:current_account,2027,OxLon: Brent lo80/hi80 ssenarilərindən cari hesab elastikliyi,17996
+brent,mx:current_account,2028,OxLon: Brent lo80/hi80 ssenarilərindən cari hesab elastikliyi,17517.4
+brent,mx:current_account,2029,OxLon: Brent lo80/hi80 ssenarilərindən cari hesab elastikliyi,18212
+brent,mx:current_account,2030,OxLon: Brent lo80/hi80 ssenarilərindən cari hesab elastikliyi,18267.3
+budget_execution,fr1:rev_tot_n,2026,icra tempi (Yanvar–ay icrası / ötən ay payı; mövsümilik nəzərə alınmır),-1110.32
+cpi,fr1:infl,2026,müşahidə hesabı (Yanvar–ay faktiki; qalan aylarda son templər saxlanılır),-0.000250784
+dsk_gdp,fr1:rgdp,2026,müşahidə hesabı (Yanvar–ay faktiki; qalan aylarda son templər saxlanılır),1.25843
+dsk_gdp_nonoil,fr1:rgdpnon,2026,müşahidə hesabı (Yanvar–ay faktiki; qalan aylarda son templər saxlanılır),1.93886
+eur_usd,sofaz:assets_usd,2026,ARDNF EUR mövqeyi × EUR/USD dəyişməsi (AMB kross-kursu),-208.345
+gold,sofaz:assets_usd,2026,"ARDNF qızıl payı × XAU dəyişməsi (AMB bülleteni, AZN; USD peqi)",841.837
+minwage,fr1:balance_n,2027,MicroUnit zənciri FR1→… (minwage),-98.1485
+minwage,fr1:balance_n,2028,MicroUnit zənciri FR1→… (minwage),-226.783
+minwage,fr1:balance_n,2029,MicroUnit zənciri FR1→… (minwage),-392.926
+minwage,fr1:balance_n,2030,MicroUnit zənciri FR1→… (minwage),-599.713
+minwage,fr1:gdp_n,2027,MicroUnit zənciri FR1→… (minwage),-1223.66
+minwage,fr1:gdp_n,2028,MicroUnit zənciri FR1→… (minwage),-2694.5
+minwage,fr1:gdp_n,2029,MicroUnit zənciri FR1→… (minwage),-4479.27
+minwage,fr1:gdp_n,2030,MicroUnit zənciri FR1→… (minwage),-6577.54
+minwage,fr1:infl,2027,MicroUnit zənciri FR1→… (minwage),-0.755922
+minwage,fr1:infl,2028,MicroUnit zənciri FR1→… (minwage),-0.75542
+minwage,fr1:infl,2029,MicroUnit zənciri FR1→… (minwage),-0.757506
+minwage,fr1:infl,2030,MicroUnit zənciri FR1→… (minwage),-0.760673
+minwage,fr1:rev_tot_n,2027,MicroUnit zənciri FR1→… (minwage),-319.348
+minwage,fr1:rev_tot_n,2028,MicroUnit zənciri FR1→… (minwage),-705.724
+minwage,fr1:rev_tot_n,2029,MicroUnit zənciri FR1→… (minwage),-1185.76
+minwage,fr1:rev_tot_n,2030,MicroUnit zənciri FR1→… (minwage),-1762.47
+minwage,fr1:rgdp,2027,MicroUnit zənciri FR1→… (minwage),-167.766
+minwage,fr1:rgdp,2028,MicroUnit zənciri FR1→… (minwage),-355.246
+minwage,fr1:rgdp,2029,MicroUnit zənciri FR1→… (minwage),-560.03
+minwage,fr1:rgdp,2030,MicroUnit zənciri FR1→… (minwage),-793.124
+minwage,fr1:rgdpnon,2027,MicroUnit zənciri FR1→… (minwage),-181.812
+minwage,fr1:rgdpnon,2028,MicroUnit zənciri FR1→… (minwage),-375.907
+minwage,fr1:rgdpnon,2029,MicroUnit zənciri FR1→… (minwage),-591.518
+minwage,fr1:rgdpnon,2030,MicroUnit zənciri FR1→… (minwage),-827.133
+policy_rate,fr1:balance_n,2026,MicroUnit zənciri FR1→… (polrate),-0.809034
+policy_rate,fr1:balance_n,2027,MicroUnit zənciri FR1→… (polrate),-9.40033
+policy_rate,fr1:balance_n,2028,MicroUnit zənciri FR1→… (polrate),-21.3532
+policy_rate,fr1:balance_n,2029,MicroUnit zənciri FR1→… (polrate),-25.0894
+policy_rate,fr1:balance_n,2030,MicroUnit zənciri FR1→… (polrate),-29.2033
+policy_rate,fr1:gdp_n,2026,MicroUnit zənciri FR1→… (polrate),-4.64104
+policy_rate,fr1:gdp_n,2027,MicroUnit zənciri FR1→… (polrate),-54.0838
+policy_rate,fr1:gdp_n,2028,MicroUnit zənciri FR1→… (polrate),-119.769
+policy_rate,fr1:gdp_n,2029,MicroUnit zənciri FR1→… (polrate),-132.966
+policy_rate,fr1:gdp_n,2030,MicroUnit zənciri FR1→… (polrate),-147.076
+policy_rate,fr1:infl,2026,MicroUnit zənciri FR1→… (polrate),-0.00113683
+policy_rate,fr1:infl,2027,MicroUnit zənciri FR1→… (polrate),-0.0106663
+policy_rate,fr1:infl,2028,MicroUnit zənciri FR1→… (polrate),-0.0117578
+policy_rate,fr1:infl,2029,MicroUnit zənciri FR1→… (polrate),0.000134003
+policy_rate,fr1:infl,2030,MicroUnit zənciri FR1→… (polrate),3.16354e-05
+policy_rate,fr1:rev_tot_n,2026,MicroUnit zənciri FR1→… (polrate),-2.28088
+policy_rate,fr1:rev_tot_n,2027,MicroUnit zənciri FR1→… (polrate),-26.3717
+policy_rate,fr1:rev_tot_n,2028,MicroUnit zənciri FR1→… (polrate),-58.3809
+policy_rate,fr1:rev_tot_n,2029,MicroUnit zənciri FR1→… (polrate),-65.4562
+policy_rate,fr1:rev_tot_n,2030,MicroUnit zənciri FR1→… (polrate),-73.1143
+policy_rate,fr1:rgdp,2026,MicroUnit zənciri FR1→… (polrate),-1.58031
+policy_rate,fr1:rgdp,2027,MicroUnit zənciri FR1→… (polrate),-17.5162
+policy_rate,fr1:rgdp,2028,MicroUnit zənciri FR1→… (polrate),-36.8341
+policy_rate,fr1:rgdp,2029,MicroUnit zənciri FR1→… (polrate),-38.3274
+policy_rate,fr1:rgdp,2030,MicroUnit zənciri FR1→… (polrate),-39.9566
+policy_rate,fr1:rgdpnon,2026,MicroUnit zənciri FR1→… (polrate),-1.74612
+policy_rate,fr1:rgdpnon,2027,MicroUnit zənciri FR1→… (polrate),-19.0087
+policy_rate,fr1:rgdpnon,2028,MicroUnit zənciri FR1→… (polrate),-39.5443
+policy_rate,fr1:rgdpnon,2029,MicroUnit zənciri FR1→… (polrate),-41.2003
+policy_rate,fr1:rgdpnon,2030,MicroUnit zənciri FR1→… (polrate),-42.9053

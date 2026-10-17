@@ -1,0 +1,216 @@
+series,date,value,unit,name
+cbar_corridor_ceiling,2010-10-31,7.0,%,
+cbar_corridor_ceiling,2011-02-27,7.0,%,
+cbar_corridor_ceiling,2014-05-01,6.0,%,
+cbar_corridor_ceiling,2014-07-30,5.0,%,
+cbar_corridor_ceiling,2015-07-13,5.0,%,
+cbar_corridor_ceiling,2016-02-15,10.0,%,
+cbar_corridor_ceiling,2016-03-04,17.0,%,
+cbar_corridor_ceiling,2016-05-03,15.0,%,
+cbar_corridor_ceiling,2016-08-08,15.0,%,
+cbar_corridor_ceiling,2016-09-14,18.0,%,
+cbar_corridor_ceiling,2017-06-22,18.0,%,
+cbar_corridor_ceiling,2018-02-12,16.0,%,
+cbar_corridor_ceiling,2018-04-10,14.0,%,
+cbar_corridor_ceiling,2018-06-14,12.0,%,
+cbar_corridor_ceiling,2018-10-30,11.75,%,
+cbar_corridor_ceiling,2019-02-01,11.25,%,
+cbar_corridor_ceiling,2019-03-15,11.0,%,
+cbar_corridor_ceiling,2019-04-26,10.75,%,
+cbar_corridor_ceiling,2019-06-07,10.5,%,
+cbar_corridor_ceiling,2019-07-26,10.25,%,
+cbar_corridor_ceiling,2019-09-13,9.75,%,
+cbar_corridor_ceiling,2019-10-25,9.5,%,
+cbar_corridor_ceiling,2019-12-13,9.25,%,
+cbar_corridor_ceiling,2020-01-31,9.0,%,
+cbar_corridor_ceiling,2020-03-19,9.0,%,
+cbar_corridor_ceiling,2020-05-01,8.0,%,
+cbar_corridor_ceiling,2020-06-19,7.5,%,
+cbar_corridor_ceiling,2020-07-30,7.25,%,
+cbar_corridor_ceiling,2020-09-18,7.0,%,
+cbar_corridor_ceiling,2020-12-18,6.75,%,
+cbar_corridor_ceiling,2021-09-17,7.0,%,
+cbar_corridor_ceiling,2021-10-29,8.0,%,
+cbar_corridor_ceiling,2021-12-17,8.25,%,
+cbar_corridor_ceiling,2022-01-28,9.0,%,
+cbar_corridor_ceiling,2022-03-18,9.25,%,
+cbar_corridor_ceiling,2022-10-28,9.25,%,
+cbar_corridor_ceiling,2022-12-16,9.25,%,
+cbar_corridor_ceiling,2023-02-02,9.5,%,
+cbar_corridor_ceiling,2023-03-30,9.75,%,
+cbar_corridor_ceiling,2023-05-04,10.0,%,
+cbar_corridor_ceiling,2023-11-02,9.5,%,
+cbar_corridor_ceiling,2023-12-21,9.0,%,
+cbar_corridor_ceiling,2024-02-01,8.75,%,
+cbar_corridor_ceiling,2024-03-29,8.5,%,
+cbar_corridor_ceiling,2024-05-02,8.25,%,
+cbar_corridor_ceiling,2025-07-24,8.0,%,
+cbar_corridor_ceiling,2025-12-11,7.75,%,
+cbar_corridor_ceiling,2026-02-05,7.5,%,
+cbar_corridor_floor,2010-10-31,1.0,%,
+cbar_corridor_floor,2011-02-27,1.0,%,
+cbar_corridor_floor,2014-05-01,0.5,%,
+cbar_corridor_floor,2014-07-30,0.1,%,
+cbar_corridor_floor,2015-07-13,0.1,%,
+cbar_corridor_floor,2016-02-15,2.0,%,
+cbar_corridor_floor,2016-03-04,2.0,%,
+cbar_corridor_floor,2016-05-03,4.0,%,
+cbar_corridor_floor,2016-08-08,4.0,%,
+cbar_corridor_floor,2016-09-14,12.0,%,
+cbar_corridor_floor,2017-06-22,10.0,%,
+cbar_corridor_floor,2018-02-12,8.0,%,
+cbar_corridor_floor,2018-04-10,8.0,%,
+cbar_corridor_floor,2018-06-14,8.0,%,
+cbar_corridor_floor,2018-10-30,7.75,%,
+cbar_corridor_floor,2019-02-01,7.25,%,
+cbar_corridor_floor,2019-03-15,7.0,%,
+cbar_corridor_floor,2019-04-26,6.75,%,
+cbar_corridor_floor,2019-06-07,6.5,%,
+cbar_corridor_floor,2019-07-26,6.25,%,
+cbar_corridor_floor,2019-09-13,6.25,%,
+cbar_corridor_floor,2019-10-25,6.0,%,
+cbar_corridor_floor,2019-12-13,5.75,%,
+cbar_corridor_floor,2020-01-31,5.5,%,
+cbar_corridor_floor,2020-03-19,6.75,%,
+cbar_corridor_floor,2020-05-01,6.75,%,
+cbar_corridor_floor,2020-06-19,6.5,%,
+cbar_corridor_floor,2020-07-30,6.25,%,
+cbar_corridor_floor,2020-09-18,6.0,%,
+cbar_corridor_floor,2020-12-18,5.75,%,
+cbar_corridor_floor,2021-09-17,6.0,%,
+cbar_corridor_floor,2021-10-29,6.0,%,
+cbar_corridor_floor,2021-12-17,6.0,%,
+cbar_corridor_floor,2022-01-28,6.0,%,
+cbar_corridor_floor,2022-03-18,6.25,%,
+cbar_corridor_floor,2022-09-01,4.0,%,
+cbar_corridor_floor,2022-10-28,5.0,%,
+cbar_corridor_floor,2022-12-16,6.25,%,
+cbar_corridor_floor,2023-02-02,6.75,%,
+cbar_corridor_floor,2023-03-30,7.0,%,
+cbar_corridor_floor,2023-05-04,7.5,%,
+cbar_corridor_floor,2023-11-02,7.0,%,
+cbar_corridor_floor,2023-12-21,6.5,%,
+cbar_corridor_floor,2024-02-01,6.25,%,
+cbar_corridor_floor,2025-07-24,6.0,%,
+cbar_corridor_floor,2025-12-11,5.75,%,
+cbar_corridor_floor,2026-02-05,5.5,%,
+cbar_corridor_floor,2026-09-24,5.0,%,
+cbar_decision,2018-02-12,,f.b.,Faiz dəhlizinin parametrlərinın dəyişdirilməsi haqqında
+cbar_decision,2018-04-09,,f.b.,Faiz dəhlizinin parametrlərinın dəyişdirilməsi haqqında
+cbar_decision,2018-06-14,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2018-08-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2018-10-30,,f.b.,Uçot dərəcəsinin 9.75%-ə endirilməsi haqqında
+cbar_decision,2018-12-26,0.0,f.b.,Uçot dərəcəsinin dəyişməz saxlanılması haqqında
+cbar_decision,2019-02-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-03-15,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-04-26,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-06-07,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-07-26,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-09-13,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-10-25,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2019-12-13,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-01-31,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-03-19,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-05-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-06-19,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-07-30,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-09-18,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-10-30,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2020-12-18,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-01-29,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-03-19,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-04-30,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-06-18,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-07-30,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-09-17,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-10-29,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2021-12-17,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-01-28,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-03-18,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-04-29,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-06-17,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-07-29,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-09-16,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-10-28,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2022-12-16,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-02-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-03-29,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-05-03,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-06-21,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-07-26,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-09-20,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-11-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2023-12-20,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-01-31,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-03-28,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-05-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-06-21,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-07-31,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-09-18,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-11-01,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2024-12-18,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2025-01-22,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2025-03-12,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2025-04-23,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2025-06-11,,f.b.,Faiz dəhlizinin parametrləri haqqında
+cbar_decision,2025-07-23,-0.25,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri 0.25% azaldıldı
+cbar_decision,2025-09-10,0.0,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri dəyişməz saxlanılıb
+cbar_decision,2025-10-22,0.0,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri dəyişməz saxlanılıb
+cbar_decision,2025-12-10,-0.25,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri 0.25 faiz bəndi azaldılıb
+cbar_decision,2026-02-04,-0.25,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri 0.25 faiz bəndi azaldılıb
+cbar_decision,2026-04-02,0.0,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri sabit saxlanılıb
+cbar_decision,2026-05-06,0.0,f.b.,Uçot dərəcəsi və faiz dəhlizinin digər parametrləri sabit saxlanılıb
+cbar_decision,2026-06-24,0.0,f.b.,Faiz dəhlizinin parametrləri dəyişməz saxlanılıb
+cbar_decision,2026-07-31,0.0,f.b.,Faiz dəhlizinin parametrləri dəyişməz saxlanılıb
+cbar_decision,2026-09-23,,f.b.,Uçot dərəcəsi sabit saxlanılmaqla faiz dəhlizinin eni genişləndirilib
+cbar_policy_rate,2010-10-31,3.0,%,
+cbar_policy_rate,2011-02-28,5.0,%,
+cbar_policy_rate,2011-05-05,5.25,%,
+cbar_policy_rate,2012-12-10,5.0,%,
+cbar_policy_rate,2013-02-11,4.75,%,
+cbar_policy_rate,2014-05-01,4.25,%,
+cbar_policy_rate,2014-07-30,3.5,%,
+cbar_policy_rate,2015-07-13,3.0,%,
+cbar_policy_rate,2016-02-15,5.0,%,
+cbar_policy_rate,2016-03-04,7.0,%,
+cbar_policy_rate,2016-05-03,7.0,%,
+cbar_policy_rate,2016-08-08,9.5,%,
+cbar_policy_rate,2016-09-14,15.0,%,
+cbar_policy_rate,2017-06-22,15.0,%,
+cbar_policy_rate,2018-02-12,13.0,%,
+cbar_policy_rate,2018-04-10,11.0,%,
+cbar_policy_rate,2018-06-14,10.0,%,
+cbar_policy_rate,2018-10-30,9.75,%,
+cbar_policy_rate,2019-02-01,9.25,%,
+cbar_policy_rate,2019-03-15,9.0,%,
+cbar_policy_rate,2019-04-26,8.75,%,
+cbar_policy_rate,2019-06-07,8.5,%,
+cbar_policy_rate,2019-07-26,8.25,%,
+cbar_policy_rate,2019-09-13,8.0,%,
+cbar_policy_rate,2019-10-25,7.75,%,
+cbar_policy_rate,2019-12-13,7.5,%,
+cbar_policy_rate,2020-01-31,7.25,%,
+cbar_policy_rate,2020-03-19,7.25,%,
+cbar_policy_rate,2020-05-01,7.25,%,
+cbar_policy_rate,2020-06-19,7.0,%,
+cbar_policy_rate,2020-07-30,6.75,%,
+cbar_policy_rate,2020-09-18,6.5,%,
+cbar_policy_rate,2020-12-18,6.25,%,
+cbar_policy_rate,2021-09-17,6.5,%,
+cbar_policy_rate,2021-10-29,7.0,%,
+cbar_policy_rate,2021-12-17,7.25,%,
+cbar_policy_rate,2022-01-28,7.5,%,
+cbar_policy_rate,2022-03-18,7.75,%,
+cbar_policy_rate,2022-10-28,8.0,%,
+cbar_policy_rate,2022-12-16,8.25,%,
+cbar_policy_rate,2023-02-02,8.5,%,
+cbar_policy_rate,2023-03-30,8.75,%,
+cbar_policy_rate,2023-05-04,9.0,%,
+cbar_policy_rate,2023-11-02,8.5,%,
+cbar_policy_rate,2023-12-21,8.0,%,
+cbar_policy_rate,2024-02-01,7.75,%,
+cbar_policy_rate,2024-03-29,7.5,%,
+cbar_policy_rate,2024-05-02,7.25,%,
+cbar_policy_rate,2025-07-24,7.0,%,
+cbar_policy_rate,2025-12-11,6.75,%,
+cbar_policy_rate,2026-02-05,6.5,%,

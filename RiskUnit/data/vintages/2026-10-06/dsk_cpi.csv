@@ -1,0 +1,8 @@
+series,date,value,unit
+dsk_cpi_food_mm,2026-08-01,0.3,%
+dsk_cpi_food_yoy,2026-08-01,7.2,%
+dsk_cpi_mm,2026-08-01,0.2,"%, ötən aya"
+dsk_cpi_nonfood_mm,2026-08-01,0.1,%
+dsk_cpi_nonfood_yoy,2026-08-01,3.7,%
+dsk_cpi_yoy,2026-08-01,5.7,"%, ötən ilin eyni ayına"
+dsk_cpi_ytd_avg_yoy,2026-08-01,5.7,%
