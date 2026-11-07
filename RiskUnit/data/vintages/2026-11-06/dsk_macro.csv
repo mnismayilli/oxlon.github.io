@@ -1,0 +1,397 @@
+series,date,value,unit,name
+dsk_agriculture_ytd,2025-11-01,13402.1,"Yanvar–ay, cəmi","Agricultural products, million manat"
+dsk_agriculture_ytd,2026-01-01,582.6,"Yanvar–ay, cəmi","Agricultural products, million manat"
+dsk_agriculture_ytd,2026-02-01,1140.6,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-03-01,1717.6,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-04-01,2536.9,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-05-01,3996.2,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-06-01,7085.3,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-07-01,8797.2,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-08-01,10057.4,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd,2026-09-01,11905.3,"Yanvar–ay, cəmi",Agricultural product
+dsk_agriculture_ytd_yoy,2025-11-01,1.0999999999999943,"%, ötən ilin eyni dövrünə","Agricultural products, million manat"
+dsk_agriculture_ytd_yoy,2026-01-01,0.09999999999999432,"%, ötən ilin eyni dövrünə","Agricultural products, million manat"
+dsk_agriculture_ytd_yoy,2026-02-01,1.2,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-03-01,1.1,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-04-01,2.0,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-05-01,2.3,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-06-01,2.2,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-07-01,2.8,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-08-01,2.6,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_agriculture_ytd_yoy,2026-09-01,1.1,"%, ötən ilin eyni dövrünə",Agricultural product
+dsk_budget_bal_ytd,2025-11-01,4210.9,"Yanvar–ay, cəmi","Surplus of state budget, million manat"
+dsk_budget_bal_ytd,2026-01-01,2269.7,"Yanvar–ay, cəmi","Surplus of state budget, million manat"
+dsk_budget_bal_ytd,2026-02-01,1668.4,"Yanvar–ay, cəmi","Budget surplus (proficit), million manat"
+dsk_budget_bal_ytd,2026-03-01,1781.9,"Yanvar–ay, cəmi","Budget surplus (proficit), million manat"
+dsk_budget_bal_ytd,2026-04-01,3032.9,"Yanvar–ay, cəmi","Budget surplus (proficit), million manat"
+dsk_budget_bal_ytd,2026-05-01,2990.5,"Yanvar–ay, cəmi","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd,2026-06-01,2403.9,"Yanvar–ay, cəmi","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd,2026-07-01,3420.3,"Yanvar–ay, cəmi","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd,2026-08-01,3715.9,"Yanvar–ay, cəmi","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd,2026-09-01,3963.9,"Yanvar–ay, cəmi","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd_yoy,2025-11-01,,"%, ötən ilin eyni dövrünə","Surplus of state budget, million manat"
+dsk_budget_bal_ytd_yoy,2026-01-01,,"%, ötən ilin eyni dövrünə","Surplus of state budget, million manat"
+dsk_budget_bal_ytd_yoy,2026-02-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manat"
+dsk_budget_bal_ytd_yoy,2026-03-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manat"
+dsk_budget_bal_ytd_yoy,2026-04-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manat"
+dsk_budget_bal_ytd_yoy,2026-05-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd_yoy,2026-06-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd_yoy,2026-07-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd_yoy,2026-08-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manats"
+dsk_budget_bal_ytd_yoy,2026-09-01,,"%, ötən ilin eyni dövrünə","Budget surplus (proficit), million manats"
+dsk_budget_exp_ytd,2025-11-01,31414.7,"Yanvar–ay, cəmi","Expenditure of state budget, million manat"
+dsk_budget_exp_ytd,2026-01-01,1437.6,"Yanvar–ay, cəmi","Expenditure of state budget, million manat"
+dsk_budget_exp_ytd,2026-02-01,4643.1,"Yanvar–ay, cəmi","State budget expenditures, million manat"
+dsk_budget_exp_ytd,2026-03-01,7817.1,"Yanvar–ay, cəmi","State budget expenditures, million manat"
+dsk_budget_exp_ytd,2026-04-01,10531.1,"Yanvar–ay, cəmi","State budget expenditures, million manat"
+dsk_budget_exp_ytd,2026-05-01,13375.2,"Yanvar–ay, cəmi","State budget expenditures, million manats"
+dsk_budget_exp_ytd,2026-06-01,16775.5,"Yanvar–ay, cəmi","State budget expenditures, million manats"
+dsk_budget_exp_ytd,2026-07-01,20174.4,"Yanvar–ay, cəmi","State budget expenditures, million manats"
+dsk_budget_exp_ytd,2026-08-01,22770.6,"Yanvar–ay, cəmi","State budget expenditures, million manats"
+dsk_budget_exp_ytd,2026-09-01,25348.2,"Yanvar–ay, cəmi","State budget expenditures, million manats"
+dsk_budget_exp_ytd_yoy,2025-11-01,1.2000000000000028,"%, ötən ilin eyni dövrünə","Expenditure of state budget, million manat"
+dsk_budget_exp_ytd_yoy,2026-01-01,-38.6,"%, ötən ilin eyni dövrünə","Expenditure of state budget, million manat"
+dsk_budget_exp_ytd_yoy,2026-02-01,-13.5,"%, ötən ilin eyni dövrünə","State budget expenditures, million manat"
+dsk_budget_exp_ytd_yoy,2026-03-01,-3.7,"%, ötən ilin eyni dövrünə","State budget expenditures, million manat"
+dsk_budget_exp_ytd_yoy,2026-04-01,-3.9,"%, ötən ilin eyni dövrünə","State budget expenditures, million manat"
+dsk_budget_exp_ytd_yoy,2026-05-01,-2.3,"%, ötən ilin eyni dövrünə","State budget expenditures, million manats"
+dsk_budget_exp_ytd_yoy,2026-06-01,-1.9,"%, ötən ilin eyni dövrünə","State budget expenditures, million manats"
+dsk_budget_exp_ytd_yoy,2026-07-01,1.2,"%, ötən ilin eyni dövrünə","State budget expenditures, million manats"
+dsk_budget_exp_ytd_yoy,2026-08-01,2.1,"%, ötən ilin eyni dövrünə","State budget expenditures, million manats"
+dsk_budget_exp_ytd_yoy,2026-09-01,2.8,"%, ötən ilin eyni dövrünə","State budget expenditures, million manats"
+dsk_budget_rev_ytd,2025-11-01,35625.6,"Yanvar–ay, cəmi","Income of state budget, million manat"
+dsk_budget_rev_ytd,2026-01-01,3707.3,"Yanvar–ay, cəmi","Income of state budget, million manat"
+dsk_budget_rev_ytd,2026-02-01,6311.5,"Yanvar–ay, cəmi","State budget revenues, million manat"
+dsk_budget_rev_ytd,2026-03-01,9599.0,"Yanvar–ay, cəmi","State budget revenues, million manat"
+dsk_budget_rev_ytd,2026-04-01,13564.0,"Yanvar–ay, cəmi","State budget revenues, million manat"
+dsk_budget_rev_ytd,2026-05-01,16365.7,"Yanvar–ay, cəmi","State budget revenues, million manats"
+dsk_budget_rev_ytd,2026-06-01,19179.4,"Yanvar–ay, cəmi","State budget revenues, million manats"
+dsk_budget_rev_ytd,2026-07-01,23594.7,"Yanvar–ay, cəmi","State budget revenues, million manats"
+dsk_budget_rev_ytd,2026-08-01,26486.5,"Yanvar–ay, cəmi","State budget revenues, million manats"
+dsk_budget_rev_ytd,2026-09-01,29312.1,"Yanvar–ay, cəmi","State budget revenues, million manats"
+dsk_budget_rev_ytd_yoy,2025-11-01,4.599999999999994,"%, ötən ilin eyni dövrünə","Income of state budget, million manat"
+dsk_budget_rev_ytd_yoy,2026-01-01,-8.5,"%, ötən ilin eyni dövrünə","Income of state budget, million manat"
+dsk_budget_rev_ytd_yoy,2026-02-01,-6.3,"%, ötən ilin eyni dövrünə","State budget revenues, million manat"
+dsk_budget_rev_ytd_yoy,2026-03-01,-1.4,"%, ötən ilin eyni dövrünə","State budget revenues, million manat"
+dsk_budget_rev_ytd_yoy,2026-04-01,-2.9,"%, ötən ilin eyni dövrünə","State budget revenues, million manat"
+dsk_budget_rev_ytd_yoy,2026-05-01,-4.5,"%, ötən ilin eyni dövrünə","State budget revenues, million manats"
+dsk_budget_rev_ytd_yoy,2026-06-01,-3.2,"%, ötən ilin eyni dövrünə","State budget revenues, million manats"
+dsk_budget_rev_ytd_yoy,2026-07-01,0.5,"%, ötən ilin eyni dövrünə","State budget revenues, million manats"
+dsk_budget_rev_ytd_yoy,2026-08-01,0.5,"%, ötən ilin eyni dövrünə","State budget revenues, million manats"
+dsk_budget_rev_ytd_yoy,2026-09-01,0.6,"%, ötən ilin eyni dövrünə","State budget revenues, million manats"
+dsk_cpi_ytd,2025-11-01,,"Yanvar–ay, cəmi",Consumer price index 1)
+dsk_cpi_ytd,2026-01-01,,"Yanvar–ay, cəmi",Consumer price index
+dsk_cpi_ytd,2026-02-01,,"Yanvar–ay, cəmi",Inflation (consumer price index increase)
+dsk_cpi_ytd,2026-03-01,,"Yanvar–ay, cəmi",Inflation (consumer price index increase)
+dsk_cpi_ytd,2026-04-01,,"Yanvar–ay, cəmi",Inflation (consumer price index increase)
+dsk_cpi_ytd,2026-05-01,,"Yanvar–ay, cəmi",Inflation (Consumer price index increase)
+dsk_cpi_ytd,2026-06-01,,"Yanvar–ay, cəmi",Inflation (Consumer price index increase)
+dsk_cpi_ytd,2026-07-01,,"Yanvar–ay, cəmi",Inflation (Consumer price index increase)
+dsk_cpi_ytd,2026-08-01,,"Yanvar–ay, cəmi",Inflation (Consumer price index increase)
+dsk_cpi_ytd,2026-09-01,,"Yanvar–ay, cəmi",Inflation (Consumer price index increase)
+dsk_cpi_ytd_yoy,2025-11-01,5.700000000000003,"%, ötən ilin eyni dövrünə",Consumer price index 1)
+dsk_cpi_ytd_yoy,2026-01-01,5.700000000000003,"%, ötən ilin eyni dövrünə",Consumer price index
+dsk_cpi_ytd_yoy,2026-02-01,5.7,"%, ötən ilin eyni dövrünə",Inflation (consumer price index increase)
+dsk_cpi_ytd_yoy,2026-03-01,5.7,"%, ötən ilin eyni dövrünə",Inflation (consumer price index increase)
+dsk_cpi_ytd_yoy,2026-04-01,5.6,"%, ötən ilin eyni dövrünə",Inflation (consumer price index increase)
+dsk_cpi_ytd_yoy,2026-05-01,5.6,"%, ötən ilin eyni dövrünə",Inflation (Consumer price index increase)
+dsk_cpi_ytd_yoy,2026-06-01,5.7,"%, ötən ilin eyni dövrünə",Inflation (Consumer price index increase)
+dsk_cpi_ytd_yoy,2026-07-01,5.7,"%, ötən ilin eyni dövrünə",Inflation (Consumer price index increase)
+dsk_cpi_ytd_yoy,2026-08-01,5.7,"%, ötən ilin eyni dövrünə",Inflation (Consumer price index increase)
+dsk_cpi_ytd_yoy,2026-09-01,5.7,"%, ötən ilin eyni dövrünə",Inflation (Consumer price index increase)
+dsk_credit_ytd,2025-11-01,31169.4,"Yanvar–ay, cəmi","Credit exposure, for 01 November, 2025, million manat"
+dsk_credit_ytd,2026-01-01,31946.7,"Yanvar–ay, cəmi","Credit exposure, for 01 January, 2026, million manat"
+dsk_credit_ytd,2026-02-01,31863.7,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manat (as of 01.02.2026)"
+dsk_credit_ytd,2026-03-01,32002.5,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manat (as of 01.03.2026)"
+dsk_credit_ytd,2026-04-01,32312.9,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manat (as of 01.04.2026)"
+dsk_credit_ytd,2026-05-01,32631.8,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manats (as of 01.05.2026)"
+dsk_credit_ytd,2026-06-01,32908.4,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manats (as of 01.06.2026)"
+dsk_credit_ytd,2026-07-01,33881.1,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manats (as of 01.07.2026)"
+dsk_credit_ytd,2026-08-01,34155.1,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manats (as of 01.08.2026)"
+dsk_credit_ytd,2026-09-01,34884.0,"Yanvar–ay, cəmi","Credit investments in the economy 1 , million manats (as of 31.08.2026)"
+dsk_credit_ytd_yoy,2025-11-01,8.299999999999997,"%, ötən ilin eyni dövrünə","Credit exposure, for 01 November, 2025, million manat"
+dsk_credit_ytd_yoy,2026-01-01,9.099999999999994,"%, ötən ilin eyni dövrünə","Credit exposure, for 01 January, 2026, million manat"
+dsk_credit_ytd_yoy,2026-02-01,8.7,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manat (as of 01.02.2026)"
+dsk_credit_ytd_yoy,2026-03-01,8.8,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manat (as of 01.03.2026)"
+dsk_credit_ytd_yoy,2026-04-01,8.9,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manat (as of 01.04.2026)"
+dsk_credit_ytd_yoy,2026-05-01,9.1,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manats (as of 01.05.2026)"
+dsk_credit_ytd_yoy,2026-06-01,9.0,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manats (as of 01.06.2026)"
+dsk_credit_ytd_yoy,2026-07-01,12.1,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manats (as of 01.07.2026)"
+dsk_credit_ytd_yoy,2026-08-01,12.9,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manats (as of 01.08.2026)"
+dsk_credit_ytd_yoy,2026-09-01,14.5,"%, ötən ilin eyni dövrünə","Credit investments in the economy 1 , million manats (as of 31.08.2026)"
+dsk_deposits_ytd,2025-11-01,15907.1,"Yanvar–ay, cəmi","Deposits of population in banks for 01 November, 2025, million manat"
+dsk_deposits_ytd,2026-01-01,16772.4,"Yanvar–ay, cəmi","Deposits of population in banks for 01 January, 2026, million manat"
+dsk_deposits_ytd,2026-02-01,16666.6,"Yanvar–ay, cəmi","Individuals’ deposits in banks 1 , million manat (as of 01.02.2026)"
+dsk_deposits_ytd,2026-03-01,17209.3,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manat (as of 01.03.2026)"
+dsk_deposits_ytd,2026-04-01,16960.4,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manat (as of 01.04.2026)"
+dsk_deposits_ytd,2026-05-01,17641.9,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manats (as of 01.05.2026)"
+dsk_deposits_ytd,2026-06-01,17799.8,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manats (as of 01.06.2026)"
+dsk_deposits_ytd,2026-07-01,17823.6,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manats (as of 01.07.2026)"
+dsk_deposits_ytd,2026-08-01,17896.7,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manats (as of 01.08.2026)"
+dsk_deposits_ytd,2026-09-01,18211.9,"Yanvar–ay, cəmi","Individuals deposits in banks 1 , million manats (as of 31.08.2026)"
+dsk_deposits_ytd_yoy,2025-11-01,11.5,"%, ötən ilin eyni dövrünə","Deposits of population in banks for 01 November, 2025, million manat"
+dsk_deposits_ytd_yoy,2026-01-01,14.400000000000006,"%, ötən ilin eyni dövrünə","Deposits of population in banks for 01 January, 2026, million manat"
+dsk_deposits_ytd_yoy,2026-02-01,13.4,"%, ötən ilin eyni dövrünə","Individuals’ deposits in banks 1 , million manat (as of 01.02.2026)"
+dsk_deposits_ytd_yoy,2026-03-01,16.0,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manat (as of 01.03.2026)"
+dsk_deposits_ytd_yoy,2026-04-01,12.5,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manat (as of 01.04.2026)"
+dsk_deposits_ytd_yoy,2026-05-01,18.8,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manats (as of 01.05.2026)"
+dsk_deposits_ytd_yoy,2026-06-01,18.2,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manats (as of 01.06.2026)"
+dsk_deposits_ytd_yoy,2026-07-01,15.5,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manats (as of 01.07.2026)"
+dsk_deposits_ytd_yoy,2026-08-01,15.8,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manats (as of 01.08.2026)"
+dsk_deposits_ytd_yoy,2026-09-01,17.8,"%, ötən ilin eyni dövrünə","Individuals deposits in banks 1 , million manats (as of 31.08.2026)"
+dsk_export_ytd,2026-02-01,1789.9,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-03-01,3679.4,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-04-01,6142.8,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-05-01,12535.9,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-06-01,15346.3,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-07-01,17713.1,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-08-01,20136.7,"Yanvar–ay, cəmi",Export
+dsk_export_ytd,2026-09-01,22511.5,"Yanvar–ay, cəmi",Export
+dsk_export_ytd_yoy,2026-02-01,-13.8,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-03-01,-9.6,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-04-01,-2.2,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-05-01,51.7,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-06-01,49.2,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-07-01,43.2,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-08-01,39.1,"%, ötən ilin eyni dövrünə",Export
+dsk_export_ytd_yoy,2026-09-01,36.2,"%, ötən ilin eyni dövrünə",Export
+dsk_ext_debt_usd_ytd,2026-02-01,4728.0,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.03.2026)"
+dsk_ext_debt_usd_ytd,2026-03-01,4689.3,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.04.2026)"
+dsk_ext_debt_usd_ytd,2026-04-01,4678.4,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.05.2026)"
+dsk_ext_debt_usd_ytd,2026-05-01,4642.4,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.06.2026)"
+dsk_ext_debt_usd_ytd,2026-06-01,4616.8,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.07.2026)"
+dsk_ext_debt_usd_ytd,2026-07-01,4590.8,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.08.2026)"
+dsk_ext_debt_usd_ytd,2026-08-01,4559.5,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 01.09.2026)"
+dsk_ext_debt_usd_ytd,2026-09-01,4509.5,"Yanvar–ay, cəmi","External public debt, million US dollars (as of 30.09.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-02-01,-7.3,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.03.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-03-01,-7.5,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.04.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-04-01,-7.8,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.05.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-05-01,-8.0,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.06.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-06-01,-7.9,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.07.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-07-01,-7.5,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.08.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-08-01,-7.8,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 01.09.2026)"
+dsk_ext_debt_usd_ytd_yoy,2026-09-01,-7.8,"%, ötən ilin eyni dövrünə","External public debt, million US dollars (as of 30.09.2026)"
+dsk_gdp_nonoil_ytd,2025-11-01,81907.5,"Yanvar–ay, cəmi",including: non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-01-01,6544.8,"Yanvar–ay, cəmi",including: non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-02-01,13388.7,"Yanvar–ay, cəmi",non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-03-01,21171.6,"Yanvar–ay, cəmi",non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-04-01,27740.1,"Yanvar–ay, cəmi",non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-05-01,35658.4,"Yanvar–ay, cəmi",non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-06-01,45596.5,"Yanvar–ay, cəmi",non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-07-01,53901.2,"Yanvar–ay, cəmi",non oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-08-01,61527.6,"Yanvar–ay, cəmi",non-oil-gas GDP
+dsk_gdp_nonoil_ytd,2026-09-01,71721.7,"Yanvar–ay, cəmi",non-oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2025-11-01,3.200000000000003,"%, ötən ilin eyni dövrünə",including: non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-01-01,2.299999999999997,"%, ötən ilin eyni dövrünə",including: non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-02-01,1.4,"%, ötən ilin eyni dövrünə",non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-03-01,0.2,"%, ötən ilin eyni dövrünə",non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-04-01,0.7,"%, ötən ilin eyni dövrünə",non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-05-01,0.4,"%, ötən ilin eyni dövrünə",non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-06-01,1.5,"%, ötən ilin eyni dövrünə",non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-07-01,2.2,"%, ötən ilin eyni dövrünə",non oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-08-01,2.1,"%, ötən ilin eyni dövrünə",non-oil-gas GDP
+dsk_gdp_nonoil_ytd_yoy,2026-09-01,2.6,"%, ötən ilin eyni dövrünə",non-oil-gas GDP
+dsk_gdp_oil_ytd,2026-02-01,5084.4,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-03-01,8531.6,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-04-01,12135.0,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-05-01,16125.4,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-06-01,19610.5,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-07-01,22916.5,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-08-01,26181.9,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd,2026-09-01,30326.5,"Yanvar–ay, cəmi",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-02-01,-1.7,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-03-01,-1.2,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-04-01,-0.9,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-05-01,-1.0,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-06-01,-0.7,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-07-01,-0.6,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-08-01,-0.8,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_oil_ytd_yoy,2026-09-01,-1.2,"%, ötən ilin eyni dövrünə",oil-gas GDP
+dsk_gdp_ytd,2025-11-01,116320.1,"Yanvar–ay, cəmi","Gross domestic product, million manat"
+dsk_gdp_ytd,2026-01-01,9078.7,"Yanvar–ay, cəmi","Gross domestic product, million manat"
+dsk_gdp_ytd,2026-02-01,18473.1,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-03-01,29703.2,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-04-01,39875.1,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-05-01,51783.8,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-06-01,65207.0,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-07-01,76817.7,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-08-01,87709.5,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd,2026-09-01,102048.2,"Yanvar–ay, cəmi",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2025-11-01,1.5999999999999943,"%, ötən ilin eyni dövrünə","Gross domestic product, million manat"
+dsk_gdp_ytd_yoy,2026-01-01,1.7000000000000028,"%, ötən ilin eyni dövrünə","Gross domestic product, million manat"
+dsk_gdp_ytd_yoy,2026-02-01,0.3,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-03-01,-0.3,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-04-01,0.2,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-05-01,0.0,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-06-01,0.8,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-07-01,1.4,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-08-01,1.2,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_gdp_ytd_yoy,2026-09-01,1.5,"%, ötən ilin eyni dövrünə",Gross domestic product (GDP)
+dsk_import_ytd,2026-02-01,1302.2,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-03-01,2599.1,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-04-01,4004.7,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-05-01,5524.8,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-06-01,6818.3,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-07-01,8341.1,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-08-01,9880.7,"Yanvar–ay, cəmi",Import
+dsk_import_ytd,2026-09-01,11423.4,"Yanvar–ay, cəmi",Import
+dsk_import_ytd_yoy,2026-02-01,-36.5,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-03-01,-37.1,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-04-01,-29.3,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-05-01,-32.1,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-06-01,-31.6,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-07-01,-27.6,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-08-01,-27.4,"%, ötən ilin eyni dövrünə",Import
+dsk_import_ytd_yoy,2026-09-01,-24.1,"%, ötən ilin eyni dövrünə",Import
+dsk_incomes_ytd,2025-11-01,80747.2,"Yanvar–ay, cəmi","Nominal income of population, million manat"
+dsk_incomes_ytd,2026-01-01,6478.2,"Yanvar–ay, cəmi","Nominal income of population, million manat"
+dsk_incomes_ytd,2026-02-01,12573.8,"Yanvar–ay, cəmi","Nominal incomes of the population, million manat"
+dsk_incomes_ytd,2026-03-01,22359.1,"Yanvar–ay, cəmi","Nominal incomes of the population, million manat"
+dsk_incomes_ytd,2026-04-01,28702.4,"Yanvar–ay, cəmi","Nominal incomes of the population, million manat"
+dsk_incomes_ytd,2026-05-01,37699.8,"Yanvar–ay, cəmi","Nominal incomes of the population, million manats"
+dsk_incomes_ytd,2026-06-01,47309.0,"Yanvar–ay, cəmi","Nominal incomes of the population, million manats"
+dsk_incomes_ytd,2026-07-01,55631.8,"Yanvar–ay, cəmi","Nominal incomes of the population, million manats"
+dsk_incomes_ytd,2026-08-01,63511.3,"Yanvar–ay, cəmi","Nominal incomes of the population, million manats"
+dsk_incomes_ytd,2026-09-01,72711.7,"Yanvar–ay, cəmi","Nominal incomes of the population, million manats"
+dsk_incomes_ytd_yoy,2025-11-01,8.099999999999994,"%, ötən ilin eyni dövrünə","Nominal income of population, million manat"
+dsk_incomes_ytd_yoy,2026-01-01,8.599999999999994,"%, ötən ilin eyni dövrünə","Nominal income of population, million manat"
+dsk_incomes_ytd_yoy,2026-02-01,5.6,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manat"
+dsk_incomes_ytd_yoy,2026-03-01,7.0,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manat"
+dsk_incomes_ytd_yoy,2026-04-01,8.8,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manat"
+dsk_incomes_ytd_yoy,2026-05-01,10.2,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manats"
+dsk_incomes_ytd_yoy,2026-06-01,10.3,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manats"
+dsk_incomes_ytd_yoy,2026-07-01,9.8,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manats"
+dsk_incomes_ytd_yoy,2026-08-01,9.4,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manats"
+dsk_incomes_ytd_yoy,2026-09-01,9.6,"%, ötən ilin eyni dövrünə","Nominal incomes of the population, million manats"
+dsk_industry_nonoil_ytd,2025-11-01,18533.3,"Yanvar–ay, cəmi",including non oil-gas industry
+dsk_industry_nonoil_ytd,2026-01-01,1769.2,"Yanvar–ay, cəmi",including non oil-gas industry
+dsk_industry_nonoil_ytd,2026-02-01,3412.5,"Yanvar–ay, cəmi",non oil-gas industry
+dsk_industry_nonoil_ytd,2026-03-01,5144.2,"Yanvar–ay, cəmi",non oil-gas industry
+dsk_industry_nonoil_ytd,2026-04-01,7092.2,"Yanvar–ay, cəmi",non oil-gas industry
+dsk_industry_nonoil_ytd,2026-05-01,8956.3,"Yanvar–ay, cəmi",non oil-gas industry
+dsk_industry_nonoil_ytd,2026-06-01,10769.6,"Yanvar–ay, cəmi",non oil-gas industry
+dsk_industry_nonoil_ytd,2026-07-01,12724.8,"Yanvar–ay, cəmi",non oil-gas industry
+dsk_industry_nonoil_ytd,2026-08-01,14605.9,"Yanvar–ay, cəmi",non-oil-gas industry
+dsk_industry_nonoil_ytd,2026-09-01,16558.0,"Yanvar–ay, cəmi",non-oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2025-11-01,4.799999999999997,"%, ötən ilin eyni dövrünə",including non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-01-01,8.700000000000003,"%, ötən ilin eyni dövrünə",including non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-02-01,7.4,"%, ötən ilin eyni dövrünə",non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-03-01,7.2,"%, ötən ilin eyni dövrünə",non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-04-01,7.2,"%, ötən ilin eyni dövrünə",non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-05-01,5.8,"%, ötən ilin eyni dövrünə",non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-06-01,4.1,"%, ötən ilin eyni dövrünə",non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-07-01,4.4,"%, ötən ilin eyni dövrünə",non oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-08-01,5.4,"%, ötən ilin eyni dövrünə",non-oil-gas industry
+dsk_industry_nonoil_ytd_yoy,2026-09-01,5.4,"%, ötən ilin eyni dövrünə",non-oil-gas industry
+dsk_industry_ytd,2025-11-01,57507.7,"Yanvar–ay, cəmi","Industrial products, million manat"
+dsk_industry_ytd,2026-01-01,4715.8,"Yanvar–ay, cəmi","Industrial products, million manat"
+dsk_industry_ytd,2026-02-01,9254.2,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-03-01,14870.6,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-04-01,21120.4,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-05-01,27524.2,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-06-01,33071.0,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-07-01,38902.4,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-08-01,44620.3,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd,2026-09-01,51178.1,"Yanvar–ay, cəmi",Industrial product
+dsk_industry_ytd_yoy,2025-11-01,-1.0999999999999943,"%, ötən ilin eyni dövrünə","Industrial products, million manat"
+dsk_industry_ytd_yoy,2026-01-01,2.5,"%, ötən ilin eyni dövrünə","Industrial products, million manat"
+dsk_industry_ytd_yoy,2026-02-01,0.5,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-03-01,0.2,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-04-01,0.3,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-05-01,0.2,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-06-01,0.1,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-07-01,0.3,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-08-01,-0.4,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_industry_ytd_yoy,2026-09-01,-0.8,"%, ötən ilin eyni dövrünə",Industrial product
+dsk_investment_ytd,2025-11-01,16658.9,"Yanvar–ay, cəmi","Investments directed to fixed capital, million manat"
+dsk_investment_ytd,2026-01-01,1405.9,"Yanvar–ay, cəmi","Investments directed to fixed capital, million manat"
+dsk_investment_ytd,2026-02-01,2436.4,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-03-01,4049.8,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-04-01,5275.0,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-05-01,6650.1,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-06-01,9295.2,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-07-01,11111.9,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-08-01,12677.8,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd,2026-09-01,14688.6,"Yanvar–ay, cəmi",Investments to fixed capital
+dsk_investment_ytd_yoy,2025-11-01,3.0,"%, ötən ilin eyni dövrünə","Investments directed to fixed capital, million manat"
+dsk_investment_ytd_yoy,2026-01-01,75.6,"%, ötən ilin eyni dövrünə","Investments directed to fixed capital, million manat"
+dsk_investment_ytd_yoy,2026-02-01,19.4,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-03-01,14.9,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-04-01,2.6,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-05-01,-2.1,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-06-01,13.8,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-07-01,10.7,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-08-01,10.0,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_investment_ytd_yoy,2026-09-01,10.9,"%, ötən ilin eyni dövrünə",Investments to fixed capital
+dsk_reserves_usd_ytd,2026-02-01,90667.7,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.03.2026)"
+dsk_reserves_usd_ytd,2026-03-01,85151.1,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.04.2026)"
+dsk_reserves_usd_ytd,2026-04-01,87916.2,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.05.2026)"
+dsk_reserves_usd_ytd,2026-05-01,88438.6,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.06.2026)"
+dsk_reserves_usd_ytd,2026-06-01,85768.9,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.07.2026)"
+dsk_reserves_usd_ytd,2026-07-01,86814.9,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.08.2026)"
+dsk_reserves_usd_ytd,2026-08-01,90769.7,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 01.09.2026)"
+dsk_reserves_usd_ytd,2026-09-01,89380.7,"Yanvar–ay, cəmi","Strategic currency reserves, million US dollars (as of 30.09.2026)"
+dsk_reserves_usd_ytd_yoy,2026-02-01,24.6,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.03.2026)"
+dsk_reserves_usd_ytd_yoy,2026-03-01,15.9,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.04.2026)"
+dsk_reserves_usd_ytd_yoy,2026-04-01,15.0,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.05.2026)"
+dsk_reserves_usd_ytd_yoy,2026-05-01,15.2,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.06.2026)"
+dsk_reserves_usd_ytd_yoy,2026-06-01,10.4,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.07.2026)"
+dsk_reserves_usd_ytd_yoy,2026-07-01,12.2,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.08.2026)"
+dsk_reserves_usd_ytd_yoy,2026-08-01,15.7,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 01.09.2026)"
+dsk_reserves_usd_ytd_yoy,2026-09-01,9.7,"%, ötən ilin eyni dövrünə","Strategic currency reserves, million US dollars (as of 30.09.2026)"
+dsk_retail_ytd,2025-11-01,58571.3,"Yanvar–ay, cəmi","Retail trade turnover, million manat"
+dsk_retail_ytd,2026-01-01,5292.5,"Yanvar–ay, cəmi","Retail trade turnover, million manat"
+dsk_retail_ytd,2026-02-01,10090.0,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-03-01,15927.3,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-04-01,20102.8,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-05-01,25510.7,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-06-01,32388.8,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-07-01,38358.5,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-08-01,44256.1,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd,2026-09-01,50774.7,"Yanvar–ay, cəmi",Retail trade turnover
+dsk_retail_ytd_yoy,2025-11-01,3.700000000000003,"%, ötən ilin eyni dövrünə","Retail trade turnover, million manat"
+dsk_retail_ytd_yoy,2026-01-01,3.700000000000003,"%, ötən ilin eyni dövrünə","Retail trade turnover, million manat"
+dsk_retail_ytd_yoy,2026-02-01,3.6,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-03-01,3.7,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-04-01,3.7,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-05-01,3.8,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-06-01,3.7,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-07-01,3.8,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-08-01,3.9,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_retail_ytd_yoy,2026-09-01,3.8,"%, ötən ilin eyni dövrünə",Retail trade turnover
+dsk_trade_ytd,2026-02-01,3092.1,"Yanvar–ay, cəmi",Trade turnover 2 (for January 2026)
+dsk_trade_ytd,2026-03-01,6278.5,"Yanvar–ay, cəmi",Trade turnover 2 (for January-February 2026)
+dsk_trade_ytd,2026-04-01,10147.5,"Yanvar–ay, cəmi",Trade turnover 2 (for January-March 2026)
+dsk_trade_ytd,2026-05-01,18060.7,"Yanvar–ay, cəmi",Trade turnover 2 (for January-April 2026)
+dsk_trade_ytd,2026-06-01,22164.6,"Yanvar–ay, cəmi",Trade turnover 2 (for January-May 2026)
+dsk_trade_ytd,2026-07-01,26054.2,"Yanvar–ay, cəmi",Trade turnover 2
+dsk_trade_ytd,2026-08-01,30017.4,"Yanvar–ay, cəmi",Trade turnover 2
+dsk_trade_ytd,2026-09-01,33934.9,"Yanvar–ay, cəmi",Trade turnover 2
+dsk_trade_ytd_yoy,2026-02-01,-25.1,"%, ötən ilin eyni dövrünə",Trade turnover 2 (for January 2026)
+dsk_trade_ytd_yoy,2026-03-01,-23.5,"%, ötən ilin eyni dövrünə",Trade turnover 2 (for January-February 2026)
+dsk_trade_ytd_yoy,2026-04-01,-15.0,"%, ötən ilin eyni dövrünə",Trade turnover 2 (for January-March 2026)
+dsk_trade_ytd_yoy,2026-05-01,10.1,"%, ötən ilin eyni dövrünə",Trade turnover 2 (for January-April 2026)
+dsk_trade_ytd_yoy,2026-06-01,9.5,"%, ötən ilin eyni dövrünə",Trade turnover 2 (for January-May 2026)
+dsk_trade_ytd_yoy,2026-07-01,9.1,"%, ötən ilin eyni dövrünə",Trade turnover 2
+dsk_trade_ytd_yoy,2026-08-01,6.9,"%, ötən ilin eyni dövrünə",Trade turnover 2
+dsk_trade_ytd_yoy,2026-09-01,7.4,"%, ötən ilin eyni dövrünə",Trade turnover 2
+dsk_wage_ytd,2025-11-01,1086.3,"Yanvar–ay, cəmi","Average monthly nominal salary, manat"
+dsk_wage_ytd,2026-01-01,1102.9,"Yanvar–ay, cəmi","Average monthly nominal salary, manat"
+dsk_wage_ytd,2026-02-01,1103.8,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January 2026)"
+dsk_wage_ytd,2026-03-01,1099.1,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-February 2026)"
+dsk_wage_ytd,2026-04-01,1151.5,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-March 2026)"
+dsk_wage_ytd,2026-05-01,1172.1,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-April 2026)"
+dsk_wage_ytd,2026-06-01,1175.0,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-May 2026)"
+dsk_wage_ytd,2026-07-01,1174.4,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-June 2026)"
+dsk_wage_ytd,2026-08-01,1176.7,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-July 2026)"
+dsk_wage_ytd,2026-09-01,1173.0,"Yanvar–ay, cəmi","Average monthly nominal salary 2 , manat (for January-August 2026)"
+dsk_wage_ytd_yoy,2025-11-01,9.400000000000006,"%, ötən ilin eyni dövrünə","Average monthly nominal salary, manat"
+dsk_wage_ytd_yoy,2026-01-01,9.299999999999997,"%, ötən ilin eyni dövrünə","Average monthly nominal salary, manat"
+dsk_wage_ytd_yoy,2026-02-01,3.8,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January 2026)"
+dsk_wage_ytd_yoy,2026-03-01,5.3,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-February 2026)"
+dsk_wage_ytd_yoy,2026-04-01,6.2,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-March 2026)"
+dsk_wage_ytd_yoy,2026-05-01,6.5,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-April 2026)"
+dsk_wage_ytd_yoy,2026-06-01,7.3,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-May 2026)"
+dsk_wage_ytd_yoy,2026-07-01,7.0,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-June 2026)"
+dsk_wage_ytd_yoy,2026-08-01,7.2,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-July 2026)"
+dsk_wage_ytd_yoy,2026-09-01,7.2,"%, ötən ilin eyni dövrünə","Average monthly nominal salary 2 , manat (for January-August 2026)"

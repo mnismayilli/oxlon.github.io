@@ -1,0 +1,413 @@
+series,date,value,unit,name
+dsk_a_average_monthly_nominal_wages,2014-01-01,4.599999999999994,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2015-01-01,5.0,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2016-01-01,7.0,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2017-01-01,5.700000000000003,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2018-01-01,3.0,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2019-01-01,16.599999999999994,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2020-01-01,11.400000000000006,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2021-01-01,3.4000000000000057,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2022-01-01,14.700000000000003,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2023-01-01,11.200000000000003,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_average_monthly_nominal_wages,2024-01-01,8.099999999999994,"%, artım (əvvəlki il = 100)",Average monthly nominal wages
+dsk_a_consumer_price_indeces,2014-01-01,1.4000000000000057,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2015-01-01,4.0,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2016-01-01,12.400000000000006,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2017-01-01,12.900000000000006,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2018-01-01,2.299999999999997,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2019-01-01,2.5999999999999943,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2020-01-01,2.799999999999997,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2021-01-01,6.700000000000003,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2022-01-01,13.900000000000006,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2023-01-01,8.799999999999997,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_consumer_price_indeces,2024-01-01,2.200000000000003,"%, artım (əvvəlki il = 100)",Consumer price indeces
+dsk_a_gross_domestic_product_at_constant_price,2014-01-01,2.799999999999997,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2015-01-01,1.0999999999999943,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2016-01-01,-3.0999999999999943,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2017-01-01,0.20000000000000284,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2018-01-01,1.5,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2019-01-01,2.5,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2020-01-01,-4.200000000000003,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2021-01-01,5.599999999999994,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2022-01-01,4.700000000000003,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2023-01-01,1.4000000000000057,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_gross_domestic_product_at_constant_price,2024-01-01,4.200000000000003,"%, artım (əvvəlki il = 100)","Gross domestic product, at constant prices"
+dsk_a_income_of_population,2014-01-01,5.099999999999994,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2015-01-01,5.799999999999997,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2016-01-01,8.700000000000003,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2017-01-01,8.400000000000006,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2018-01-01,8.0,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2019-01-01,6.900000000000006,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2020-01-01,-1.7999999999999972,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2021-01-01,2.5999999999999943,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2022-01-01,20.900000000000006,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2023-01-01,13.0,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_income_of_population,2024-01-01,6.599999999999994,"%, artım (əvvəlki il = 100)",Income of population
+dsk_a_industrial_producer_price_index,2014-01-01,-5.099999999999994,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2015-01-01,-30.599999999999994,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2016-01-01,27.5,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2017-01-01,36.80000000000001,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2018-01-01,26.0,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2019-01-01,3.200000000000003,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2020-01-01,-24.799999999999997,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2021-01-01,69.6,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2022-01-01,84.30000000000001,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2023-01-01,-11.0,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_industrial_producer_price_index,2024-01-01,0.0,"%, artım (əvvəlki il = 100)",Industrial producer price index
+dsk_a_loans_to_economy_end_of_the_year,2014-01-01,20.200000000000003,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2015-01-01,17.200000000000003,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2016-01-01,-24.299999999999997,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2017-01-01,-28.5,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2018-01-01,10.700000000000003,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2019-01-01,17.5,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2020-01-01,-5.0,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2021-01-01,17.799999999999997,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2022-01-01,17.900000000000006,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2023-01-01,18.802516845025764,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_loans_to_economy_end_of_the_year,2024-01-01,22.099999999999994,"%, artım (əvvəlki il = 100)",Loans to economy (end of the year)
+dsk_a_population_savings_in_banks,2014-01-01,12.400000000000006,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2015-01-01,31.80000000000001,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2016-01-01,-21.400000000000006,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2017-01-01,1.5,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2018-01-01,10.799999999999997,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2019-01-01,3.0999999999999943,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2020-01-01,-5.299999999999997,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2021-01-01,13.0,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2022-01-01,27.099999999999994,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2023-01-01,10.259729200374679,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_savings_in_banks,2024-01-01,13.200000000000003,"%, artım (əvvəlki il = 100)",Population savings in banks
+dsk_a_population_size_end_of_the_year,2014-01-01,1.2000000000000028,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2015-01-01,1.2000000000000028,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2016-01-01,1.0999999999999943,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2017-01-01,0.9000000000000057,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2018-01-01,0.7999999999999972,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2019-01-01,-0.09999999999999432,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2020-01-01,0.5,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2021-01-01,0.4000000000000057,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2022-01-01,0.5999999999999943,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2023-01-01,0.5,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_population_size_end_of_the_year,2024-01-01,0.4000000000000057,"%, artım (əvvəlki il = 100)",Population size (end of the year)
+dsk_a_state_budget_expenditure,2014-01-01,-2.299999999999997,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2015-01-01,-4.900000000000006,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2016-01-01,-0.20000000000000284,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2017-01-01,-0.9000000000000057,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2018-01-01,29.19999999999999,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2019-01-01,7.5,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2020-01-01,8.099999999999994,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2021-01-01,3.799999999999997,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2022-01-01,16.900000000000006,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2023-01-01,13.701714663523006,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_expenditure,2024-01-01,3.4000000000000057,"%, artım (əvvəlki il = 100)",State budget expenditure
+dsk_a_state_budget_revenue,2014-01-01,-5.599999999999994,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2015-01-01,-4.900000000000006,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2016-01-01,0.0,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2017-01-01,-5.599999999999994,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2018-01-01,36.30000000000001,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2019-01-01,7.599999999999994,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2020-01-01,1.9000000000000057,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2021-01-01,6.900000000000006,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2022-01-01,16.200000000000003,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2023-01-01,14.852866399822688,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_a_state_budget_revenue,2024-01-01,5.5,"%, artım (əvvəlki il = 100)",State budget revenue
+dsk_q_gdp_nominal,2001-01-01,1087.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2001-04-01,1306.9,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2001-07-01,1516.4000000000003,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2001-10-01,1405.2000000000003,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2002-01-01,1238.9000000000003,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2002-04-01,1386.5,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2002-07-01,1742.3999999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2002-10-01,1694.7,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2003-01-01,1453.6000000000001,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2003-04-01,1741.6999999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2003-07-01,2030.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2003-10-01,1921.0999999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2004-01-01,1682.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2004-04-01,2093.4,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2004-07-01,2352.2999999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2004-10-01,2402.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2005-01-01,2371.2000000000007,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2005-04-01,2846.4,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2005-07-01,3707.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2005-10-01,3597.3000000000006,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2006-01-01,3468.2000000000003,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2006-04-01,4132.8,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2006-07-01,5790.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2006-10-01,5355.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2007-01-01,5801.5,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2007-04-01,6795.000000000001,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2007-07-01,7590.200000000001,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2007-10-01,8173.799999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2008-01-01,9035.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2008-04-01,10356.799999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2008-07-01,11011.199999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2008-10-01,9733.9,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2009-01-01,6964.799999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2009-04-01,8431.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2009-07-01,9922.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2009-10-01,10282.799999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2010-01-01,9629.500000000002,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2010-04-01,10771.800000000001,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2010-07-01,10672.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2010-10-01,11391.499999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2011-01-01,10751.800000000001,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2011-04-01,12326.099999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2011-07-01,12721.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2011-10-01,16283.000000000004,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2012-01-01,12964.599999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2012-04-01,13090.299999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2012-07-01,14235.100000000002,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2012-10-01,14453.7,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2013-01-01,12917.5,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2013-04-01,13919.199999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2013-07-01,15465.999999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2013-10-01,15879.299999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2014-01-01,13117.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2014-04-01,15292.100000000004,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2014-07-01,15870.900000000001,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2014-10-01,14734.000000000002,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2015-01-01,11538.699999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2015-04-01,14192.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2015-07-01,14118.100000000002,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2015-10-01,14531.0,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2016-01-01,12816.999999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2016-04-01,15186.8,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2016-07-01,15764.199999999999,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2016-10-01,16657.199999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2017-01-01,15475.499999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2017-04-01,17422.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2017-07-01,18037.5,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2017-10-01,19402.200000000004,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2018-01-01,17466.599999999995,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2018-04-01,19417.599999999995,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2018-07-01,20265.400000000005,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2018-10-01,22942.399999999998,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2019-01-01,18195.100000000006,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2019-04-01,20214.0,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2019-07-01,20170.4,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2019-10-01,23316.699999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2020-01-01,18043.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2020-04-01,16813.199999999997,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2020-07-01,18103.1,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2020-10-01,19618.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2021-01-01,19393.4,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2021-04-01,21820.5,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2021-07-01,23571.0,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2021-10-01,28418.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2022-01-01,29881.499999999993,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2022-04-01,33441.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2022-07-01,35212.299999999996,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2022-10-01,35437.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2023-01-01,29809.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2023-04-01,29814.7,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2023-07-01,31400.5,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2023-10-01,32104.0,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2024-01-01,28938.4,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2024-04-01,30847.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2024-07-01,33078.9,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2024-10-01,33659.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2025-01-01,29886.9,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2025-04-01,32037.6,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2025-07-01,33203.3,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2025-10-01,33966.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2026-01-01,29703.2,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_nominal,2026-04-01,35503.8,"mln AZN, rüb",Quarterly GDP
+dsk_q_gdp_real,2001-01-01,1492.7999999999997,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2001-04-01,1743.6000000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2001-07-01,2165.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2001-10-01,2024.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2002-01-01,1601.6,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2002-04-01,1896.5999999999995,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2002-07-01,2373.6000000000004,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2002-10-01,2255.9,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2003-01-01,1752.0000000000002,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2003-04-01,2066.6000000000004,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2003-07-01,2625.2,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2003-10-01,2513.6,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2004-01-01,1914.4999999999995,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2004-04-01,2271.5999999999995,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2004-07-01,2887.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2004-10-01,2713.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2005-01-01,2361.300000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2005-04-01,2845.4,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2005-07-01,3723.000000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2005-10-01,3593.0000000000005,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2006-01-01,3315.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2006-04-01,3831.7999999999997,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2006-07-01,4984.299999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2006-10-01,4707.200000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2007-01-01,4252.199999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2007-04-01,4771.400000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2007-07-01,6222.299999999998,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2007-10-01,5880.600000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2008-01-01,4630.0,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2008-04-01,5251.599999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2008-07-01,6918.900000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2008-10-01,6563.599999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2009-01-01,4906.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2009-04-01,5576.599999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2009-07-01,7418.700000000002,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2009-10-01,7651.600000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2010-01-01,5148.7,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2010-04-01,5817.4,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2010-07-01,7716.500000000002,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2010-10-01,8094.299999999998,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2011-01-01,5019.099999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2011-04-01,5845.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2011-07-01,7696.700000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2011-10-01,7794.800000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2012-01-01,5115.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2012-04-01,5847.999999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2012-07-01,7838.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2012-10-01,8134.9,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2013-01-01,5233.099999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2013-04-01,6292.0,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2013-07-01,8316.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2013-10-01,8669.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2014-01-01,5334.299999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2014-04-01,6454.099999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2014-07-01,8536.900000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2014-10-01,8982.600000000002,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2015-01-01,5500.500000000001,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2015-04-01,6509.4000000000015,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2015-07-01,8492.9,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2015-10-01,9112.699999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2016-01-01,5298.699999999999,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2016-04-01,6303.700000000002,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2016-07-01,8239.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2016-10-01,8866.0,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2017-01-01,5276.7,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2017-04-01,6312.2,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2017-07-01,8260.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2017-10-01,8903.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2018-01-01,5344.6,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2018-04-01,6391.6,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2018-07-01,8375.7,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2018-10-01,9071.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2019-01-01,5532.7,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2019-04-01,6547.6,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2019-07-01,8610.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2019-10-01,9216.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2020-01-01,5630.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2020-04-01,6337.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2020-07-01,8032.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2020-10-01,8650.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2021-01-01,5570.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2021-04-01,6598.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2021-07-01,8718.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2021-10-01,9373.2,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2022-01-01,5932.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2022-04-01,7018.7,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2022-07-01,9057.4,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2022-10-01,9679.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2023-01-01,5981.8,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2023-04-01,7094.9,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2023-07-01,9236.9,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2023-10-01,9803.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2024-01-01,6228.0,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2024-04-01,7406.1,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2024-07-01,9738.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2024-10-01,10079.0,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2025-01-01,6244.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2025-04-01,7560.5,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2025-07-01,9872.4,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2025-10-01,10259.4,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2026-01-01,6228.6,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real,2026-04-01,7694.3,"mln AZN, rüb",Quarterly GDP in 2005 prices
+dsk_q_gdp_real_yoy,2002-01-01,7.288317256162924,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2002-04-01,8.774948382656532,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2002-07-01,9.59460707359867,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2002-10-01,11.429982711780685,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2003-01-01,9.390609390609406,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2003-04-01,8.963408204154844,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2003-07-01,10.599932591843597,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2003-10-01,11.423378695864162,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2004-01-01,9.275114155251106,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2004-04-01,9.919674828220227,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2004-07-01,9.976382751790336,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2004-10-01,7.936823679185223,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2005-01-01,23.33768607991651,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2005-04-01,25.259728825497476,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2005-07-01,28.95292854421396,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2005-10-01,32.431535881464036,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2006-01-01,40.40994367509416,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2006-04-01,34.66647922963377,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2006-07-01,33.878592532903525,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2006-10-01,31.010297801280263,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2007-01-01,28.25214899713464,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2007-04-01,24.52111279294329,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2007-07-01,24.837991292658934,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2007-10-01,24.927770224337188,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2008-01-01,8.884812567612087,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2008-04-01,10.064132120551594,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2008-07-01,11.195217202642137,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2008-10-01,11.614461109410579,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2009-01-01,5.967602591792653,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2009-04-01,6.188590143956119,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2009-07-01,7.223691627281803,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2009-10-01,16.57626912060457,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2010-01-01,4.940586592748097,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2010-04-01,4.318043252160808,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2010-07-01,4.014180382007626,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2010-10-01,5.785718019760533,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2011-01-01,-2.517140248994898,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2011-04-01,0.4761577336954703,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2011-07-01,-0.25659301496794296,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2011-10-01,-3.700134662663812,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2012-01-01,1.9166782889362688,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2012-04-01,0.04961420677145334,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2012-07-01,1.8371509867865399,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2012-10-01,4.363165187047757,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2013-01-01,2.3028952358610244,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2013-04-01,7.59233926128593,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2013-07-01,6.098416708130805,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2013-10-01,6.566767876679491,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2014-01-01,1.9338441841356024,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2014-04-01,2.5762873490146054,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2014-07-01,2.6550907276247315,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2014-10-01,3.616292348686745,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2015-01-01,3.1156852820426684,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2015-04-01,0.8568196960072161,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2015-07-01,-0.5154095749042575,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2015-10-01,1.4483557099280508,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2016-01-01,-3.668757385692245,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2016-04-01,-3.160045472701012,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2016-07-01,-2.9801363491857913,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2016-10-01,-2.707210815674821,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2017-01-01,-0.41519618019512095,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2017-04-01,0.1348414423274935,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2017-07-01,0.24879244641859977,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2017-10-01,0.41845251522671933,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2018-01-01,1.286789091667151,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2018-04-01,1.2578815626881346,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2018-07-01,1.3970436909071182,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2018-10-01,1.8948456155720939,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2019-01-01,3.5194401826142085,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2019-04-01,2.440703423243007,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2019-07-01,2.8069295700657637,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2019-10-01,1.5928481668467054,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2020-01-01,1.767672203444981,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2020-04-01,-3.2088093347180657,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2020-07-01,-6.712500580666125,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2020-10-01,-6.135867973047748,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2021-01-01,-1.0691768049018724,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2021-04-01,4.123076923076918,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2021-07-01,8.536251369385518,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2021-10-01,8.35067277014845,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2022-01-01,6.495161840475383,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2022-04-01,6.363278171788811,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2022-07-01,3.8871365487182397,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2022-10-01,3.2656936798531877,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2023-01-01,0.837814601911635,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2023-04-01,1.0856711356803883,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2023-07-01,1.9818049329829668,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2023-10-01,1.2790181108138121,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2024-01-01,4.115817981209657,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2024-04-01,4.386249277650145,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2024-07-01,5.430393313774107,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2024-10-01,2.8144158480480685,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2025-01-01,0.26172125883108244,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2025-04-01,2.0847679615451975,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2025-07-01,1.3749550752169215,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2025-10-01,1.7898601051691498,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2026-01-01,-0.2514293035248083,"%, ötən ilin eyni rübünə",
+dsk_q_gdp_real_yoy,2026-04-01,1.7697242245883205,"%, ötən ilin eyni rübünə",
